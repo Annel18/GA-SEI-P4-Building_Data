@@ -1,5 +1,5 @@
-from .common import RoomSerializer
+from .common import FloorFinishSerializer
 from roomTypes.serializers.common import RoomTypeSerializer
 
-class PopulatedRoomSerializer(RoomSerializer):
-    rooms = RoomTypeSerializer(many=True)
+class PopulatedFloorFinishSerializer(FloorFinishSerializer):
+    roomTypes = RoomTypeSerializer(many=True)
