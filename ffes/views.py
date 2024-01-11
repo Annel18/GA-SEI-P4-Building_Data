@@ -2,7 +2,7 @@ from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIV
 from lib.views import OwnerListCreateView
 from .models import Ffe
 from .serializers.common import FfeSerializer
-# from .serializers.populated import PopulatedFfeSerializer
+from .serializers.populated import PopulatedFfeSerializer
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from lib.permissions import IsOwnerOrReadOnly
 
@@ -17,5 +17,11 @@ class FfeListCreateView(OwnerListCreateView):
 # Methods: GET, PUT/PATCH, DELETE
 class FfeDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Ffe.objects.all()
-    serializer_class = FfeSerializer
+    # serializer_class = FfeSerializer
     permission_classes = [IsOwnerOrReadOnly]
+
+    def get_serializer_class(self):
+        print('self request method -»', self.request.method) 
+        if self.request.method == 'GET':
+            return PopulatedFfeSerializer
+        return FfeSerializer

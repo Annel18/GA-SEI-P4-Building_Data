@@ -3,12 +3,16 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 class RegistrationSerializer(serializers.ModelSerializer):
+
+    # class attributes preventing serialization
     password = serializers.CharField(write_only=True)
     password_confirmation = serializers.CharField(write_only=True)
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'email', 'password', 'password_confirmation', 'bio')
+        # fields = ('id', 'username', 'email', 'password', 'password_confirmation', 'bio')
+        fields = '__all__'
+        extra_fields = ['password_confirmation']
 
     def validate(self, data):
         password = data.get('password')
