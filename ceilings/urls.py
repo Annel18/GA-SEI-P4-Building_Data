@@ -1,8 +1,8 @@
 from django.urls import path
-from .views import CeilingCreateView, CeilingDestroyView
+from .views import CeilingListCreateView, CeilingDetailView
 
 
 urlpatterns = [
-    path('', CeilingCreateView.as_view()), 
-    path('<int:pk>/', CeilingDestroyView.as_view()) 
+    path('', CeilingListCreateView.as_view()), 
+    path('<int:pk>/', CeilingDetailView.as_view()) 
 ]
