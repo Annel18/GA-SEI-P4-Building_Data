@@ -1,8 +1,8 @@
 from django.urls import path
-from .views import FloorFinishCreateView, FloorFinishDestroyView
+from .views import FloorFinishListCreateView, FloorFinishDetailView
 
 
 urlpatterns = [
-    path('', FloorFinishCreateView.as_view()), 
-    path('<int:pk>/', FloorFinishDestroyView.as_view()) 
+    path('', FloorFinishListCreateView.as_view()), 
+    path('<int:pk>/', FloorFinishDetailView.as_view()) 
 ]
