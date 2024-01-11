@@ -5,11 +5,6 @@ class FloorFinish(models.Model):
     spec_code = models.CharField()
     spec_code_suffix = models.CharField()
     spec_title= models.CharField()
-    rooms = models.ForeignKey(
-        to='rooms.Room', 
-        on_delete=models.CASCADE,
-        related_name='floorFinishes'
-    )
     owner = models.ForeignKey(
         to='users.User',
         on_delete=models.CASCADE,

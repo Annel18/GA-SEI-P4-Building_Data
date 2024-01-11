@@ -2,14 +2,9 @@ from django.db import models
 
 # Create your models here.
 class WallFinish(models.Model):
-    spec_code = models.CharField(unique=True)
-    spec_code_suffix = models.CharField(unique=True)
+    spec_code = models.CharField()
+    spec_code_suffix = models.CharField()
     spec_title= models.CharField()
-    rooms = models.ForeignKey(
-        to='rooms.Room', 
-        on_delete=models.CASCADE,
-        related_name='wallFinishes'
-    )
     owner = models.ForeignKey(
         to='users.User',
         on_delete=models.CASCADE,
