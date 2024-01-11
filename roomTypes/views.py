@@ -1,4 +1,4 @@
-from rest_framework.generics import RetrieveUpdateDestroyAPIView
+from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView
 from lib.views import OwnerListCreateView
 from .models import RoomType
 from .serializers.common import RoomTypeSerializer

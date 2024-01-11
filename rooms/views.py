@@ -10,7 +10,7 @@ from lib.permissions import IsOwnerOrReadOnly
 # Methods: GET, POST
 class RoomListCreateView(OwnerListCreateView):
     queryset = Room.objects.all()
-    serializer_class = PopulatedRoomSerializer
+    serializer_class = RoomSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
 
 
@@ -18,7 +18,7 @@ class RoomListCreateView(OwnerListCreateView):
 # Methods: GET, PUT/PATCH, DELETE
 class RoomDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Room.objects.all()
-    # serializer_class = PopulatedRoomSerializer
+    # serializer_class = RoomSerializer
     permission_classes = [IsOwnerOrReadOnly]
 
     def get_serializer_class(self):
