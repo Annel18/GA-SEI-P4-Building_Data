@@ -5,7 +5,7 @@ from wallFinishes.serializers.common import WallFinishSerializer
 from ceilings.serializers.common import CeilingSerializer
 
 class PopulatedRoomSerializer(RoomSerializer):
-    roomTypes = RoomTypeSerializer(many=True)
+    # roomTypes = RoomTypeSerializer(many=True)
     floorFinishes = FloorFinishSerializer(many=True)
     wallFinishes = WallFinishSerializer(many=True)
     ceilings = CeilingSerializer(many=True)
