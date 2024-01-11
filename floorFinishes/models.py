@@ -18,4 +18,4 @@ class FloorFinish(models.Model):
     )
 
     def __str__(self):
-        return f'{self.rooms}'
+        return f'{self.spec_code}_{self.spec_code_suffix} -{self.spec_title}'
