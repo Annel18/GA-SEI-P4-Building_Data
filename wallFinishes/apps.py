@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class WallfinihesConfig(AppConfig):
+class WallfinishesConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'wallFinihes'
+    name = 'wallFinishes'

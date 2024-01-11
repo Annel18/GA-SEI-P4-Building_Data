@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'rooms',
     'specifications',
     'floorFinishes',
-    'wallFinihes',
+    'wallFinishes',
     'ceilings',
     'users'
 ]
