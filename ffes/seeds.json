@@ -1,0 +1,11 @@
+[
+{
+    "model": "ffes.ffe",
+    "pk": 1,
+    "fields": {
+        "ffe_code": "CHA001",
+        "ffe_name": "Desk Chair 001",
+        "ffe_group": "3"
+    }
+}
+]
