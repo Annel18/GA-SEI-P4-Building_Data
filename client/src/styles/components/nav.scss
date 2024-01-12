@@ -3,13 +3,6 @@ nav {
     @include flex(row, center, space-evenly);
     background-color: $navBar-color;
     padding: 1em;
-    // margin: 15px;
-    // padding: 0 10em 0 10em;
-    // box-shadow: 0 0 5px 0 #9E9E9E;
-    // border-radius: 15px;
-    // font-size: 20px;
-    // border-bottom: 1px solid $primary-color;
-    // margin-bottom: 1em;
     .nav-button,
     .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root,
     .MuiFormLabel-root,
@@ -26,13 +19,12 @@ nav {
     .MuiInputLabel-animated,
     .MuiInputLabel-shrink,
     .MuiInputLabel-sizeMedium,
-    .MuiInputLabel-outlined,
+    .MuiInputLabel-outlined
     {
     color: white;
     border: none;
     background-color: transparent;
-    // padding-left: calc(100vw/20);
-    font-size: 0.8em;
+    // font-size: 0.8em;
     text-decoration: none;
 
     @media (max-width: 576px) {
@@ -41,7 +33,6 @@ nav {
     }
 }
 }
-
 
 .nav-link {
     @include flex(row, center, space-evenly);
@@ -53,24 +44,6 @@ nav {
     }
 }
 
-select {
-    color: red;
-}
-
-// .nav-button {
-//     color: white;
-//     border: none;
-//     background-color: transparent;
-//     padding-left: calc(100vw/20);
-//     font-size: 0.8rem;
-//     text-decoration: none;
-
-//     @media (max-width: 576px) {
-//         padding: 10px;
-//         font-size: 16x;
-//     }
-// }
-
 nav button:hover {
     color: $secondary-color;
 }
@@ -79,19 +52,4 @@ nav button:hover {
     nav {
         @include flex(column, center, center);
     }
-}
-
-.welcome {
-    text-align: end;
-    padding-right: 4em;
-
-    a {
-        text-decoration: none;
-        color: black;
-    }
-}
-
-
-.welcome:hover p {
-    color: $secondary-color;
 }

@@ -18,5 +18,9 @@ $navBar-color: lightcoral;
     border-radius: 10px;
     background-color: $background-color;
     color: $border-color;
-    max-width: -webkit-fill-available;
+    // max-width: -webkit-fill-available;
+}
+
+h3 {
+    font-size: 1.75em;
 }

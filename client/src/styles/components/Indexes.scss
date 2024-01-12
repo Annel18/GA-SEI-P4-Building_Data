@@ -1,0 +1,44 @@
+.index-page {
+    @include flex(row, flex-start, flex-start);
+}
+
+.container-grid {
+    margin: 1em;
+}
+
+.items-list {
+    .single-container {
+        text-decoration: none;
+        color: black;
+        text-align: -webkit-center;
+        padding-bottom: 5em;
+        box-shadow: 10px;
+
+        .thumbnail {
+            height: 90%;
+            width: 90%;
+            border: 10px solid;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            justify-items: center;
+            border: none;
+            margin-bottom: 0.5em;
+            box-shadow: 5px 5px 10px #d3d3d3,
+                -5px -5px 10px #ededed;
+            // transition: size 0.2s;
+            transition: all .2s ease-in-out;
+
+            &:hover {
+                // width: 100%;
+                transform: scale(1.04);
+            }
+        }
+
+
+        h5,
+        p {
+            margin: 0;
+        }
+    }
+}

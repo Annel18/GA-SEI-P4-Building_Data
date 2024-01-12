@@ -5,9 +5,12 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import App from './App.jsx'
 import Login from './components/Login.jsx'
 import RegisterUser from './components/RegisterUser.jsx'
+import IndexRoomTypes from './components/IndexRoomTypes.jsx'
+import IndexFfes from './components/IndexFfes.jsx'
 
 //! Styles
 import './styles/main.scss'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const router = createBrowserRouter([
@@ -22,12 +25,12 @@ const router = createBrowserRouter([
             },
             {
                 path: "/roomTypes",
-                // element: <RoomTypeIndex />,
+                element: <IndexRoomTypes />,
                 // loader: getTvIndex,
             },
             {
                 path: "/ffes",
-                // element: <RoomTypeIndex />,
+                element: <IndexFfes />,
                 // loader: getTvIndex,
             },
             {

@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react'
-import { Outlet, useNavigation, useRouteLoaderData } from 'react-router-dom'
+import { Outlet, useNavigation } from 'react-router-dom'
 import { Spinner } from 'react-bootstrap'
 
 import NavTop from './components/NavBarTop'
 
-export default  function App() {
+export default function App() {
     //! States
     let stage = sessionStorage.getItem('data')
     const [userData, setUserData] = useState(stage ? JSON.parse(stage) : '')
     const navigation = useNavigation()
-    
+
     //! Effects
     useEffect(() => {
         sessionStorage.setItem('data', JSON.stringify(userData))
@@ -23,9 +23,7 @@ export default  function App() {
                     navigation.state === 'idle' ?
                         <Outlet context={[userData, setUserData]} />
                         :
-                        <div className='centered'>
-                            <Spinner animation='border' />
-                        </div>
+                        <Spinner />
                 }
             </main>
         </>

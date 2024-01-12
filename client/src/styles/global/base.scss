@@ -1,13 +1,13 @@
 * {
     box-sizing: border-box;
+    font-family: 'Termina Test', 'Nunito', sans-serif;
 }
 
 html {
-    font-size: 16px;
+    font-size: 12px;
 }
 
 body {
-    font-family: 'Termina Test', 'Nunito',sans-serif;
     margin: 0;
     // to allow for footer
     // margin-bottom: 60px;
@@ -17,21 +17,22 @@ main {
     min-height: calc(100vh - 196px);
 }
 
-form input, select{
+form input,
+select {
     @include button($secondary-color, white);
     width: 400px;
     padding: 10px;
     margin: 5px;
-  }
+}
 
-  form button{
+form button {
     margin: 20px;
     padding: 6px 40px;
     @include button(white, $secondary-color);
-  }
+}
 
-  form button:hover{
+form button:hover {
     margin: 20px;
     padding: 6px 40px;
     @include button($secondary-color, white);
-  }
+}

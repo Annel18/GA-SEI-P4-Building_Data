@@ -36,16 +36,16 @@ export default function NavTop({ userData, setUserData }) {
     return (
         <header>
             <nav>
-                <Link className="nav-button" to="/">Home</Link>
-                <Link className="nav-button" to="/resources/">Resources</Link>
-                <Link className="nav-button" to="/about/">About</Link>
+                <Link className="nav-button" to="/" onClick={handleChange}>Home</Link>
+                <Link className="nav-button" to="/resources/" onClick={handleChange}>Resources</Link>
+                <Link className="nav-button" to="/about/" onClick={handleChange}>About</Link>
                 {!userData ? (
                     <>
                         <FormControl variant="standard" sx={{ m: 1, minWidth: 160 }}>
-                            <InputLabel id="demo-simple-select-autowidth-label" style={{ fontFamily: 'Termina Test' }}>Register / Sign in</InputLabel>
+                            <InputLabel /*id="demo-simple-select-autowidth-label"*/ style={{ fontFamily: 'Termina Test' }}>Register / Sign in</InputLabel>
                             <Select
-                                labelId="demo-simple-select-autowidth-label"
-                                id="demo-simple-select-autowidth"
+                                /*labelId="demo-simple-select-autowidth-label"*/
+                                /*id="demo-simple-select-autowidth"*/
                                 value={accountDrop}
                                 onChange={handleChangeAccount}
                                 autoWidth
@@ -63,11 +63,11 @@ export default function NavTop({ userData, setUserData }) {
                 ) : (
                     <>
                         <FormControl sx={{ m: 1, minWidth: 180 }}>
-                            <InputLabel style={{ fontFamily: 'Termina Test' }} id="demo-simple-select-autowidth-label">DATA Collections</InputLabel>
+                            <InputLabel style={{ fontFamily: 'Termina Test' }} /*id="demo-simple-select-autowidth-label"*/>DATA Collections</InputLabel>
                             <Select
                                 className="nav-button"
-                                labelId="demo-simple-select-autowidth-label"
-                                id="demo-simple-select-autowidth"
+                                /*labelId="demo-simple-select-autowidth-label"
+                                id="demo-simple-select-autowidth"*/
                                 value={redirection}
                                 onChange={handleChange}
                                 autoWidth
@@ -82,11 +82,11 @@ export default function NavTop({ userData, setUserData }) {
                             </Select>
                         </FormControl>
                         <FormControl sx={{ m: 1, minWidth: 110 }}>
-                            <InputLabel id="demo-simple-select-autowidth-label" style={{ fontFamily: 'Termina Test' }}>Account</InputLabel>
+                            <InputLabel  /*id="demo-simple-select-autowidth-label"*/ style={{ fontFamily: 'Termina Test' }}>Account</InputLabel>
                             <Select
                                 className="nav-button"
-                                labelId="demo-simple-select-autowidth-label"
-                                id="demo-simple-select-autowidth"
+                                /*labelId="demo-simple-select-autowidth-label"
+                                id="demo-simple-select-autowidth"*/
                                 value={accountDrop}
                                 onChange={handleChangeAccount}
                                 autoWidth
