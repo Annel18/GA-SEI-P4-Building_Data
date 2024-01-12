@@ -109,10 +109,10 @@ WSGI_APPLICATION = 'project.wsgi.application'
 DATABASES = {
   'default': {
     'ENGINE': 'django.db.backends.postgresql',
-    'NAME': 'Room_Data_Sheet',
+    'NAME': env('DATABASE_NAME'),
     'USER': env('PGUSER'),
     'PASSWORD': env('PGPASSWORD'),
-    'HOST': 'ep-wandering-feather-51993312.eu-central-1.aws.neon.tech',
+    'HOST': env('DATABASE_HOST'),
     'PORT': '5432',
     'OPTIONS': {'sslmode': 'require'},
   }

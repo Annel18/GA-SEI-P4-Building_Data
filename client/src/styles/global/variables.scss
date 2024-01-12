@@ -1,0 +1,22 @@
+@import url('https://fonts.cdnfonts.com/css/termina-test');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800&family=Roboto:wght@100&display=swap');
+
+$primary-color: #b3b3b3;
+$secondary-color: teal;
+$tertiary-color: rgb(100, 186, 186);
+$navBar-color: lightcoral;
+
+@mixin flex($direction, $align, $justify) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: $align;
+    justify-content: $justify;
+}
+
+@mixin button($border-color, $background-color) {
+    border: 1px solid $border-color;
+    border-radius: 10px;
+    background-color: $background-color;
+    color: $border-color;
+    max-width: -webkit-fill-available;
+}

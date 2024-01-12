@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Termina Test', 'Nunito',sans-serif;
+    margin: 0;
+    // to allow for footer
+    // margin-bottom: 60px;
+}
+
+main {
+    min-height: calc(100vh - 196px);
+}
