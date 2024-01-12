@@ -16,3 +16,22 @@ body {
 main {
     min-height: calc(100vh - 196px);
 }
+
+form input, select{
+    @include button($secondary-color, white);
+    width: 400px;
+    padding: 10px;
+    margin: 5px;
+  }
+
+  form button{
+    margin: 20px;
+    padding: 6px 40px;
+    @include button(white, $secondary-color);
+  }
+
+  form button:hover{
+    margin: 20px;
+    padding: 6px 40px;
+    @include button($secondary-color, white);
+  }

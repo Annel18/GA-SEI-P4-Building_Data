@@ -12,19 +12,6 @@ export default function Login() {
     const navigate = useNavigate()
 
 
-    async function submitData(parsedData) {
-        try {
-            // Get logged in
-            const res = await axios.post('/api/auth/login', parsedData)
-            // Save data
-            const stagedData = res.data
-            setUserData(stagedData)
-            // Go to homepage
-            navigate("/profile")
-        } catch (error) {
-            console.log(error)
-        }
-    }
 
     function authenticate(e) {
         e.preventDefault()
@@ -47,6 +34,21 @@ export default function Login() {
             setErrorMessage('')
         }
         submitData(parsedData)
+    }
+
+    async function submitData(parsedData) {
+        try {
+            // Get logged in
+            const res = await axios.post('/api/auth/login/', parsedData)
+            console.log(res)
+            // Save data
+            const stagedData = res.data
+            setUserData(stagedData)
+            // Go to homepage
+            navigate("/")
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return (

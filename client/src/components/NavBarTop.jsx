@@ -12,15 +12,23 @@ export default function NavTop({ userData, setUserData }) {
 
     //! States
     const [redirection, setRedirection] = useState('')
+    const [accountDrop, setAccoutDrop] = useState('')
+
+    const handleChangeAccount = (event) => {
+        setAccoutDrop(event.target.value)
+        setRedirection('')
+    }
 
     const handleChange = (event) => {
-        setRedirection(event.target.value);
+        setRedirection(event.target.value)
+        setAccoutDrop('')
     }
 
     //! Functions
     function logOut() {
         localStorage.clear()
         sessionStorage.clear()
+        setAccoutDrop('')
         setUserData('')
         navigate('/')
     }
@@ -31,13 +39,30 @@ export default function NavTop({ userData, setUserData }) {
                 <Link className="nav-button" to="/">Home</Link>
                 <Link className="nav-button" to="/resources/">Resources</Link>
                 <Link className="nav-button" to="/about/">About</Link>
-                <Link className="nav-button" to="/login/">Sign in</Link>
-                {!userData.username ? (
+                {!userData ? (
                     <>
+                        <FormControl variant="standard" sx={{ m: 1, minWidth: 160 }}>
+                            <InputLabel id="demo-simple-select-autowidth-label" style={{ fontFamily: 'Termina Test' }}>Register / Sign in</InputLabel>
+                            <Select
+                                labelId="demo-simple-select-autowidth-label"
+                                id="demo-simple-select-autowidth"
+                                value={accountDrop}
+                                onChange={handleChangeAccount}
+                                autoWidth
+                                label="register"
+                                placeholder="Register/Sign in"
+                            >
+                                {/* <MenuItem value="">
+                                    <em>Settings</em>
+                                </MenuItem> */}
+                                <MenuItem as={Link} className="nav-button" to="/register/" value={"register"}>Register</MenuItem>
+                                <MenuItem as={Link} className="nav-button" to="/login/" value={"login"}>Login in your account</MenuItem>
+                            </Select>
+                        </FormControl>
                     </>
                 ) : (
                     <>
-                        <FormControl sx={{ m: 1, minWidth: 200 }}>
+                        <FormControl sx={{ m: 1, minWidth: 180 }}>
                             <InputLabel style={{ fontFamily: 'Termina Test' }} id="demo-simple-select-autowidth-label">DATA Collections</InputLabel>
                             <Select
                                 className="nav-button"
@@ -49,27 +74,28 @@ export default function NavTop({ userData, setUserData }) {
                                 label="DATA Collections"
                                 style={{ fontFamily: 'Termina Test' }}
                             >
-                                <MenuItem className="nav-button" value="">
+                                {/* <MenuItem className="nav-button" value="">
                                     <em>DATA Collections</em>
-                                </MenuItem>
+                                </MenuItem> */}
                                 <MenuItem as={Link} className="nav-button" to="/roomTypes/" value={"roomTypes"}>Room Types</MenuItem>
                                 <MenuItem as={Link} className="nav-button" to="/ffes/" value={"ffes"}>FFE</MenuItem>
                             </Select>
                         </FormControl>
-                        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-                            <InputLabel id="demo-simple-select-standard-label">Age</InputLabel>
+                        <FormControl sx={{ m: 1, minWidth: 110 }}>
+                            <InputLabel id="demo-simple-select-autowidth-label" style={{ fontFamily: 'Termina Test' }}>Account</InputLabel>
                             <Select
-                                labelId="demo-simple-select-standard-label"
-                                id="demo-simple-select-standard"
-                                value={redirection}
-                                onChange={handleChange}
-                                label={userData.username}
+                                className="nav-button"
+                                labelId="demo-simple-select-autowidth-label"
+                                id="demo-simple-select-autowidth"
+                                value={accountDrop}
+                                onChange={handleChangeAccount}
+                                autoWidth
+                                label="user"
+                                style={{ fontFamily: 'Termina Test' }}
                             >
-                                <MenuItem value="">
-                                    <em>{userData.username}</em>
-                                </MenuItem>
-                                <MenuItem as={Link} className="nav-button" to="/roomTypes/" value={"profile"}>Profile</MenuItem>
-                                <MenuItem className="nav-button" value="logOut" onClick={logOut}>Sign out</MenuItem>
+                                {/* <MenuItem value=""><em>Settings</em></MenuItem> */}
+                                <MenuItem as={Link} className="nav-button" to="/profile/" value={"profile"}>Profile</MenuItem>
+                                <MenuItem className="nav-button" value={"logout"} onClick={logOut}>Sign out</MenuItem>
                             </Select>
                         </FormControl>
                     </>

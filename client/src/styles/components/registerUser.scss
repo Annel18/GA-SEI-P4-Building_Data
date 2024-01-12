@@ -1,0 +1,19 @@
+.errorMessage {
+    background-color: indianred;
+    color: white;
+    text-align: center;
+    padding: 1em;
+}
+
+form {
+    @include flex(column,center,center);
+}
+
+input::placeholder {
+    color: $secondary-color
+}
+
+fieldset {
+    padding-top: 3em;
+    border: none;
+}
