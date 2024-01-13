@@ -6,8 +6,9 @@ import App from './App.jsx'
 import Login from './components/Login.jsx'
 import RegisterUser from './components/RegisterUser.jsx'
 import FilterBarRT from './components/FilterBarRT.jsx'
+import FilterBarFFE from './components/FilterBarFFE.jsx'
 // import IndexRoomTypes from './components/IndexRoomTypes.jsx'
-import IndexFfes from './components/IndexFfes.jsx'
+// import IndexFfes from './components/IndexFfes.jsx'
 
 //! Styles
 import './styles/main.scss'
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/ffes",
-                element: <IndexFfes />,
+                element: <FilterBarFFE />,
                 // loader: getTvIndex,
             },
             {

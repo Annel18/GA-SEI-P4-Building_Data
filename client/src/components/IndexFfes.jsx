@@ -1,71 +1,51 @@
-// import { Link } from 'react-router-dom'
+/* eslint-disable react/prop-types */
+import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import axios from "axios"
+
+
+import { getIndFfe } from "../utils/loaders/ffesLoader"
 
 //! Styling 
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-// import Box from '@mui/material/Box'
-// import { Modal } from '@mui/material'
 
-export default function IndexFfes() {
+export default function IndexFfes({ id }) {
     //! States
     const [ffes, setFfes] = useState([])
-    // const [search, setSearch] = useState('')
-    // const [open, setOpen] = useState(false)
-    // const handleOpen = () => setOpen(true)
-    // const handleClose = () => setOpen(false)
 
-    //! Effects
     useEffect(() => {
-        async function getFfesData() {
-            try {
-                const res = await axios.get('/api/ffes')
-                setFfes(res.data)
-            } catch (error) {
-                console.log(error)
-            }
+        async function ffeRetrieve() {
+            const ffe = await getIndFfe(id)
+            setFfes(ffe)
         }
-        getFfesData()
-    }, [])
+        ffeRetrieve()
+    }, [id])
 
     //! JSX
     return (
         <>
-            <section className='index-page'>
-                <Container fluid className="container-grid">
-                    <Row className="items-list">
-                        {ffes
-                            .map((ffe, i) => {
-                                // const { ffe_code, ffe_name, ffe_img } = ffe
-                                return (
-                                    <Col
-                                        className="single-container"
-                                        key={i}
-                                        xs={12}
-                                        s={6}
-                                        md={4}
-                                        lg={3}
-                                        xl={2}
-                                    >
-                                        <div className="rails">
-                                            <div
-                                                className="thumbnail"
-                                                style={{ backgroundImage: `url(${ffe.ffe_img})` }}>
-                                            </div>
-                                            <div>
-                                                <h5>{ffe.ffe_code}</h5>
-                                                <p>{ffe.ffe_name}</p>
-                                            </div>
-                                        </div>
-                                    </Col>
-                                )
-                            })
-                        }
-                    </Row>
-                </Container>
-            </section>
+            <Col
+                className='single-container'
+                // Link helps the individual ffe page function
+                as={Link}
+                xs={12}
+                s={6}
+                md={4}
+                lg={3}
+                xl={2}
+                to={`/ffes/${ffes.id}`}
+            >
+                <div className="rails" style={{ height: '200px', paddingBottom: '3em' }}>
+                    <div
+                        className="thumbnail"
+                        to={`/ffes/${ffes.id}`}
+                        style={{ backgroundImage: `url(${ffes.ffe_img})` }}>
+                    </div>
+                    <div>
+                        <h5>{ffes.ffe_code}</h5>
+                        <p>{ffes.ffe_name}</p>
+                    </div>
+                </div>
+            </Col>
         </>
     )
 }

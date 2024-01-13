@@ -8,7 +8,7 @@ import IndexFfes from "./IndexFfes"
 import Container from "react-bootstrap/esm/Container"
 import Row from "react-bootstrap/esm/Row"
 
-export default function FilterBarRT() {
+export default function FilterBarFFE() {
     //! States
     const [searchData, setSearchData] = useState({ ffesDataSearch: [] })
     const [ffes, setFfes] = useState([])

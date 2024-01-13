@@ -6,7 +6,8 @@ class RoomType(models.Model):
     room_name = models.CharField()
     area = models.FloatField(blank=True, null=True)
     height = models.FloatField(blank=True, null=True)
-    room_img = models.ImageField(blank=True, null=True)
+    room_img = models.CharField(blank=True, null=True)
+    # room_img = models.ImageField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     ffes = models.ManyToManyField(
