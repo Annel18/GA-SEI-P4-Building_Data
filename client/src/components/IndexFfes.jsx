@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from "axios"
 
@@ -38,7 +38,7 @@ export default function IndexFfes() {
                     <Row className="items-list">
                         {ffes
                             .map((ffe, i) => {
-                                const { ffe_code, ffe_name, ffe_img } = ffe
+                                // const { ffe_code, ffe_name, ffe_img } = ffe
                                 return (
                                     <Col
                                         className="single-container"
@@ -49,14 +49,15 @@ export default function IndexFfes() {
                                         lg={3}
                                         xl={2}
                                     >
-                                        <div className="rails"></div>
-                                        <div
-                                            className="thumbnail"
-                                            style={{ backgroundImage: `url(${ffe_img})` }}>
-                                        </div>
-                                        <div>
-                                            <h5>{ffe_code}</h5>
-                                            <p>{ffe_name}</p>
+                                        <div className="rails">
+                                            <div
+                                                className="thumbnail"
+                                                style={{ backgroundImage: `url(${ffe.ffe_img})` }}>
+                                            </div>
+                                            <div>
+                                                <h5>{ffe.ffe_code}</h5>
+                                                <p>{ffe.ffe_name}</p>
+                                            </div>
                                         </div>
                                     </Col>
                                 )

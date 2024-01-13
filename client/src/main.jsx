@@ -5,7 +5,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import App from './App.jsx'
 import Login from './components/Login.jsx'
 import RegisterUser from './components/RegisterUser.jsx'
-import IndexRoomTypes from './components/IndexRoomTypes.jsx'
+import FilterBarRT from './components/FilterBarRT.jsx'
+// import IndexRoomTypes from './components/IndexRoomTypes.jsx'
 import IndexFfes from './components/IndexFfes.jsx'
 
 //! Styles
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/roomTypes",
-                element: <IndexRoomTypes />,
+                element: <FilterBarRT />,
                 // loader: getTvIndex,
             },
             {
