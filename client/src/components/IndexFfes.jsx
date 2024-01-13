@@ -7,6 +7,7 @@ import { getIndFfe } from "../utils/loaders/ffesLoader"
 
 //! Styling 
 import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
 
 export default function IndexFfes({ id }) {
     //! States
@@ -23,9 +24,9 @@ export default function IndexFfes({ id }) {
     //! JSX
     return (
         <>
-            <Col
+            {/* <div
                 className='single-container'
-                // Link helps the individual ffe page function
+                Link helps the individual ffe page function
                 as={Link}
                 xs={12}
                 s={6}
@@ -33,19 +34,22 @@ export default function IndexFfes({ id }) {
                 lg={3}
                 xl={2}
                 to={`/ffes/${ffes.id}`}
-            >
-                <div className="rails" style={{ height: '200px', paddingBottom: '3em' }}>
-                    <div
+            > */}
+            {/* <div /*className="rails" style={{ height: '200px', paddingBottom: '3em' }} */}
+            {/* <div
                         className="thumbnail"
                         to={`/ffes/${ffes.id}`}
                         style={{ backgroundImage: `url(${ffes.ffe_img})` }}>
-                    </div>
-                    <div>
-                        <h5>{ffes.ffe_code}</h5>
-                        <p>{ffes.ffe_name}</p>
-                    </div>
+                    </div> */}
+            <Row>
+                <div style={{display:'flex', justifyContent:'space-between', borderTop:'1px solid black'}}>
+                    <h5>{ffes.ffe_code}</h5>
+                    <p>{ffes.ffe_name}</p>
+                    <h5>{ffes.ffe_group}</h5>
                 </div>
-            </Col>
+            </Row>
+            {/* </div> */}
+            {/* </div> */}
         </>
     )
 }

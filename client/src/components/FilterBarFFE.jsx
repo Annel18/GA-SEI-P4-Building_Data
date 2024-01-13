@@ -62,8 +62,9 @@ export default function FilterBarFFE() {
                 searchData.ffesDataSearch.length === 0
                     ? (
                         <section className='index-page'>
-                            <Container fluid className="container-grid">
-                                <Row className="items-list">
+                            <Container fluid className="container-grid" style={{padding:'5em'}}>
+                                <Row /*className="items-list"*/                              
+                                >
                                     {ffes.map(ffe => (
                                         <IndexFfes id={ffe.id} key={ffe.id} />
                                     ))}
@@ -73,8 +74,8 @@ export default function FilterBarFFE() {
                     )
                     : (
                         <section className='index-page'>
-                            <Container fluid className="container-grid">
-                                <Row className="items-list">
+                            <Container fluid className="container-grid" style={{padding:'5em'}}>
+                                <Row /*className="items-list"*/>
                                     {searchData.ffesDataSearch.map(ffe => (
                                         <IndexFfes id={ffe.id} key={ffe.id} />
                                     ))}
