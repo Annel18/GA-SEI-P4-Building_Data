@@ -1,0 +1,1732 @@
+[
+    {
+        "model": "ffes.ffe",
+        "pk": 1,
+        "fields": {
+            "ffe_code": "BAS101",
+            "ffe_name": "BASIN, medium, hospital pattern, vitreous china, no tap holes, no overflow, integral back outlet, 500W 400D.",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 2,
+        "fields": {
+            "ffe_code": "BAS105",
+            "ffe_name": "BASIN, small, general pattern, vitreous china, 1 tap right hand hole, no overflow, bottom outlet, 400W 300D",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 3,
+        "fields": {
+            "ffe_code": "BAS107",
+            "ffe_name": "BASIN, medium, general pattern, vitreous china, 2 tap holes, no overflow, bottom outlet, 500W 400D.",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 4,
+        "fields": {
+            "ffe_code": "BAT036",
+            "ffe_name": "BATH, wax, capacity 30 litres, 500H 800W 400D",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 5,
+        "fields": {
+            "ffe_code": "BIN028",
+            "ffe_name": "BIN, disposal, sealed, operated with one hand, nominal 420H 155W 490D",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 6,
+        "fields": {
+            "ffe_code": "BIN034",
+            "ffe_name": "BIN wheelie, 240 litre, 1060H 600W 730D",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 7,
+        "fields": {
+            "ffe_code": "BIN038",
+            "ffe_name": "BIN wheelie, 1100 litre, 1470H1370W 1115D",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 8,
+        "fields": {
+            "ffe_code": "BOA012",
+            "ffe_name": "BOARD, display/notice, wall mounted, 900H 600W",
+            "ffe_group": "2",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 9,
+        "fields": {
+            "ffe_code": "BOA013",
+            "ffe_name": "BOARD, display/notice, wall mounted, 900H 1200W",
+            "ffe_group": "2",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 10,
+        "fields": {
+            "ffe_code": "BRA003",
+            "ffe_name": "BRACKET, holder, suction unit.",
+            "ffe_group": "2",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 11,
+        "fields": {
+            "ffe_code": "CAB010",
+            "ffe_name": "CABINET, chiropody, mobile, with light and engine, 735H 600W 590D",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 12,
+        "fields": {
+            "ffe_code": "CAB013",
+            "ffe_name": "CABINET, drying clothes, free standing, 1470H 595W 610D",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 13,
+        "fields": {
+            "ffe_code": "CAB049",
+            "ffe_name": "CABINET, lateral filing, 6 rails, 2 door, 1970H 1000W 470D",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 14,
+        "fields": {
+            "ffe_code": "CAB064",
+            "ffe_name": "CABINET, metal, controlled drugs, 1 door, lockable, with warning light, wall mounted, 550H 600W 300D",
+            "ffe_group": "2",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 15,
+        "fields": {
+            "ffe_code": "CAL003",
+            "ffe_name": "PUSH BUTTON, patient/staff call (help) with socket for patient hand-held unit",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 16,
+        "fields": {
+            "ffe_code": "CAL006",
+            "ffe_name": "PULL CORD, patient/staff call (help) with reassurance lamp",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 17,
+        "fields": {
+            "ffe_code": "CAL007",
+            "ffe_name": "PULL/PUSH BUTTON, staff emergency call, reset and integral/adjacent indicator lamp",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 18,
+        "fields": {
+            "ffe_code": "CAL012",
+            "ffe_name": "RESET UNIT, with repeat lamp, patient/staff call",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 19,
+        "fields": {
+            "ffe_code": "CAL034",
+            "ffe_name": "LAMP, repeat call, patient/staff or staff emergency or cardiac call",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 20,
+        "fields": {
+            "ffe_code": "CAT002",
+            "ffe_name": "MINI KITCHEN (combined unit) with refrigerator and microwave, sink top, wall cabinet, cupboard and drawers, laminate backboard, 1970H 1200W 600D",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 21,
+        "fields": {
+            "ffe_code": "CHA005",
+            "ffe_name": "CHAIR, easy, low back, upholstered",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 22,
+        "fields": {
+            "ffe_code": "CHA301",
+            "ffe_name": "CHAIR, swivel, height adjustable, high back, with arms, wipeable, 5 star base, on castors",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 23,
+        "fields": {
+            "ffe_code": "CHA302",
+            "ffe_name": "CHAIR, swivel, height adjustable, medium back, wipeable, 5 star base, on castors",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 24,
+        "fields": {
+            "ffe_code": "CHA304",
+            "ffe_name": "CHAIR, swivel, height adjustable, medium back, wipeable, 5 star base, on glides",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 25,
+        "fields": {
+            "ffe_code": "CHA305",
+            "ffe_name": "CHAIR, easy, low back, upholstered, wipeable",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 26,
+        "fields": {
+            "ffe_code": "CHA306",
+            "ffe_name": "CHAIR, easy, low back, with open arms, upholstered, wipeable",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 27,
+        "fields": {
+            "ffe_code": "CHA317",
+            "ffe_name": "CHAIR, upright, upholstered, stacking, wipeable",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 28,
+        "fields": {
+            "ffe_code": "CHA318",
+            "ffe_name": "CHAIR, upright, with arms, upholstered, stacking, wipeable",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 29,
+        "fields": {
+            "ffe_code": "CHA323",
+            "ffe_name": "CHAIR, upright, wood, wipeable.",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 30,
+        "fields": {
+            "ffe_code": "CHA356",
+            "ffe_name": "CHAIR, venepuncture, wipeable.",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 31,
+        "fields": {
+            "ffe_code": "CHA367",
+            "ffe_name": "UNIT CHAIR, 1 seater, with arms, upholstered, wipeable",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 32,
+        "fields": {
+            "ffe_code": "CHA368",
+            "ffe_name": "UNIT CHAIR, 2 seater, with arms, upholstered, wipeable",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 33,
+        "fields": {
+            "ffe_code": "CHA369",
+            "ffe_name": "UNIT CHAIR, 3 seater, with arms, upholstered, wipeable",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 34,
+        "fields": {
+            "ffe_code": "CHA383",
+            "ffe_name": "CHAIR, stacking, polypropylene, with back and seat pads, wipeable.",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 35,
+        "fields": {
+            "ffe_code": "CHA393",
+            "ffe_name": "CHAIR, chiropody, electro-hydraulic, wipeable.",
+            "ffe_group": "2",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 36,
+        "fields": {
+            "ffe_code": "CIS005",
+            "ffe_name": "CISTERN WC/toilet, concealed, reversible. To suit WC",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 37,
+        "fields": {
+            "ffe_code": "CLE008",
+            "ffe_name": "SCRUBBING/POLISHING MACHINE, single brush, 110v machine",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 38,
+        "fields": {
+            "ffe_code": "CLE018",
+            "ffe_name": "CLEANER VACUUM, dry suction, tub, with accessories, filtered air exhaust",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 39,
+        "fields": {
+            "ffe_code": "CLI017",
+            "ffe_name": "CLIP, spring, 32mm dia. 3, mounted on a wooden batten, wall mounted",
+            "ffe_group": "2",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 40,
+        "fields": {
+            "ffe_code": "COM033",
+            "ffe_name": "COMPUTER KEYBOARD",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 41,
+        "fields": {
+            "ffe_code": "COM049",
+            "ffe_name": "COMPUTER MONITOR, 17\"; TFT, digital flat panel display, high-resolution screens, desk top",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 42,
+        "fields": {
+            "ffe_code": "CON061",
+            "ffe_name": "CONE, warning, 'wet floor'",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 43,
+        "fields": {
+            "ffe_code": "COU010",
+            "ffe_name": "COUCH, examination/treatment, (3 section), variable height, retractable wheels, with paper roll holder",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 44,
+        "fields": {
+            "ffe_code": "CRY001",
+            "ffe_name": "CRYOSURGICAL UNIT, with trolley",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 45,
+        "fields": {
+            "ffe_code": "CUP011",
+            "ffe_name": "CUPBOARD, metal, with 4 pull out galvanised shelves, lockable, 1800H 1000W 500D",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 46,
+        "fields": {
+            "ffe_code": "CUP550",
+            "ffe_name": "CUPBOARD, flammable material, metal, adjustable spillage tray and sump, lockable, 712H 355W 305D",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 47,
+        "fields": {
+            "ffe_code": "DES026",
+            "ffe_name": "DESK UNIT, cantilever, cable management, adjustable legs, modesty panel, 1400W 700D",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 48,
+        "fields": {
+            "ffe_code": "DIS002",
+            "ffe_name": "DISPENSER, cooler, drinking water, (capacity 63.3 l/hr), floor standing",
+            "ffe_group": "2",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 49,
+        "fields": {
+            "ffe_code": "DIS011",
+            "ffe_name": "DISPENSER, barrier cream, disposable single cartridge, wall mounted",
+            "ffe_group": "2",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 50,
+        "fields": {
+            "ffe_code": "DIS012",
+            "ffe_name": "DISPENSER, disposable cup, wall mounted",
+            "ffe_group": "2",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 51,
+        "fields": {
+            "ffe_code": "DIS013",
+            "ffe_name": "DISPENSER, paper towel, wall mounted",
+            "ffe_group": "2",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 52,
+        "fields": {
+            "ffe_code": "DIS015",
+            "ffe_name": "DISPENSER, toilet paper, dispense individual sheets, wall mounted",
+            "ffe_group": "2",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 53,
+        "fields": {
+            "ffe_code": "DIS024",
+            "ffe_name": "DISPENSER, soap, wall mounted",
+            "ffe_group": "2",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 54,
+        "fields": {
+            "ffe_code": "DIS026",
+            "ffe_name": "DISPENSER, Medical hand sanitizer, lever action, wall mounted",
+            "ffe_group": "2",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 55,
+        "fields": {
+            "ffe_code": "DIS030",
+            "ffe_name": "DISPENSER, soap, disposable single cartridge, lever action, wall mounted",
+            "ffe_group": "2",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 56,
+        "fields": {
+            "ffe_code": "DIS200",
+            "ffe_name": "DISH, soap, wall mounted",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 57,
+        "fields": {
+            "ffe_code": "DIS438",
+            "ffe_name": "DISPENSER, disposable gloves set of 3 and disposable apron, wall mounted",
+            "ffe_group": "2",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 58,
+        "fields": {
+            "ffe_code": "DRA056",
+            "ffe_name": "DRAWER UNIT, 2 drawer, lockable, on castors, 600H 410W 600D",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 59,
+        "fields": {
+            "ffe_code": "DRA057",
+            "ffe_name": "DRAWER UNIT, 3 drawer, lockable, on castors, desk height 715H 430W 600D",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 60,
+        "fields": {
+            "ffe_code": "EXT035",
+            "ffe_name": "EXTINGUISHER blanket fire control 1800W 1200D including container 480H 320W 100D",
+            "ffe_group": "2",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 61,
+        "fields": {
+            "ffe_code": "HOL004",
+            "ffe_name": "HOLDER, sack, with lid foot operated, small, freestanding",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 62,
+        "fields": {
+            "ffe_code": "HOL006",
+            "ffe_name": "HOLDER, sack, with lid foot operated, medium, freestanding, 875H 430W 385D",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 63,
+        "fields": {
+            "ffe_code": "HOL008",
+            "ffe_name": "HOLDER, sack with lid foot operated, large, freestanding, 960H 500W 415D",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 64,
+        "fields": {
+            "ffe_code": "HOL014",
+            "ffe_name": "HOLDER, sack, with lid foot operated, large, capacity 120 litre, mobile",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 65,
+        "fields": {
+            "ffe_code": "HOL016",
+            "ffe_name": "HOLDER, toilet roll, multi, large",
+            "ffe_group": "2",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 66,
+        "fields": {
+            "ffe_code": "HOL020",
+            "ffe_name": "HOLDER, sharps box, up to 7 litre capacity, rail/trolley hang or wall mounted, 170H 125W 100D",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 67,
+        "fields": {
+            "ffe_code": "HOO019",
+            "ffe_name": "HOOK, single, small, wall mounted",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 68,
+        "fields": {
+            "ffe_code": "HOO020",
+            "ffe_name": "HOOK, single, large, wall mounted",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 69,
+        "fields": {
+            "ffe_code": "LAD002",
+            "ffe_name": "LADDER, 3 tread, platform type 750mm height, folding",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 70,
+        "fields": {
+            "ffe_code": "LIG053",
+            "ffe_name": "LIG053",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 71,
+        "fields": {
+            "ffe_code": "LIG063",
+            "ffe_name": "LUMINAIRE, single fluorescent lamp, wall, 8 watt, 300 mm",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 72,
+        "fields": {
+            "ffe_code": "LIG073",
+            "ffe_name": "ILLUMINATED SIGN, 'Room in use'",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 73,
+        "fields": {
+            "ffe_code": "LIG138",
+            "ffe_name": "LUMINAIRE, indicating controlled drugs cupboard repeat",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 74,
+        "fields": {
+            "ffe_code": "LOC012",
+            "ffe_name": "LOCKER, wall mounted, 340H 300W 300D",
+            "ffe_group": "2",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 75,
+        "fields": {
+            "ffe_code": "LOC014",
+            "ffe_name": "LOCKER, 4 compartments, 1800H 300W 450D",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 76,
+        "fields": {
+            "ffe_code": "MIR001",
+            "ffe_name": "MIRROR, wall mounted, 650H 300W",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 77,
+        "fields": {
+            "ffe_code": "MIR002",
+            "ffe_name": "MIRROR, wall mounted, 900H 300W",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 78,
+        "fields": {
+            "ffe_code": "NCU001",
+            "ffe_name": "BABY NAPPY CHANGING UNIT, folds up base, heavy duty plastic, safety straps, wall mounted, 900H 560W 885D",
+            "ffe_group": "2",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 79,
+        "fields": {
+            "ffe_code": "OUT002",
+            "ffe_name": "OUTLET cable, 13 amp",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 80,
+        "fields": {
+            "ffe_code": "OUT005",
+            "ffe_name": "SOCKET outlet, switched, 13 amp, single",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 81,
+        "fields": {
+            "ffe_code": "OUT010",
+            "ffe_name": "SOCKET outlet, switched, 13 amp, twin",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 82,
+        "fields": {
+            "ffe_code": "OUT025",
+            "ffe_name": "SOCKET outlet, shaver",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 83,
+        "fields": {
+            "ffe_code": "OUT049",
+            "ffe_name": "CONNECTION UNIT, switched, 13 amp, flex outlet",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 84,
+        "fields": {
+            "ffe_code": "OUT050",
+            "ffe_name": "OUTLET, controlled drugs cupboard",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 85,
+        "fields": {
+            "ffe_code": "OUT052",
+            "ffe_name": "CONNECTION UNIT, switched, 13 amp",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 86,
+        "fields": {
+            "ffe_code": "OUT054",
+            "ffe_name": "CONNECTION UNIT, unswitched, 13 amp, neon indicator",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 87,
+        "fields": {
+            "ffe_code": "OUT056",
+            "ffe_name": "CONNECTION UNIT, unswitched, 13 amp",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 88,
+        "fields": {
+            "ffe_code": "OUT131",
+            "ffe_name": "SOCKET outlet data/voice, double.",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 89,
+        "fields": {
+            "ffe_code": "OUT315",
+            "ffe_name": "OUTLET, drinking water for equipment",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 90,
+        "fields": {
+            "ffe_code": "OUT347",
+            "ffe_name": "OUTLET, tundish, drain point",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 91,
+        "fields": {
+            "ffe_code": "OUT453",
+            "ffe_name": "OUTLET, 4 kPa compressed air, medical",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 92,
+        "fields": {
+            "ffe_code": "OUT470",
+            "ffe_name": "OUTLET, oxygen, medical.",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 93,
+        "fields": {
+            "ffe_code": "OUT475",
+            "ffe_name": "OUTLET, vacuum, medical",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 94,
+        "fields": {
+            "ffe_code": "OVE015",
+            "ffe_name": "OVEN, microwave, super heavy duty, 1850watt, capacity 26 litres, stainless steel, 370H 465W 615D",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 95,
+        "fields": {
+            "ffe_code": "PEG004",
+            "ffe_name": "PEGS, equipment, large, 4, wall mounted",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 96,
+        "fields": {
+            "ffe_code": "PEG005",
+            "ffe_name": "PEGS, equipment, 3 (500mm spacing), wall mounted",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 97,
+        "fields": {
+            "ffe_code": "PEG006",
+            "ffe_name": "PENDANT, electrical services and medical gases",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 98,
+        "fields": {
+            "ffe_code": "PEG007",
+            "ffe_name": "PRINTER, label, portable",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 99,
+        "fields": {
+            "ffe_code": "PEG008",
+            "ffe_name": "RACK, leaflet/pamphlet, 4 sections, with adjustable dividers, wall mounted, 300H 805W 215D",
+            "ffe_group": "2",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 100,
+        "fields": {
+            "ffe_code": "PEG009",
+            "ffe_name": "RACK, magazine, 3 shelves, floor standing, fixed to the wall, 1400H 900W 300D",
+            "ffe_group": "2",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 101,
+        "fields": {
+            "ffe_code": "PEG010",
+            "ffe_name": "RAIL, grab, vertical, wall mounted, 600mm",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 102,
+        "fields": {
+            "ffe_code": "PEG011",
+            "ffe_name": "RAIL, grab, horizontal, wall / door mounted, 500mm",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 103,
+        "fields": {
+            "ffe_code": "PEG012",
+            "ffe_name": "RAIL, grab, horizontal, wall or door mounted, 600mm",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 104,
+        "fields": {
+            "ffe_code": "PEG013",
+            "ffe_name": "RAIL, grab, hinged, wall mounted, 650mm",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 105,
+        "fields": {
+            "ffe_code": "PEG014",
+            "ffe_name": "RAIL for shower curtain, 1000mm",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 106,
+        "fields": {
+            "ffe_code": "PEG015",
+            "ffe_name": "REFRIGERATED DEEP FREEZE CABINET, capacity 243 litres, internal temperature gauge, 1450H 600W 600D",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 107,
+        "fields": {
+            "ffe_code": "REF058",
+            "ffe_name": "REFRIGERATOR, capacity 160 litre, automatic defrost, stainless steel, underbench, external temperature gauge, lockable, on castors, 850H 610W 600D",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 108,
+        "fields": {
+            "ffe_code": "REF059",
+            "ffe_name": "REFRIGERATOR, medical (drug/vaccine), capacity 160 litre, external temperature gauge, automatic defrost, lockable, underbench, 850H 550W 620D",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 109,
+        "fields": {
+            "ffe_code": "REF065",
+            "ffe_name": "REFRIGERATOR, capacity 285 litres, 1430H 600W 635D",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 110,
+        "fields": {
+            "ffe_code": "REF091",
+            "ffe_name": "REFRIGERATOR, drug, capacity 35 litre, external temperature gauge, lockable, wall mounted, 510H 380W 445D",
+            "ffe_group": "2",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 111,
+        "fields": {
+            "ffe_code": "REF105",
+            "ffe_name": "REFRIGERATOR MACHINE, ice production 75kg per 24 hours, 720H 485W 570D",
+            "ffe_group": "2",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 112,
+        "fields": {
+            "ffe_code": "SCA081",
+            "ffe_name": "SCALE COLUMN, weighing person, with sliding weights, and telescopic column for height measure",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 113,
+        "fields": {
+            "ffe_code": "SEA024",
+            "ffe_name": "SEAT, tip-up, wall mounted, 400 W 400D",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 114,
+        "fields": {
+            "ffe_code": "SHE101",
+            "ffe_name": "SHELF, raised edge, non-breakable, 300W 150D",
+            "ffe_group": "2",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 115,
+        "fields": {
+            "ffe_code": "SHE202",
+            "ffe_name": "SHELF, 600W 400D",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 116,
+        "fields": {
+            "ffe_code": "SHE211",
+            "ffe_name": "SHELF, 900W 300D",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 117,
+        "fields": {
+            "ffe_code": "SHE222",
+            "ffe_name": "SHELF, 1200W 400D",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 118,
+        "fields": {
+            "ffe_code": "SHE231",
+            "ffe_name": "SHELF, 1500W 300D",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 119,
+        "fields": {
+            "ffe_code": "SHE253",
+            "ffe_name": "SHELF, 2100W 500D",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 120,
+        "fields": {
+            "ffe_code": "SHO009",
+            "ffe_name": "SHOWER TRAY ceramic slip resistant base, with drainage outlet, 800W 800D",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 121,
+        "fields": {
+            "ffe_code": "SHO018",
+            "ffe_name": "SHOWER, valve, thermostatic mixer (associated with SHO020).",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 122,
+        "fields": {
+            "ffe_code": "SHO020",
+            "ffe_name": "SHOWER, adjustable shower head hand spray (associated with SHO018).",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 123,
+        "fields": {
+            "ffe_code": "SIN013",
+            "ffe_name": "SINK and BASIN combination Janitorial unit, hinged bucket grating to sink and monobloc mixer tap with swivel nozzle, stainless steel, 900H 500W 600D.",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 124,
+        "fields": {
+            "ffe_code": "SMC001",
+            "ffe_name": "CABINET, tall, modular storage, for 400 facing inserts, open, on plinth, 2100H",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 124,
+        "fields": {
+            "ffe_code": "SMC003",
+            "ffe_name": "CABINET, tall, modular storage, for 400 facing inserts, with door, on plinth, 2100H",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 126,
+        "fields": {
+            "ffe_code": "SMC013",
+            "ffe_name": "CABINET, base, modular storage, for 400 facing inserts, with door, on plinth, 900H",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 127,
+        "fields": {
+            "ffe_code": "SMC023",
+            "ffe_name": "CABINET, upper, modular storage, for 400 facing inserts, with door, 750H",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 128,
+        "fields": {
+            "ffe_code": "SMC051",
+            "ffe_name": "CABINET, tall, modular storage, for 600 facing inserts, open, on plinth, 2100H",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 129,
+        "fields": {
+            "ffe_code": "SMC073",
+            "ffe_name": "CABINET, upper, modular storage, for 600 facing inserts, with door, 750H",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 130,
+        "fields": {
+            "ffe_code": "SMF003",
+            "ffe_name": "SHELVING FRAME, modular storage, 1 bay, for 600 facing inserts, 2130H 670W 465D",
+            "ffe_group": "2",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 131,
+        "fields": {
+            "ffe_code": "SMF011",
+            "ffe_name": "SHELVING FRAME, modular storage, 1 bay, with 5 shelves, 2130H 1000W 465D",
+            "ffe_group": "2",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 132,
+        "fields": {
+            "ffe_code": "SMF013",
+            "ffe_name": "SHELVING FRAME, modular storage, 1 bay, with 5 shelves, 2130H 1000W 665D",
+            "ffe_group": "2",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 133,
+        "fields": {
+            "ffe_code": "SMT002",
+            "ffe_name": "TROLLEY, modular storage, single open frame, including handle and worktop, with up to 5 sets of runners for 600 facing inserts, 850H 730W 450D",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 134,
+        "fields": {
+            "ffe_code": "SMT005",
+            "ffe_name": "TROLLEY, modular storage, single open frame, half size, with up to 5 sets of runners for 400 facing inserts, 850H 450W 350D",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 135,
+        "fields": {
+            "ffe_code": "SMT011",
+            "ffe_name": "TROLLEY, modular storage, single open frame, including handles, with up to 10 sets of runners for 400 facing inserts, 1500H 600W 650D",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 136,
+        "fields": {
+            "ffe_code": "SMW052",
+            "ffe_name": "WORKTOP, clinical, for 2 x 400 facing modular storage cabinets, 910W 700D",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 137,
+        "fields": {
+            "ffe_code": "SMW056",
+            "ffe_name": "WORKTOP, clinical, for 6 x 400 facing modular storage cabinets, 2730W 700D",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 138,
+        "fields": {
+            "ffe_code": "SMW069",
+            "ffe_name": "WORKTOP, clinical, for 400 facing modular storage cabinets, 900W 700D",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 139,
+        "fields": {
+            "ffe_code": "SMW072",
+            "ffe_name": "WORKTOP, clinical, for 400 facing modular storage cabinets, 1200W 700D",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 140,
+        "fields": {
+            "ffe_code": "SMW081",
+            "ffe_name": "WORKTOP, clinical, for 400 facing modular storage cabinets, 2100W 700D",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 141,
+        "fields": {
+            "ffe_code": "SNS515",
+            "ffe_name": "SINK, plaster, plain top, no tap holes, no upstand, no overflow, left hand drainer, stainless steel, 900H 1200W 650D.",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 142,
+        "fields": {
+            "ffe_code": "SNU012",
+            "ffe_name": "SINK UNIT, single bowl with right hand drainer, no tap holes, 1200W 600D",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 143,
+        "fields": {
+            "ffe_code": "STF136",
+            "ffe_name": "STORAGE UNIT, lower, cupboard, 2 door, 1 shelf, lockable, 550H 1000W 450D",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 144,
+        "fields": {
+            "ffe_code": "STF281",
+            "ffe_name": "STORAGE UNIT, upper, cupboard, 2 door, 1 shelf, lockable, 550H 1000W 300D",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 145,
+        "fields": {
+            "ffe_code": "STO004",
+            "ffe_name": "STOOL, height adjustable, swivel, mobile",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 146,
+        "fields": {
+            "ffe_code": "STO006",
+            "ffe_name": "STOOL, surgeon/anaesthetist, height adjustable, includes anti-static seat pads",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 147,
+        "fields": {
+            "ffe_code": "STO007",
+            "ffe_name": "STOOL, metal frame, upholstered, 710 height",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 148,
+        "fields": {
+            "ffe_code": "STO008",
+            "ffe_name": "STOOL, kick, retractable castors",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 149,
+        "fields": {
+            "ffe_code": "STO021",
+            "ffe_name": "STOOL, chiropodist, swivel, height adjustable",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 150,
+        "fields": {
+            "ffe_code": "SWC014",
+            "ffe_name": "SWITCH 5amp ac single pole, 1 way, ceiling pull cord",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 151,
+        "fields": {
+            "ffe_code": "SWC025",
+            "ffe_name": "SWITCH, light",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 152,
+        "fields": {
+            "ffe_code": "SWC034",
+            "ffe_name": "SWITCH, dimmer, modulating",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 153,
+        "fields": {
+            "ffe_code": "SWC076",
+            "ffe_name": "SWITCH, 'Room in use' illuminated sign.",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 154,
+        "fields": {
+            "ffe_code": "TAB008",
+            "ffe_name": "TABLE, 710H 1200W 600D",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 155,
+        "fields": {
+            "ffe_code": "TAB053",
+            "ffe_name": "TABLE, occasional, square, 415H 610W 610D",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 156,
+        "fields": {
+            "ffe_code": "TAB056",
+            "ffe_name": "TABLE, occasional, round, 415H 610mm dia.",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 157,
+        "fields": {
+            "ffe_code": "TAB177",
+            "ffe_name": "TABLE, 720H 900W 700D",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 158,
+        "fields": {
+            "ffe_code": "TAP289",
+            "ffe_name": "TAP, monobloc, pillar mixer, integral thermostatic, short lever.",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 159,
+        "fields": {
+            "ffe_code": "TAP359",
+            "ffe_name": "TAP, pillar, high neck, long lever, pair hot and cold, 1/2 in.",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 160,
+        "fields": {
+            "ffe_code": "TAP809",
+            "ffe_name": "TAP, bib, lever, hospital pattern, pair hot and cold, 1/2 in.",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 161,
+        "fields": {
+            "ffe_code": "TAP892",
+            "ffe_name": "TAP, bib, 2x8 mm thermostatic mixer, automatic action, sensor operated, non-touch.",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 162,
+        "fields": {
+            "ffe_code": "TRA119",
+            "ffe_name": "TRACK, curtain, one sided, 4250mm length",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 163,
+        "fields": {
+            "ffe_code": "TRA147",
+            "ffe_name": "TRACK, curtain, door, C-shape",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 164,
+        "fields": {
+            "ffe_code": "TRA172",
+            "ffe_name": "TRACK, curtain, one sided, 3800L",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 165,
+        "fields": {
+            "ffe_code": "TRO068",
+            "ffe_name": "TROLLEY, cleaners, mop bucket, 3 shelves tray and waste sack holder, 980H 1170W 550D",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 166,
+        "fields": {
+            "ffe_code": "TRO131",
+            "ffe_name": "TROLLEY, dressing/instrument, stainless steel, buffered, 870H 450W 450D",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 167,
+        "fields": {
+            "ffe_code": "TRO133",
+            "ffe_name": "TROLLEY, dressing/instrument, stainless steel, buffered, 870H 750W 450D",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 168,
+        "fields": {
+            "ffe_code": "TRO267",
+            "ffe_name": "TROLLEY, phlebotomist's, 985H 495W 460D",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 169,
+        "fields": {
+            "ffe_code": "TRO310",
+            "ffe_name": "TROLLEY, emergency/resuscitation, complete with defibrillator, 955H 825W 575D",
+            "ffe_group": "3",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 170,
+        "fields": {
+            "ffe_code": "WAT003",
+            "ffe_name": "WATER BOILER, 2.5 litre, electric, wall mounted",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 171,
+        "fields": {
+            "ffe_code": "WCH001",
+            "ffe_name": "WC/toilet pan with seat, 520-550 projection, hospital pattern, rimless pan, vitreous china.",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 172,
+        "fields": {
+            "ffe_code": "WKT260",
+            "ffe_name": "WORKTOP, dished, stainless steel, cantilevered from wall, 600W 650D",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    },
+    {
+        "model": "ffes.ffe",
+        "pk": 173,
+        "fields": {
+            "ffe_code": "WKT449",
+            "ffe_name": "WORKTOP, plain, stainless steel, with 2 sink bowls & drainer, cantilevered from wall, 2100W 550D",
+            "ffe_group": "1",
+            "owner": 6
+        }
+    }
+]

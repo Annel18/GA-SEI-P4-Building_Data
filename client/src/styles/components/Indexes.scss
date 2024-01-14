@@ -1,5 +1,8 @@
 .index-page {
     @include flex(row, flex-start, flex-start);
+    background-color: white;
+    margin: 5em;
+    padding: 2em;
 }
 
 .container-grid {

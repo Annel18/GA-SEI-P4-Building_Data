@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
 
 import { getIndFfe } from "../utils/loaders/ffesLoader"
 
 //! Styling 
-import Col from 'react-bootstrap/Col'
+// import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 
 export default function IndexFfes({ id }) {
