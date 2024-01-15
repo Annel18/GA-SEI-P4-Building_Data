@@ -1,12 +1,20 @@
 import { Link } from 'react-router-dom'
 import { useLoaderData } from 'react-router-dom';
+import { useState } from "react"
 
+//! Components
+import UploadDivRT from './UploadDivRT'
+//! Styles
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Modal from 'react-bootstrap/Modal'
 
 export default function IndBldg() {
     const indBldg = useLoaderData()
+    const [open, setOpen] = useState(false)
+    const handleOpen = () => setOpen(true)
+    const handleClose = () => setOpen(false)
 
     const {
         // id,
@@ -16,7 +24,7 @@ export default function IndBldg() {
         bldg_img,
         roomTypes } = indBldg
 
-        console.log(roomTypes)
+    console.log(roomTypes)
 
     return (
         <>
@@ -25,33 +33,49 @@ export default function IndBldg() {
             </nav>
             <Container className="ind-Container" fluid>
                 <Row>
-                    <Col sm={3} className="indImgColumn">
-                        <div className="poster-container">
-                            <div className="poster" style={{ backgroundImage: `url(${bldg_img})` }}><></></div>
-                        </div>
-                    </Col>
+                    {bldg_img &&
+                        <Col sm={3} className="indImgColumn" style={{ backgroundImage: `url(${bldg_img})` }}></Col>
+                    }
                     <Col className="indInfoColumn">
                         <Row><h3>{bldg_code} || {bldg_name}</h3></Row>
                         <Row><p>{bldg_description}</p></Row>
-                        <Row><h4>Room Schedule</h4></Row>
+                        <Row><h4>Room Schedule
+                        <button className='submitBtn' onClick={handleOpen}>✚</button>
+                        </h4>
+                        </Row>
+                        <Modal
+                            size="lg"
+                            show={open}
+                            onHide={handleClose}
+                            aria-labelledby="example-modal-sizes-title-lg"
+                        >
+                            <Modal.Header closeButton>
+                                <Modal.Title id="example-modal-sizes-title-lg">
+                                    Add new Building
+                                </Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body className="modal-container">
+                                <UploadDivRT />
+                            </Modal.Body>
+                        </Modal>
                         <Container fluid className="container-grid">
-                            <div style={{ display: 'flex', justifyContent: 'space-between'}}><h5>Code</h5><h5>Name</h5></div>
+                            <div style={{ display: 'flex', justifyContent: 'space-between' }}><h5>Code</h5><h5>Name</h5></div>
                             {roomTypes
-                            .sort((a, b) => a.room_code.localeCompare(b.room_code))
-                            .map(roomType => (
-                                // console.log(roomType)
-                                <Row key={roomType.id}>
-                                    <Link
-                                        to={`/roomTypes/${roomType.id}`}
-                                        // bldg_id={id}
-                                        style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid black' }}>
-                                        <p>{roomType.room_code}</p>
-                                        <p>{roomType.room_name}</p>
-                                        {/* <p>{roomType.room_nbr.length}</p> */}
-                                    </Link>
-                                </Row>
-                            )
-                            )}
+                                .sort((a, b) => a.room_code.localeCompare(b.room_code))
+                                .map(roomType => (
+                                    // console.log(roomType)
+                                    <Row key={roomType.id}>
+                                        <Link
+                                            to={`/roomTypes/${roomType.id}`}
+                                            // bldg_id={id}
+                                            style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid black' }}>
+                                            <p>{roomType.room_code}</p>
+                                            <p>{roomType.room_name}</p>
+                                            {/* <p>{roomType.room_nbr.length}</p> */}
+                                        </Link>
+                                    </Row>
+                                )
+                                )}
                         </Container>
                     </Col>
                 </Row>

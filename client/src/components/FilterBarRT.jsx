@@ -2,7 +2,7 @@ import axios from "axios"
 import { useState, useEffect } from "react"
 // import { Link } from "react-router-dom"
 import IndexRoomTypes from "./IndexRoomTypes"
-import UploadDivRT from "./UploadDivRT"
+// import UploadDivRT from "./UploadDivRT"
 
 //! Styles
 // import Col from "react-bootstrap/esm/Col"
@@ -71,6 +71,15 @@ export default function FilterBarRT() {
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="example-modal-sizes-title-lg">
+                            Select Room Type to add to Building or create new Room Type
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body className="modal-container">
+                        <FilterBarRT />
+                    </Modal.Body>
+
+                    {/* <Modal.Header closeButton>
+                        <Modal.Title id="example-modal-sizes-title-lg">
                             Add new Room Type
                         </Modal.Title>
                     </Modal.Header>
@@ -78,7 +87,11 @@ export default function FilterBarRT() {
                         <>
                             <UploadDivRT />
                         </>
-                    </Modal.Body>
+                    </Modal.Body> */}
+
+
+
+
                 </Modal>
             </div>
             {

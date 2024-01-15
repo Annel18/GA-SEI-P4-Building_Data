@@ -2,12 +2,13 @@ import axios from "axios"
 import { useState, useEffect } from "react"
 // import { Link } from "react-router-dom"
 import IndexBuildings from "./IndexBldgs"
-import FilterBarRT from "./FilterBarRT"
+// import FilterBar from "./FilterBarRT"
 //! Styles
 // import Col from "react-bootstrap/esm/Col"
 import Container from "react-bootstrap/esm/Container"
 import Row from "react-bootstrap/esm/Row"
 import Modal from 'react-bootstrap/Modal'
+import UploadDivBldg from "./UploadDivBldg"
 
 
 export default function FilterBarBldg() {
@@ -72,11 +73,11 @@ export default function FilterBarBldg() {
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="example-modal-sizes-title-lg">
-                            Select Room Type to add to Building or create new Room Type
+                            Add new Building
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body className="modal-container">
-                        <FilterBarRT />
+                        <UploadDivBldg />
                     </Modal.Body>
                 </Modal>
             </div>

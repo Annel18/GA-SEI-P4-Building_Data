@@ -2,12 +2,12 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useOutletContext } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 
 export default function UploadDivRT() {
     // Get User ID
     const userData = useOutletContext()
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     const [uploadImg, setUploadImg] = useState('')
     const [inputs, setInputs] = useState({})
 
@@ -38,13 +38,14 @@ export default function UploadDivRT() {
         try {
             const res = await axios.post('/api/roomTypes', json, {
                 headers: {
-                    Authorization: `Bearer ${userData.access}`,
+                    Authorization: `Bearer ${userData[0].access}`,
                 },
             })
-            // const artID = res.data._id
+            const roomTypeId = res.data._id
+            console.log(roomTypeId)
             // push to artist collection
             // const artistCollection = [...personal_collection, artID]
-            navigate(`/roomTypes/${res.data._id}`)
+            // navigate(`/roomTypes/${res.data._id}`)
         } catch (error) {
             console.log(error)
         }
