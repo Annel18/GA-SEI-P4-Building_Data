@@ -9,6 +9,26 @@
     margin: 1em;
 }
 
+.filter-bar {
+    @include flex(row, center, space-between);
+    padding: 1em 5em;
+
+    .search {
+        align-self: flex-start;
+        // width: calc(100vw - 20em);
+    }
+
+    button {
+        @include button($secondary-color, white);
+        padding: 1em 2em;
+        // margin-right: 1em;
+    }
+    button:hover{
+        @include button(white, $secondary-color);
+    }
+}
+
+
 .items-list {
     .single-container {
         text-decoration: none;
@@ -16,6 +36,7 @@
         text-align: -webkit-center;
         padding-bottom: 5em;
         box-shadow: 10px;
+        width: auto;
 
         .thumbnail {
             height: 90%;

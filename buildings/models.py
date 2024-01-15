@@ -4,7 +4,8 @@ from django.db import models
 class Building(models.Model):
     bldg_code = models.CharField(max_length=10, )
     bldg_name = models.CharField()
-    bldg_img = models.ImageField(blank=True, null=True)
+    bldg_img = models.CharField(blank=True, null=True)
+    bldg_description = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     roomTypes = models.ManyToManyField(

@@ -35,7 +35,7 @@ export default function NavTop({ userData, setUserData }) {
 
     return (
         <header>
-            <nav>
+            <nav className='navBarTop'>
                 <Link className="nav-button" to="/" onClick={handleChange}>Home</Link>
                 <Link className="nav-button" to="/resources/" onClick={handleChange}>Resources</Link>
                 <Link className="nav-button" to="/about/" onClick={handleChange}>About</Link>
@@ -63,11 +63,11 @@ export default function NavTop({ userData, setUserData }) {
                 ) : (
                     <>
                         <FormControl sx={{ m: 1, minWidth: 180 }}>
-                            <InputLabel style={{ fontFamily: 'Termina Test' }} /*id="demo-simple-select-autowidth-label"*/>DATA Collections</InputLabel>
+                            <InputLabel style={{ fontFamily: 'Termina Test' }} id="demo-simple-select-autowidth-label">DATA Collections</InputLabel>
                             <Select
-                                className="nav-button"
-                                /*labelId="demo-simple-select-autowidth-label"
-                                id="demo-simple-select-autowidth"*/
+                                // className="nav-button"
+                                labelId="demo-simple-select-autowidth-label"
+                                id="demo-simple-select-autowidth"
                                 value={redirection}
                                 onChange={handleChange}
                                 autoWidth
@@ -77,16 +77,16 @@ export default function NavTop({ userData, setUserData }) {
                                 {/* <MenuItem className="nav-button" value="">
                                     <em>DATA Collections</em>
                                 </MenuItem> */}
-                                <MenuItem as={Link} className="nav-button" to="/roomTypes/" value={"roomTypes"}>Room Types</MenuItem>
-                                <MenuItem as={Link} className="nav-button" to="/ffes/" value={"ffes"}>FFE</MenuItem>
+                                <MenuItem as={Link} className="drop-button" to="/roomTypes/" value={"roomTypes"}>Room Types</MenuItem>
+                                <MenuItem as={Link} className="drop-button" to="/ffes/" value={"ffes"}>FFE</MenuItem>
                             </Select>
                         </FormControl>
                         <FormControl sx={{ m: 1, minWidth: 110 }}>
-                            <InputLabel  /*id="demo-simple-select-autowidth-label"*/ style={{ fontFamily: 'Termina Test' }}>Account</InputLabel>
+                            <InputLabel  id="demo-simple-select-autowidth-label" style={{ fontFamily: 'Termina Test' }}>Account</InputLabel>
                             <Select
-                                className="nav-button"
-                                /*labelId="demo-simple-select-autowidth-label"
-                                id="demo-simple-select-autowidth"*/
+                                // className="nav-button"
+                                labelId="demo-simple-select-autowidth-label"
+                                id="demo-simple-select-autowidth"
                                 value={accountDrop}
                                 onChange={handleChangeAccount}
                                 autoWidth
@@ -94,8 +94,8 @@ export default function NavTop({ userData, setUserData }) {
                                 style={{ fontFamily: 'Termina Test' }}
                             >
                                 {/* <MenuItem value=""><em>Settings</em></MenuItem> */}
-                                <MenuItem as={Link} className="nav-button" to="/profile/" value={"profile"}>Profile</MenuItem>
-                                <MenuItem className="nav-button" value={"logout"} onClick={logOut}>Sign out</MenuItem>
+                                <MenuItem as={Link} className="drop-button"  to="/profile/" value={"profile"}>Profile</MenuItem>
+                                <MenuItem className="drop-button" value={"logout"} onClick={logOut} style={{ fontFamily: 'Termina Test', color:'$secondary-color' }}>Sign out</MenuItem>
                             </Select>
                         </FormControl>
                     </>

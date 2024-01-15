@@ -2,16 +2,21 @@ import axios from "axios"
 import { useState, useEffect } from "react"
 // import { Link } from "react-router-dom"
 import IndexRoomTypes from "./IndexRoomTypes"
+import UploadDivRT from "./UploadDivRT"
 
 //! Styles
 // import Col from "react-bootstrap/esm/Col"
 import Container from "react-bootstrap/esm/Container"
 import Row from "react-bootstrap/esm/Row"
+import Modal from 'react-bootstrap/Modal'
 
 export default function FilterBarRT() {
     //! States
     const [searchData, setSearchData] = useState({ roomTypesDataSearch: [] })
     const [roomTypes, setRoomTypes] = useState([])
+    const [open, setOpen] = useState(false)
+    const handleOpen = () => setOpen(true)
+    const handleClose = () => setOpen(false)
 
     //! Effects
     useEffect(() => {
@@ -48,16 +53,36 @@ export default function FilterBarRT() {
     //! JSX
     return (
         <>
-            <form onSubmit={search} className="admin-search">
-                <input
-                    type="text"
-                    name="searchField"
-                    placeholder="Search by name..."
-                    className="search"
-                // onChange={(e) => setSearch(e.target.value)}
-                // value={search} 
-                />
-            </form>
+            <div className="filter-bar">
+                <form onSubmit={search} >
+                    <input
+                        type="text"
+                        name="searchField"
+                        placeholder="Search by name..."
+                        className="search"
+                    // onChange={(e) => setSearch(e.target.value)}
+                    // value={search} 
+                    />
+                </form>
+                <button onClick={handleOpen}>✚</button>
+                <Modal
+                    size="lg"
+                    show={open}
+                    onHide={handleClose}
+                    aria-labelledby="example-modal-sizes-title-lg"
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title id="example-modal-sizes-title-lg">
+                            Add new Room Type
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body className="modal-container">
+                        <>
+                            <UploadDivRT />
+                        </>
+                    </Modal.Body>
+                </Modal>
+            </div>
             {
                 searchData.roomTypesDataSearch.length === 0
                     ? (

@@ -38,11 +38,11 @@ export default function IndexBuildings({ id }) {
                     <div
                         className="thumbnail"
                         to={`/buildings/${buildings.id}`}
-                        style={{ backgroundImage: `url(${buildings.building_img})` }}>
+                        style={{ backgroundImage: `url(${buildings.bldg_img})` }}>
                     </div>
                     <div>
-                        <h5>{buildings.building_code}</h5>
-                        <p>{buildings.building_name}</p>
+                        <h5>{buildings.bldg_code}</h5>
+                        <p>{buildings.bldg_name}</p>
                     </div>
                 </div>
             </Col>

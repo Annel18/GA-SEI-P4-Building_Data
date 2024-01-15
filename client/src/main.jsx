@@ -8,14 +8,20 @@ import RegisterUser from './components/RegisterUser.jsx'
 import FilterBarBldg from './components/FilterBarBldg.jsx'
 import FilterBarRT from './components/FilterBarRT.jsx'
 import FilterBarFFE from './components/FilterBarFFE.jsx'
+import IndBldg from './components/SglBldg.jsx'
+import IndRT from './components/SglRT.jsx'
 // import IndexRoomTypes from './components/IndexRoomTypes.jsx'
 // import IndexFfes from './components/IndexFfes.jsx'
 
+//! Loaders
+import { getIndBuilding } from './utils/loaders/buildingsLoader.js'
+import { getIndRoomType } from './utils/loaders/roomTypesLoader.js'
+
 //! Styles
-import './styles/main.scss'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles/main.scss'
 
-
+//! Router
 const router = createBrowserRouter([
     {
         path: '/',
@@ -25,6 +31,16 @@ const router = createBrowserRouter([
                 path: "/",
                 element: <FilterBarBldg />,
                 // loader: getTvIndex,
+            },
+            {
+                path: "/buildings/:bldgId",
+                element: <IndBldg />,
+                loader: async ({ params }) => getIndBuilding(params.bldgId)
+            },
+            {
+                path: "/roomTypes/:roomTypeId",
+                element: <IndRT />,
+                loader: async ({ params }) => getIndRoomType(params.roomTypeId)
             },
             {
                 path: "/roomTypes",

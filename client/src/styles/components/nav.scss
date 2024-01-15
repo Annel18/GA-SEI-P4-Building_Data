@@ -1,48 +1,81 @@
-nav {
+.navBarTop {
     display: flex;
-    @include flex(row, center, space-evenly);
+    @include flex(row, center, flex-start);
     background-color: $navBar-color;
-    padding: 1em;
-    .nav-button,
+    padding: 1em 5em;
     .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root,
-    .MuiFormLabel-root,
-    .MuiInputLabel-root,
-    .MuiInputLabel-formControl,
-    .MuiInputLabel-animated,
-    .MuiInputLabel-shrink, 
-    .MuiInputLabel-sizeMedium,
-    .MuiInputLabel-outlined,
-    .MuiFormLabel-colorPrimary,
-    .MuiFormLabel-filled, 
-    .MuiInputLabel-root,
-    .MuiInputLabel-formControl,
-    .MuiInputLabel-animated,
-    .MuiInputLabel-shrink,
-    .MuiInputLabel-sizeMedium,
-    .MuiInputLabel-outlined
-    {
-    color: white;
-    border: none;
-    background-color: transparent;
-    // font-size: 0.8em;
-    text-decoration: none;
+    .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select {
+        color:white;
+    }
 
-    @media (max-width: 576px) {
-        padding: 10px;
-        font-size: 16x;
+
+    .nav-button {
+        padding-right: 5em;
+        color: white;
+        border: none;
+        background-color: transparent;
+        // font-size: 0.8em;
+        text-decoration: none;
+
+        @media (max-width: 576px) {
+            padding: 10px;
+            font-size: 16x;
+        }
+    }
+
+    Link {
+        @include flex(row, center, space-evenly);
+
+        @media (max-width: 576px) {
+            display: flex;
+            justify-content: space-evenly;
+            width: 100%;
+        }
     }
 }
+.css-ov3z8l-MuiMenuItem-root:first-child,.css-ov3z8l-MuiMenuItem-root:last-child{
+    color:$secondary-color;
+    font-family: 'Termina Test';
+    // font-weight: bold;
 }
+.navBarTwo {
+    display: flex;
+    @include flex(row, center, flex-start);
+    background-color: white;
+    padding: 1em 5em;
+    .nav-button {
+        color: $navBar-color;
+        padding-right: 5em;
+        border: none;
+        background-color: transparent;
+        // font-size: 0.8em;
+        text-decoration: none;
 
-.nav-link {
-    @include flex(row, center, space-evenly);
+        @media (max-width: 576px) {
+            padding: 10px;
+            font-size: 16x;
+        }
+    }
+    Link {
+        @include flex(row, center, space-evenly);
 
-    @media (max-width: 576px) {
-        display: flex;
-        justify-content: space-evenly;
-        width: 100%;
+        @media (max-width: 576px) {
+            display: flex;
+            justify-content: space-evenly;
+            width: 100%;
+        }
     }
 }
+
+// .nav-link {
+//     @include flex(row, center, space-evenly);
+
+//     @media (max-width: 576px) {
+//         display: flex;
+//         justify-content: space-evenly;
+//         width: 100%;
+//     }
+// }
 
 nav button:hover {
     color: $secondary-color;
