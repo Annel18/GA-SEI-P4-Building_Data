@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
-import { Link, Navigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useOutletContext } from 'react-router-dom'
 
 import { getIndRoomType } from "../utils/loaders/roomTypesLoader"
 import { getIndBuilding } from "../utils/loaders/buildingsLoader"
-import { useOutletContext } from 'react-router-dom'
 
 //! Styling 
 import Col from 'react-bootstrap/Col'
@@ -15,6 +16,7 @@ export default function IndexRoomTypes({ roomType_id, addRoom, bldg_id }) {
     const [roomTypes, setRoomTypes] = useState([])
     const [buildings, setBuildings] = useState([])
     const userData = useOutletContext()
+    const navigate = useNavigate()
     // const [style, setStyle] = useState('display')
 
     useEffect(() => {
@@ -33,17 +35,17 @@ export default function IndexRoomTypes({ roomType_id, addRoom, bldg_id }) {
         buildingsRetrieve()
     }, [bldg_id])
 
-    async function updateBldg(e) {
-        e.preventDefault()
+    async function updateBldg(addedRoom) {
+
         try {
-            const res = await axios.patch(`/api/buildings/${bldg_id}/`, {roomTypes: e}, {
+            const res = await axios.patch(`/api/buildings/${bldg_id}/`, {roomTypes: addedRoom}, {
                 headers: {
                     Authorization: `Bearer ${userData[0].access}`
                 }
             })
             const newData = {...res.data, access: userData[0].access}
-            setBuildings(res.data)
-            Navigate(`/buildings/${bldg_id}`)
+            setBuildings(newData)
+            navigate(`/buildings/${bldg_id}/`)
         } catch (error) {
             console.log(error)
         }
@@ -69,7 +71,19 @@ export default function IndexRoomTypes({ roomType_id, addRoom, bldg_id }) {
                         style={{ backgroundImage: `url(${roomTypes.room_img})` }}>
                         <h3
                             style={{ display: addRoom }}
-                            onClick={updateBldg}
+                            onClick={(e)=>{
+                                e.preventDefault()
+                                const {roomTypes}= buildings
+                                const roomTypeIDArray = []
+                                roomTypes.forEach(object => {
+                                    roomTypeIDArray.push(object.id)
+                                })
+                                console.log(roomTypeIDArray)
+                                // console.log(roomTypesIDList)
+                                const addedRoom = [...roomTypeIDArray, roomType_id]
+                                console.log(addedRoom)
+                                updateBldg(addedRoom)}
+                            }
                         >✅</h3>
                     </div>
                     <div>

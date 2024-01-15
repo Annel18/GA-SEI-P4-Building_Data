@@ -30,7 +30,7 @@ export default function IndBldg() {
     return (
         <>
             <nav className='navBarTwo'>
-                <Link className="nav-button" to={'/'}>Projects</Link>
+                <Link className="nav-button" to={'/buildings/'}>Projects</Link>
             </nav>
             <Container className="ind-Container" fluid>
                 <Row>

@@ -1,5 +1,5 @@
 from rest_framework.generics import RetrieveUpdateDestroyAPIView, UpdateAPIView
-from lib.views import OwnerListCreateView, OwnerUpdateView
+from lib.views import OwnerListCreateView
 from .models import Building
 from .serializers.common import BuildingSerializer
 from .serializers.populated import PopulatedBuildingSerializer
@@ -21,7 +21,7 @@ class BuildingDetailView(RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
 
     def get_serializer_class(self):
-        print('self request method -»', self.request.method) 
+        # print('self request method -»', self.request.method) 
         if self.request.method == 'PATCH':
             return BuildingSerializer
         return PopulatedBuildingSerializer
