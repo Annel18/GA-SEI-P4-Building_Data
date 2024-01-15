@@ -2,6 +2,8 @@ import { useState } from "react"
 import { useNavigate, useOutletContext } from "react-router-dom"
 import axios from "axios"
 
+import { FormLabel } from '@mui/material'
+
 export default function RegisterUser() {
     // State
     const [errorMessage, setErrorMessage] = useState('')
@@ -73,6 +75,7 @@ export default function RegisterUser() {
         <fieldset>
             {/* If user doesen't fill one or more of the fields a warning appears */}
             {errorMessage && <section className="errorMessage"><p>{errorMessage}</p></section>}
+            <FormLabel>Register</FormLabel>
             <form action="#" onSubmit={authenticate}>
                 <input type="text" name="name" placeholder="First and Last Name *" />
                 <input type="text" name="username" placeholder="Username *" />

@@ -5,11 +5,11 @@
     padding: 1em;
 }
 
-form {
-    @include flex(column,center,center);
-    padding-top: 2em;
-    background-color: white;
-}
+// form {
+//     @include flex(column,center,center);
+//     padding-top: 2em;
+//     background-color: white;
+// }
 
 input::placeholder {
     color: $secondary-color

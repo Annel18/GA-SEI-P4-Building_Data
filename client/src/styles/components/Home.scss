@@ -1,4 +1,8 @@
 .form-container {
-    padding: 5em;
-    @include flex(column, center, center)
+    padding: 1em;
+    @include flex(column, center, center);
+    legend{
+        text-align:center;
+        background-color: white;
+    }
 }

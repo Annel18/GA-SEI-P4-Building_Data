@@ -2,6 +2,7 @@
 import { useState } from "react"
 import { useNavigate, useOutletContext } from "react-router-dom"
 import axios from "axios"
+import { FormLabel } from '@mui/material'
 
 export default function Login() {
 
@@ -55,6 +56,7 @@ export default function Login() {
         <fieldset>
             {/* If user doesen't fill one or more of the fields a warning appears */}
             {errorMessage && <section className="errorMessage"><p>{errorMessage}</p></section>}
+            <FormLabel>Sign-in if you already have an account</FormLabel>
             <form action="#" onSubmit={authenticate}>
                 <input type="text" name="username" placeholder="Username" />
                 <input type="password" name="password" placeholder="Password" />
