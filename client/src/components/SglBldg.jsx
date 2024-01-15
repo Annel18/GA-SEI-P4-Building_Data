@@ -3,7 +3,8 @@ import { useLoaderData } from 'react-router-dom';
 import { useState } from "react"
 
 //! Components
-import UploadDivRT from './UploadDivRT'
+import FilterBarRT from './FilterBarRT'
+// import UploadDivRT from './UploadDivRT'
 //! Styles
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -17,7 +18,7 @@ export default function IndBldg() {
     const handleClose = () => setOpen(false)
 
     const {
-        // id,
+        id: bldg_id,
         bldg_code,
         bldg_name,
         bldg_description,
@@ -40,7 +41,7 @@ export default function IndBldg() {
                         <Row><h3>{bldg_code} || {bldg_name}</h3></Row>
                         <Row><p>{bldg_description}</p></Row>
                         <Row><h4>Room Schedule
-                        <button className='submitBtn' onClick={handleOpen}>✚</button>
+                            <button className='submitBtn' onClick={handleOpen}> <span style={{fontSize:'x-small', alignSelf:'center'}}>add roomtype </span>✚</button>
                         </h4>
                         </Row>
                         <Modal
@@ -51,12 +52,15 @@ export default function IndBldg() {
                         >
                             <Modal.Header closeButton>
                                 <Modal.Title id="example-modal-sizes-title-lg">
-                                    Add new Building
+                                Select Room Type to add to Building or create new Room Type
                                 </Modal.Title>
                             </Modal.Header>
                             <Modal.Body className="modal-container">
-                                <UploadDivRT />
+                                <>
+                                <FilterBarRT addRoom={true} bldg_id={bldg_id} />
+                                </>
                             </Modal.Body>
+
                         </Modal>
                         <Container fluid className="container-grid">
                             <div style={{ display: 'flex', justifyContent: 'space-between' }}><h5>Code</h5><h5>Name</h5></div>

@@ -23,7 +23,7 @@ export default function FilterBarBldg() {
     useEffect(() => {
         async function getBuildingsData() {
             try {
-                const res = await axios.get('/api/buildings')
+                const res = await axios.get('/api/buildings/')
                 const sortedData = res.data.sort((a, b) => a.bldg_code.localeCompare(b.bldg_code))
                 setBuildings(sortedData)
             } catch (error) {
@@ -31,7 +31,7 @@ export default function FilterBarBldg() {
             }
         }
         getBuildingsData()
-    }, [])
+    }, [buildings])
 
     //! Functions
     async function search(e) {
@@ -88,7 +88,7 @@ export default function FilterBarBldg() {
                             <Container fluid className="container-grid">
                                 <Row className="items-list">
                                     {buildings.map(building => (
-                                        <IndexBuildings id={building.id} key={building.id} />
+                                        <IndexBuildings id={building.id} key={building.id} crossDisplay={true} />
                                     ))}
                                 </Row>
                             </Container>

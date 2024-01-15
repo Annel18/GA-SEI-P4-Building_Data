@@ -27,7 +27,6 @@ export default function UploadDivBldg() {
 
     async function submit(json) {
         try {
-            // console.log(userData[0].access)
             const res = await axios.post('/api/buildings/', json, {
                 headers: {
                     Authorization: `Bearer ${userData[0].access}`,
@@ -36,7 +35,7 @@ export default function UploadDivBldg() {
             // const artID = res.data._id
             // push to artist collection
             // const artistCollection = [...personal_collection, artID]
-            navigate(`/buildings/${res.data._id}`)
+            navigate(`/buildings/${res.data.id}`)
         } catch (error) {
             console.log(error)
         }

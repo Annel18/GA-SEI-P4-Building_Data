@@ -17,15 +17,6 @@ export default function UploadDivRT() {
         setInputs(values => ({ ...values, [name]: value }))
     }
 
-    // Disable button unless completed forms
-    const keysArray = Object.keys(inputs)
-    const count = keysArray
-    const roomUploadField = document.querySelector('.roomUploadField')
-    const submitBtn = document.querySelector('.submitBtn')
-    if ((count.length === 5) && !roomUploadField.value !== true) {
-        submitBtn.disabled = false
-    }
-
     const handleSubmit = (event) => {
         event.preventDefault()
         const formData = new FormData(event.target)
@@ -36,7 +27,7 @@ export default function UploadDivRT() {
 
     async function submit(json) {
         try {
-            const res = await axios.post('/api/roomTypes', json, {
+            const res = await axios.post('/api/roomTypes/', json, {
                 headers: {
                     Authorization: `Bearer ${userData[0].access}`,
                 },
@@ -73,18 +64,18 @@ export default function UploadDivRT() {
     return (
         <>
             {/* <section className='index-page'> */}
-                        <form onSubmit={handleSubmit} method="POST">
-                            <label hidden htmlFor="room_code">room_code</label>
-                            <input type="text" name="room_code" placeholder='Code of Room Type' value={inputs.room_code || ''} onChange={handleChange} required />
-                            <label hidden htmlFor="room_name">room_name</label>
-                            <input type="text" name="room_name" placeholder='Name of Room Type' value={inputs.room_name || ''} onChange={handleChange} required />
-                            <label hidden htmlFor="area">Width</label>
-                            <input type="number" name="area" placeholder='Area in m2' value={inputs.area || ''} onChange={handleChange} required />
-                            <label hidden htmlFor="height">Height</label>
-                            <input type="number" name="height" placeholder='Height in mm' value={inputs.height || ''} onChange={handleChange} required />
-                            <input type='file' className='roomUploadField' name='room_img' onChange={handleImageUpload} />
-                            <input type="submit" className="submitBtn" value="Upload RoomType" disabled={true} />
-                        </form>
+            <form onSubmit={handleSubmit} method="POST">
+                <label hidden htmlFor="room_code">room_code</label>
+                <input type="text" name="room_code" placeholder='Code of Room Type' value={inputs.room_code || ''} onChange={handleChange} required />
+                <label hidden htmlFor="room_name">room_name</label>
+                <input type="text" name="room_name" placeholder='Name of Room Type' value={inputs.room_name || ''} onChange={handleChange} required />
+                <label hidden htmlFor="area">Width</label>
+                <input type="number" name="area" placeholder='Area in m2' value={inputs.area || ''} onChange={handleChange} required />
+                <label hidden htmlFor="height">Height</label>
+                <input type="number" name="height" placeholder='Height in mm' value={inputs.height || ''} onChange={handleChange} required />
+                <input type='file' className='roomUploadField' name='room_img' onChange={handleImageUpload} />
+                <input type="submit" className="submitBtn" value="Upload RoomType" disabled={false} />
+            </form>
             {/* </section> */}
         </>
     )

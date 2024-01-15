@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import axios from "axios"
 import { useState, useEffect } from "react"
 // import { Link } from "react-router-dom"
 import IndexRoomTypes from "./IndexRoomTypes"
-// import UploadDivRT from "./UploadDivRT"
+import UploadDivRT from "./UploadDivRT"
 
 //! Styles
 // import Col from "react-bootstrap/esm/Col"
@@ -10,7 +11,7 @@ import Container from "react-bootstrap/esm/Container"
 import Row from "react-bootstrap/esm/Row"
 import Modal from 'react-bootstrap/Modal'
 
-export default function FilterBarRT() {
+export default function FilterBarRT({ bldg_id, addRoom }) {
     //! States
     const [searchData, setSearchData] = useState({ roomTypesDataSearch: [] })
     const [roomTypes, setRoomTypes] = useState([])
@@ -69,25 +70,16 @@ export default function FilterBarRT() {
                     onHide={handleClose}
                     aria-labelledby="example-modal-sizes-title-lg"
                 >
-                    <Modal.Header closeButton>
-                        <Modal.Title id="example-modal-sizes-title-lg">
-                            Select Room Type to add to Building or create new Room Type
-                        </Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body className="modal-container">
-                        <FilterBarRT />
-                    </Modal.Body>
 
-                    {/* <Modal.Header closeButton>
+
+                    <Modal.Header closeButton>
                         <Modal.Title id="example-modal-sizes-title-lg">
                             Add new Room Type
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body className="modal-container">
-                        <>
-                            <UploadDivRT />
-                        </>
-                    </Modal.Body> */}
+                        <UploadDivRT bldg_id={bldg_id}/>
+                    </Modal.Body>
 
 
 
@@ -101,7 +93,7 @@ export default function FilterBarRT() {
                             <Container fluid className="container-grid">
                                 <Row className="items-list">
                                     {roomTypes.map(roomType => (
-                                        <IndexRoomTypes id={roomType.id} key={roomType.id} />
+                                        <IndexRoomTypes roomType_id={roomType.id} key={roomType.id} addRoom={addRoom} bldg_id={bldg_id}/>
                                     ))}
                                 </Row>
                             </Container>
@@ -112,7 +104,7 @@ export default function FilterBarRT() {
                             <Container fluid className="container-grid">
                                 <Row className="items-list">
                                     {searchData.roomTypesDataSearch.map(roomType => (
-                                        <IndexRoomTypes id={roomType.id} key={roomType.id} />
+                                        <IndexRoomTypes roomType_id={roomType.id} key={roomType.id} addRoom={addRoom} bldg_id={bldg_id} />
                                     ))}
                                 </Row>
                             </Container>
