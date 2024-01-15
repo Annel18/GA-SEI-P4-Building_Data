@@ -45,7 +45,7 @@ export default function Login() {
             const stagedData = res.data
             setUserData(stagedData)
             // Go to homepage
-            navigate("/")
+            navigate("/buildings/")
         } catch (error) {
             console.log(error)
         }
@@ -55,7 +55,6 @@ export default function Login() {
         <fieldset>
             {/* If user doesen't fill one or more of the fields a warning appears */}
             {errorMessage && <section className="errorMessage"><p>{errorMessage}</p></section>}
-            <legend>Account Login</legend>
             <form action="#" onSubmit={authenticate}>
                 <input type="text" name="username" placeholder="Username" />
                 <input type="password" name="password" placeholder="Password" />

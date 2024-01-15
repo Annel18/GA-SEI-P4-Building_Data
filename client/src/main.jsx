@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 //! Components
 import App from './App.jsx'
+import Home from './components/Home.jsx'
 import Login from './components/Login.jsx'
 import RegisterUser from './components/RegisterUser.jsx'
 import FilterBarBldg from './components/FilterBarBldg.jsx'
@@ -29,6 +30,11 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
+                element: <Home />,
+                // loader: getTvIndex,
+            },
+            {
+                path: "/buildings",
                 element: <FilterBarBldg />,
                 // loader: getTvIndex,
             },
