@@ -1,9 +1,9 @@
-from rest_framework.generics import RetrieveUpdateDestroyAPIView
-from lib.views import OwnerListCreateView
+from rest_framework.generics import RetrieveUpdateDestroyAPIView, UpdateAPIView
+from lib.views import OwnerListCreateView, OwnerUpdateView
 from .models import Building
 from .serializers.common import BuildingSerializer
 from .serializers.populated import PopulatedBuildingSerializer
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
 from lib.permissions import IsOwnerOrReadOnly
 
 # Path: /buildings/
@@ -22,6 +22,7 @@ class BuildingDetailView(RetrieveUpdateDestroyAPIView):
 
     def get_serializer_class(self):
         print('self request method -»', self.request.method) 
-        if self.request.method == 'PUT':
+        if self.request.method == 'PATCH':
             return BuildingSerializer
         return PopulatedBuildingSerializer
+    
