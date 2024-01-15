@@ -60,8 +60,6 @@ export default function FilterBarRT() {
                         name="searchField"
                         placeholder="Search by name..."
                         className="search"
-                    // onChange={(e) => setSearch(e.target.value)}
-                    // value={search} 
                     />
                 </form>
                 <button onClick={handleOpen}>✚</button>

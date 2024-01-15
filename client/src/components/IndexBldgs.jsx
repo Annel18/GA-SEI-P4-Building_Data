@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
@@ -15,8 +14,8 @@ export default function IndexBuildings({ id }) {
 
     useEffect(() => {
         async function buildingsRetrieve() {
-            const buildings = await getIndBuilding(id)
-            setBuildings(buildings)
+            const building = await getIndBuilding(id)
+            setBuildings(building)
         }
         buildingsRetrieve()
     }, [id])
@@ -27,11 +26,11 @@ export default function IndexBuildings({ id }) {
             <Col
                 className='single-container'
                 as={Link}
-                xs={12}
-                s={6}
-                md={4}
-                lg={3}
-                xl={2}
+                // xs={12}
+                // s={6}
+                // md={4}
+                // lg={3}
+                // xl={2}
                 to={`/buildings/${buildings.id}`}
             >
                 <div className="rails" style={{ height: '200px', paddingBottom: '3em' }}>

@@ -2,7 +2,6 @@ import axios from "axios"
 import { useState, useEffect } from "react"
 // import { Link } from "react-router-dom"
 import IndexBuildings from "./IndexBldgs"
-// import NavBarTwo from "./NavBarTwo"
 import FilterBarRT from "./FilterBarRT"
 //! Styles
 // import Col from "react-bootstrap/esm/Col"
@@ -54,9 +53,6 @@ export default function FilterBarBldg() {
     //! JSX
     return (
         <>
-            {/* <nav className='navBarTwo'>
-                <Link className="nav-button">Projects</Link>
-            </nav> */}
             <div className="filter-bar">
                 <form onSubmit={search} >
                     <input
@@ -65,8 +61,6 @@ export default function FilterBarBldg() {
                         name="searchField"
                         placeholder="Search by name..."
                         className="search"
-                    // onChange={(e) => setSearch(e.target.value)}
-                    // value={search} 
                     />
                 </form>
                 <button onClick={handleOpen}>✚</button>

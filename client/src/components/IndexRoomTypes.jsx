@@ -1,17 +1,10 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react/prop-types */
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-// import axios from "axios"
 
 import { getIndRoomType } from "../utils/loaders/roomTypesLoader"
 
 //! Styling 
-// import Container from 'react-bootstrap/Container'
-// import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-// import Box from '@mui/material/Box'
-// import { Modal } from '@mui/material'
 
 export default function IndexRoomTypes({ id }) {
     //! States
@@ -30,7 +23,6 @@ export default function IndexRoomTypes({ id }) {
         <>
             <Col
                 className='single-container'
-                // Link helps the individual roomType page function
                 as={Link}
                 xs={12}
                 s={6}
