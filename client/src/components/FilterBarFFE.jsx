@@ -1,17 +1,21 @@
+/* eslint-disable react/prop-types */
 import axios from "axios"
 import { useState, useEffect } from "react"
-// import { Link } from "react-router-dom"
 import IndexFfes from "./IndexFfes"
+import UploadDivFFE from "./UploadDivFFE"
 
 //! Styles
-// import Col from "react-bootstrap/esm/Col"
 import Container from "react-bootstrap/esm/Container"
 import Row from "react-bootstrap/esm/Row"
+import Modal from 'react-bootstrap/Modal'
 
-export default function FilterBarFFE() {
+export default function FilterBarFFE({ roomType_id, addItem }) {
     //! States
     const [searchData, setSearchData] = useState({ ffesDataSearch: [] })
     const [ffes, setFfes] = useState([])
+    const [open, setOpen] = useState(false)
+    const handleOpen = () => setOpen(true)
+    const handleClose = () => setOpen(false)
 
     //! Effects
     useEffect(() => {
@@ -48,16 +52,34 @@ export default function FilterBarFFE() {
     //! JSX
     return (
         <>
-            <form onSubmit={search} className="filter-seach">
-                <input
-                    type="text"
-                    name="searchField"
-                    placeholder="Search by name..."
-                    className="search"
-                // onChange={(e) => setSearch(e.target.value)}
-                // value={search} 
-                />
-            </form>
+            <div className="filter-bar">
+                <form onSubmit={search} className="filter-seach">
+                    <input
+                        type="text"
+                        name="searchField"
+                        placeholder="Search by name..."
+                        className="search"
+                    // onChange={(e) => setSearch(e.target.value)}
+                    // value={search} 
+                    />
+                </form>
+                <button onClick={handleOpen}>✚</button>
+                <Modal
+                    size="lg"
+                    show={open}
+                    onHide={handleClose}
+                    aria-labelledby="example-modal-sizes-title-lg"
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title id="example-modal-sizes-title-lg">
+                            Add new FFE
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body className="modal-container">
+                        <UploadDivFFE roomType_id={roomType_id}/>
+                    </Modal.Body>
+                </Modal>
+            </div >
             {
                 searchData.ffesDataSearch.length === 0
                     ? (
@@ -66,7 +88,7 @@ export default function FilterBarFFE() {
                                 <Row /*className="items-list"*/
                                 >
                                     {ffes.map(ffe => (
-                                        <IndexFfes id={ffe.id} key={ffe.id} />
+                                        <IndexFfes ffe_id={ffe.id} key={ffe.id} addItem={addItem} roomType_id={roomType_id} />
                                     ))}
                                 </Row>
                             </Container>
@@ -77,7 +99,7 @@ export default function FilterBarFFE() {
                             <Container fluid className="container-grid" style={{ padding: '5em' }}>
                                 <Row /*className="items-list"*/>
                                     {searchData.ffesDataSearch.map(ffe => {
-                                        <IndexFfes id={ffe.id} key={ffe.id} />
+                                        <IndexFfes ffe_id={ffe.id} key={ffe.id} addItem={addItem} roomType_id={roomType_id} />
                                     })}
                                 </Row>
                             </Container>
