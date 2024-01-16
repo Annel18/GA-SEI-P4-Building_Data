@@ -1,7 +1,9 @@
+import axios from 'axios'
 import { Link } from 'react-router-dom'
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom'
+import { useOutletContext } from 'react-router-dom'
 import { useState } from "react"
-
+// import { useNavigate } from 'react-router-dom'
 //! Components
 import FilterBarRT from './FilterBarRT'
 // import UploadDivRT from './UploadDivRT'
@@ -10,12 +12,15 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Modal from 'react-bootstrap/Modal'
+// import Checkbox from '@mui/material/Checkbox'
 
 export default function IndBldg() {
-    const indBldg = useLoaderData()
+    // const navigate = useNavigate()
+    const userData = useOutletContext()
     const [open, setOpen] = useState(false)
     const handleOpen = () => setOpen(true)
     const handleClose = () => setOpen(false)
+    const indBldg = useLoaderData()
 
     const {
         id: bldg_id,
@@ -25,7 +30,31 @@ export default function IndBldg() {
         bldg_img,
         roomTypes } = indBldg
 
-    console.log(roomTypes)
+    const [roomTypesToUpdate, setRoomTypesToUpdate] = useState(roomTypes)
+
+
+    async function removeRT(e, roomId) {
+        e.preventDefault()
+
+        // Filter out the room with the specified ID
+        const filteredRT = roomTypesToUpdate.filter(value => value.id !== roomId)
+
+        // Extract the IDs from the filtered array
+        const roomTypeIds = filteredRT.map(roomType => roomType.id)
+
+        try {
+            const res = await axios.patch(`/api/buildings/${bldg_id}/`, { roomTypes: roomTypeIds }, {
+                headers: {
+                    Authorization: `Bearer ${userData[0].access}`,
+                },
+            })
+            const updatedData = await axios.get(`/api/buildings/${bldg_id}/`)
+            setRoomTypesToUpdate(updatedData.data.roomTypes)
+
+        } catch (error) {
+            console.error("Error removing room type:", error)
+        }
+    }
 
     return (
         <>
@@ -41,7 +70,7 @@ export default function IndBldg() {
                         <Row><h3>{bldg_code} || {bldg_name}</h3></Row>
                         <Row><p>{bldg_description}</p></Row>
                         <Row><h4>Room Schedule
-                            <button className='submitBtn' onClick={handleOpen}> <span style={{fontSize:'x-small', alignSelf:'center'}}>add roomtype </span>✚</button>
+                            <button className='submitBtn' onClick={handleOpen}> <span style={{ fontSize: 'x-small', alignSelf: 'center' }}>add roomtype </span>✚</button>
                         </h4>
                         </Row>
                         <Modal
@@ -52,34 +81,49 @@ export default function IndBldg() {
                         >
                             <Modal.Header closeButton>
                                 <Modal.Title id="example-modal-sizes-title-lg">
-                                Select Room Type to add to Building or create new Room Type
+                                    Select Room Type to add to Building or create new Room Type
                                 </Modal.Title>
                             </Modal.Header>
                             <Modal.Body className="modal-container">
                                 <>
-                                <FilterBarRT addItem={true} bldg_id={bldg_id} />
+                                    <FilterBarRT addItem={true} bldg_id={bldg_id} />
                                 </>
                             </Modal.Body>
-
                         </Modal>
                         <Container fluid className="container-grid">
-                            <div style={{ display: 'flex', justifyContent: 'space-between' }}><h5>Code</h5><h5>Name</h5></div>
-                            {roomTypes
-                                .sort((a, b) => a.room_code.localeCompare(b.room_code))
-                                .map(roomType => (
-                                    // console.log(roomType)
-                                    <Row key={roomType.id}>
-                                        <Link
+                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                <div style={{ display: 'flex' }}>
+                                    <h5 className='table-content'>Code</h5>
+                                    <h5 className='table-content'>Name</h5>
+                                </div>
+                                <p>delete</p>
+                            </div>
+                            <Row className="items-list">
+                                {roomTypesToUpdate
+                                    .sort((a, b) => a.room_code.localeCompare(b.room_code))
+                                    .map(roomType => (
+                                        // console.log(roomType)
+                                        <Row
+                                            key={roomType.id}
+                                            as={Link}
                                             to={`/roomTypes/${roomType.id}`}
-                                            // bldg_id={id}
-                                            style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid black' }}>
-                                            <p>{roomType.room_code}</p>
-                                            <p>{roomType.room_name}</p>
-                                            {/* <p>{roomType.room_nbr.length}</p> */}
-                                        </Link>
-                                    </Row>
-                                )
-                                )}
+                                        >
+                                            <div
+                                                // bldg_id={id}
+                                                style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid black' }}
+                                            >
+                                                <div style={{ display: 'flex' }}>
+                                                    <h5 className='table-content'>{roomType.room_code}</h5>
+                                                    <p className='table-content'>{roomType.room_name}</p>
+                                                </div>
+                                                <h3
+                                                    onClick={(e) => removeRT(e, roomType.id)}
+                                                >❌</h3>
+                                            </div>
+                                        </Row>
+                                    )
+                                    )}
+                            </Row>
                         </Container>
                     </Col>
                 </Row>

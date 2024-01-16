@@ -25,4 +25,3 @@ class BuildingDetailView(RetrieveUpdateDestroyAPIView):
         if self.request.method == 'PATCH':
             return BuildingSerializer
         return PopulatedBuildingSerializer
-    

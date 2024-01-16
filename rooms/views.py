@@ -22,7 +22,7 @@ class RoomDetailView(RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
 
     def get_serializer_class(self):
-        print('self request method -»', self.request.method) 
+        # print('self request method -»', self.request.method) 
         if self.request.method == 'PUT':
             return RoomSerializer
         return PopulatedRoomSerializer

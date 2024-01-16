@@ -2,7 +2,7 @@
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 import { useOutletContext } from 'react-router-dom'
 
 import { getIndRoomType } from "../utils/loaders/roomTypesLoader"
@@ -11,12 +11,12 @@ import { getIndBuilding } from "../utils/loaders/buildingsLoader"
 //! Styling 
 import Col from 'react-bootstrap/Col'
 
-export default function IndexRoomTypes({ roomType_id, addItem, bldg_id }) {
+export default function IndexRoomTypes({ roomType_id, addItem, bldg_id, addType, sglRT }) {
     //! States
     const [roomTypes, setRoomTypes] = useState([])
     const [buildings, setBuildings] = useState([])
     const userData = useOutletContext()
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     // const [style, setStyle] = useState('display')
 
     useEffect(() => {
@@ -35,6 +35,50 @@ export default function IndexRoomTypes({ roomType_id, addItem, bldg_id }) {
         buildingsRetrieve()
     }, [bldg_id])
 
+    async function selection(createdRoom) {
+        const { roomTypes } = buildings
+        const roomTypeIDArray = []
+        {roomTypes &&
+                roomTypes.forEach(object => {
+                    roomTypeIDArray.push(object.id)
+                })
+            }
+
+            // console.log(roomTypeIDArray)
+            // console.log(roomTypesIDList)
+            // const createdRoom = roomType_id
+            const addedRoom = [...roomTypeIDArray, createdRoom]
+            console.log(addedRoom)
+
+            if (addType === "add") {
+                updateBldg(addedRoom)
+            } else if (addType === "create") {
+                console.log('BEFORE SPREAD ', sglRT)
+                sglRT = {... sglRT, room_code: `${sglRT.room_code}_copy`}
+                console.log('AFTER SPREAD ',sglRT)
+                createRT(sglRT)
+            }
+    }
+
+    async function createRT(createdRoom) {
+
+        try {
+            const res = await axios.post('/api/roomTypes/', createdRoom, {
+                headers: {
+                    Authorization: `Bearer ${userData[0].access}`,
+                },
+            })
+            const newData = { ...res.data, access: userData[0].access }
+            const createdRoom = newData.id
+            console.log(createdRoom)
+            updateBldg(addedRoom)
+            // setBuildings(newData)
+            // navigate(`/buildings/${bldg_id}/`)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     async function updateBldg(addedRoom) {
 
         try {
@@ -45,7 +89,7 @@ export default function IndexRoomTypes({ roomType_id, addItem, bldg_id }) {
             })
             const newData = { ...res.data, access: userData[0].access }
             setBuildings(newData)
-            navigate(`/buildings/${bldg_id}/`)
+            // navigate(`/buildings/${bldg_id}/`)
         } catch (error) {
             console.log(error)
         }
@@ -73,22 +117,24 @@ export default function IndexRoomTypes({ roomType_id, addItem, bldg_id }) {
                             style={{ display: addItem }}
                             onClick={(e) => {
                                 e.preventDefault()
-                                const { roomTypes } = buildings
-                                const roomTypeIDArray = []
-                                {roomTypes &&
-                                        roomTypes.forEach(object => {
-                                            roomTypeIDArray.push(object.id)
-                                        })
-                                    }
+                                e.target.innerText === '✅'
+                                const createdRoom = roomType_id
+                                // const { roomTypes } = buildings
+                                // const roomTypeIDArray = []
+                                // {roomTypes &&
+                                //         roomTypes.forEach(object => {
+                                //             roomTypeIDArray.push(object.id)
+                                //         })
+                                //     }
 
-                                    // console.log(roomTypeIDArray)
-                                    // console.log(roomTypesIDList)
-                                    const addedRoom = [...roomTypeIDArray, roomType_id]
-                                    console.log(addedRoom)
-                                    updateBldg(addedRoom)
+                                //     // console.log(roomTypeIDArray)
+                                //     // console.log(roomTypesIDList)
+                                //     const addedRoom = [...roomTypeIDArray, roomType_id]
+                                //     console.log(addedRoom)
+                                    selection(createdRoom)
                             }
                             }
-                        >✅</h3>
+                        >☑️</h3>
                     </div>
                     <div>
                         <h5>{roomTypes.room_code}</h5>

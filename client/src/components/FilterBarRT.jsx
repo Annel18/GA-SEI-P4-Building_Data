@@ -8,6 +8,10 @@ import UploadDivRT from "./UploadDivRT"
 import Container from "react-bootstrap/esm/Container"
 import Row from "react-bootstrap/esm/Row"
 import Modal from 'react-bootstrap/Modal'
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import FormControl from '@mui/material/FormControl'
 
 export default function FilterBarRT({ bldg_id, addItem }) {
     //! States
@@ -16,6 +20,11 @@ export default function FilterBarRT({ bldg_id, addItem }) {
     const [open, setOpen] = useState(false)
     const handleOpen = () => setOpen(true)
     const handleClose = () => setOpen(false)
+    const [value, setValue] = useState('')
+
+    const handleChange = (event) => {
+        setValue(event.target.value);
+    }
 
     //! Effects
     useEffect(() => {
@@ -74,7 +83,7 @@ export default function FilterBarRT({ bldg_id, addItem }) {
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body className="modal-container">
-                        <UploadDivRT bldg_id={bldg_id}/>
+                        <UploadDivRT bldg_id={bldg_id} />
                     </Modal.Body>
                 </Modal>
             </div>
@@ -83,9 +92,21 @@ export default function FilterBarRT({ bldg_id, addItem }) {
                     ? (
                         <section className='index-page'>
                             <Container fluid className="container-grid">
+                                <FormControl style={{ marginBottom: '2em' }}>
+                                    <RadioGroup
+                                        row
+                                        aria-labelledby="demo-row-radio-buttons-group-label"
+                                        name="row-radio-buttons-group"
+                                        value={value}
+                                        onChange={handleChange}
+                                    >
+                                        <FormControlLabel value="add" control={<Radio />} label="Add to Building" />
+                                        <FormControlLabel value="create" control={<Radio />} label="Create duplicate" />
+                                    </RadioGroup>
+                                </FormControl>
                                 <Row className="items-list">
                                     {roomTypes.map(roomType => (
-                                        <IndexRoomTypes roomType_id={roomType.id} key={roomType.id} addItem={addItem} bldg_id={bldg_id}/>
+                                        <IndexRoomTypes roomType_id={roomType.id} key={roomType.id} addItem={addItem} bldg_id={bldg_id} addType={value} sglRT={roomType}/>
                                     ))}
                                 </Row>
                             </Container>
@@ -94,9 +115,21 @@ export default function FilterBarRT({ bldg_id, addItem }) {
                     : (
                         <section className='index-page'>
                             <Container fluid className="container-grid">
+                            <FormControl style={{ marginBottom: '2em' }}>
+                                    <RadioGroup
+                                        row
+                                        aria-labelledby="demo-row-radio-buttons-group-label"
+                                        name="row-radio-buttons-group"
+                                        value={value}
+                                        onChange={handleChange}
+                                    >
+                                        <FormControlLabel value="add" control={<Radio />} label="Add to Building" />
+                                        <FormControlLabel value="create" control={<Radio />} label="Create duplicate" />
+                                    </RadioGroup>
+                                </FormControl>
                                 <Row className="items-list">
                                     {searchData.roomTypesDataSearch.map(roomType => (
-                                        <IndexRoomTypes roomType_id={roomType.id} key={roomType.id} addItem={addItem} bldg_id={bldg_id} />
+                                        <IndexRoomTypes roomType_id={roomType.id} key={roomType.id} addItem={addItem} bldg_id={bldg_id} addType={value} sglRT={roomType}/>
                                     ))}
                                 </Row>
                             </Container>

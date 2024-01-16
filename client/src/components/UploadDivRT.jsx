@@ -20,7 +20,7 @@ export default function UploadDivRT() {
     const handleSubmit = (event) => {
         event.preventDefault()
         const formData = new FormData(event.target)
-        let json = Object.fromEntries(formData.entries());
+        let json = Object.fromEntries(formData.entries())
         json = { ...json, room_img: uploadImg }
         submit(json)
     }
