@@ -27,6 +27,9 @@ export default function IndRT() {
         area,
         height,
         rooms,
+        floorFinishes,
+        ceilings,
+        wallFinishes,
         ffes } = indRT
 
     useEffect(() => {
@@ -54,11 +57,11 @@ export default function IndRT() {
                         </Row>
                         <Row>
                             <Col s={6}>
-                                <p><b>Area: </b>{area}m<sup>2</sup></p>
-                                <p><b>Height: </b>{height}mm </p>
-                                <p><b>Flooring: </b> spec_code and spec_name </p>
-                                <p><b>Wall finish: </b> spec_code and spec_name</p>
-                                <p><b>Ceilings: </b> spec_code and spec_name</p>
+                                <p><b>Area: </b>{area}m<sup>2</sup> <button className='submitBtn'>edit</button ></p>
+                                <p><b>Height: </b>{height}mm <button className='submitBtn'>edit</button ></p>
+                                <p><b>Flooring: </b> {floorFinishes.spec_code} - {floorFinishes.spec_name} <button className='submitBtn'>edit</button></p>
+                                <p><b>Wall finish: </b> {wallFinishes.spec_code} - {wallFinishes.spec_name} <button className='submitBtn'>edit</button></p>
+                                <p><b>Ceilings: </b> {ceilings.spec_code} - {ceilings.spec_name} <button className='submitBtn'>edit</button ></p>
                             </Col>
                             <Col>
                                 <p><b>Amount of rooms following this type: </b>{rooms.length}</p>
@@ -89,7 +92,7 @@ export default function IndRT() {
                         </Modal>
 
                         <Container fluid className="container-grid">
-                            <div style={{ display: 'flex', justifyContent: 'space-between' }}><h5>Code</h5><h5>Name</h5><h5>Group</h5></div>
+                            <div className='ffe-list' ><h5>Code</h5><h5>Name</h5><h5>Group</h5><p>Remove</p></div>
                             {ffes
                                 .sort((a, b) => a.ffe_code.localeCompare(b.ffe_code))
                                 .map(ffe => (
@@ -103,6 +106,7 @@ export default function IndRT() {
                                         <p>{ffe.ffe_code}</p>
                                         <p>{ffe.ffe_name}</p>
                                         <p>{ffe.ffe_group}</p>
+                                        <p>❌</p>
                                     </Col>
                                 )
                                 )}

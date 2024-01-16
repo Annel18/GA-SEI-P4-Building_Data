@@ -73,7 +73,8 @@ export default function IndexFfes({ ffe_id, addItem, roomType_id }) {
                     </div> */}
             <Row>
                 <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid black' }}>
-                    <h3
+                    <button
+                        className='submitBtn'
                         style={{ display: addItem }}
                         onClick={(e) => {
                             e.preventDefault()
@@ -86,7 +87,7 @@ export default function IndexFfes({ ffe_id, addItem, roomType_id }) {
                             updateRT(addedFFE)
                         }
                         }
-                    >✅</h3>
+                    >Add</button>
                     <h5>{ffes.ffe_code}</h5>
                     <p>{ffes.ffe_name}</p>
                     <h5>{ffes.ffe_group}</h5>

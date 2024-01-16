@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class RoomType(models.Model):
-    room_code = models.CharField(max_length=10, )
+    room_code = models.CharField(max_length=10, unique=True)
     room_name = models.CharField()
     area = models.FloatField(blank=True, null=True)
     height = models.FloatField(blank=True, null=True)
@@ -14,18 +14,21 @@ class RoomType(models.Model):
         to='ffes.Ffe',
         related_name='roomTypes'
     )
-    # rooms = models.ForeignKey(
-    #     to='rooms.Room',
-    #     on_delete=models.CASCADE,
-    #     related_name='roomTypes',
-    #     null=True
-    # ),
-    # rooms= models.ManyToManyField(
-    #     blank=True,
-    #     null=True,
-    #     to='rooms.Room',
-    #     related_name='roomTypes'
-    # )
+    floorFinishes = models.ManyToManyField(
+        blank=True,
+        to='floorFinishes.FloorFinish', 
+        related_name='rooms'
+    )
+    wallFinishes = models.ManyToManyField(
+        blank=True,
+        to='wallFinishes.WallFinish', 
+        related_name='rooms'
+    )
+    ceilings = models.ManyToManyField(
+        blank=True,
+        to='ceilings.Ceiling', 
+        related_name='rooms'
+    )
     owner = models.ForeignKey(
         to='users.User',
         on_delete=models.CASCADE,

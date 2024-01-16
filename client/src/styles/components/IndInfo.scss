@@ -27,9 +27,14 @@
 
 .ffe-list {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    gap:1em;
+    grid-template-columns: 1fr 9fr 1fr 1fr;
     border-bottom: 1px dashed black;
+    align-items: baseline;
     :last-child{
-        text-align: end;
+        text-align: center;
+    }
+    :nth-last-child(2){
+        text-align: center;
     }
 }
