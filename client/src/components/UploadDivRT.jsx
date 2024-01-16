@@ -74,7 +74,7 @@ export default function UploadDivRT() {
                 <label hidden htmlFor="height">Height</label>
                 <input type="number" name="height" placeholder='Height in mm' value={inputs.height || ''} onChange={handleChange} required />
                 <input type='file' className='roomUploadField' name='room_img' onChange={handleImageUpload} />
-                <input type="submit" className="submitBtn" value="Upload RoomType" disabled={false} />
+                <button type="submit" className="submitBtn">Upload RoomType</button>
             </form>
             {/* </section> */}
         </>

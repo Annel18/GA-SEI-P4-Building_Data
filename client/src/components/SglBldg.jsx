@@ -30,7 +30,7 @@ export default function IndBldg() {
     return (
         <>
             <nav className='navBarTwo'>
-                <Link className="nav-button" to={'/buildings/'}>Projects</Link>
+                <Link className="nav-button" to={'/buildings/'}>{'>'} Buildings</Link>
             </nav>
             <Container className="ind-Container" fluid>
                 <Row>
@@ -57,7 +57,7 @@ export default function IndBldg() {
                             </Modal.Header>
                             <Modal.Body className="modal-container">
                                 <>
-                                <FilterBarRT addRoom={true} bldg_id={bldg_id} />
+                                <FilterBarRT addItem={true} bldg_id={bldg_id} />
                                 </>
                             </Modal.Body>
 

@@ -35,7 +35,7 @@ export default function UploadDivBldg() {
             // const artID = res.data._id
             // push to artist collection
             // const artistCollection = [...personal_collection, artID]
-            navigate(`/buildings/${res.data.id}`)
+            // navigate(`/buildings/${res.data.id}`)
         } catch (error) {
             console.log(error)
         }
@@ -64,13 +64,14 @@ export default function UploadDivBldg() {
         <>
             <form onSubmit={handleSubmit} method="POST">
                 <label hidden htmlFor="bldg_code">bldg_code</label>
-                <input type="text" name="bldg_code" placeholder='Code of Room Type' value={inputs.bldg_code || ''} onChange={handleChange} required />
+                <input type="text" name="bldg_code" placeholder='Code of Room Type' autoComplete="off" value={inputs.bldg_code || ''} onChange={handleChange} required />
                 <label hidden htmlFor="bldg_name">bldg_name</label>
-                <input type="text" name="bldg_name" placeholder='Name of Room Type' value={inputs.bldg_name || ''} onChange={handleChange} required />
+                <input type="text" name="bldg_name" placeholder='Name of Room Type' autoComplete="off" value={inputs.bldg_name || ''} onChange={handleChange} required />
                 <label hidden htmlFor="bldg_description">bldg_description</label>
-                <input type="text" name="bldg_description" placeholder='Description' value={inputs.bldg_description || ''} onChange={handleChange} required />
+                <input type="text" name="bldg_description" placeholder='Description' autoComplete="off" value={inputs.bldg_description || ''} onChange={handleChange} required />
                 <input type='file' className='uploadField' name='bldg_img' onChange={handleImageUpload} />
-                <input type="submit" className="submitBtn" value="Upload RoomType" />
+                <button type='submit'>Upload Building</button>
+                {/* <input type="submit" className="submitBtn" value="Upload Building" /> */}
             </form>
         </>
     )
