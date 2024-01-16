@@ -76,12 +76,17 @@ export default function RegisterUser() {
             {/* If user doesen't fill one or more of the fields a warning appears */}
             {errorMessage && <section className="errorMessage"><p>{errorMessage}</p></section>}
             <FormLabel>Register</FormLabel>
-            <form action="#" onSubmit={authenticate}>
-                <input type="text" name="name" placeholder="First and Last Name *" />
-                <input type="text" name="username" placeholder="Username *" />
-                <input type="text" name="email" placeholder="Email *" />
-                <input type="password" name="password" placeholder="Password *" />
-                <input type="password" name="password_confirmation" placeholder="Confirm Password *" />
+            <form action="#" onSubmit={authenticate} className="form-container">
+                <label hidden htmlFor="name">name</label>
+                <input type="text" name="name" placeholder="First and Last Name" autoComplete="off" />
+                <label hidden htmlFor="username">username</label>
+                <input type="text" name="username" placeholder="Username" autoComplete="off" />
+                <label hidden htmlFor="email">email</label>
+                <input type="text" name="email" placeholder="Email" autoComplete="off" />
+                <label hidden htmlFor="password">password</label>
+                <input type="password" name="password" placeholder="Password" />
+                <label hidden htmlFor="password_confirmation">password_confirmation</label>
+                <input type="password" name="password_confirmation" placeholder="Confirm Password *" autoComplete="off" />
                 <button type="submit">Join!</button>
             </form>
         </fieldset>

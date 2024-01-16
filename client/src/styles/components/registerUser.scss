@@ -5,17 +5,15 @@
     padding: 1em;
 }
 
-// form {
-//     @include flex(column,center,center);
-//     padding-top: 2em;
-//     background-color: white;
-// }
+fieldset {
+    @include flex(column,center,center);
+}
 
 input::placeholder {
     color: $secondary-color
 }
 
-fieldset {
+.form-container {
     padding: 3em 3em 0 3em;
     border: none;
     width: fit-content;

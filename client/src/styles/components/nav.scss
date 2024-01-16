@@ -1,13 +1,17 @@
 .navBarTop {
-    display: flex;
-    @include flex(row, center, flex-start);
+    @include flex(row, center, space-between);
     background-color: $navBar-color;
-    padding: 1em 5em;
+    padding: 0 5em;
+
+}
+
+.navBarTop-menu {
+    @include flex(row, center, flex-start);
     .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root,
-    .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select {
+    .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select 
+    {
         color:white;
     }
-
 
     .nav-button {
         padding-right: 5em;
@@ -23,16 +27,27 @@
         }
     }
 
-    Link {
-        @include flex(row, center, space-evenly);
+    // Link {
+    //     @include flex(row, center, space-evenly);
 
-        @media (max-width: 576px) {
-            display: flex;
-            justify-content: space-evenly;
-            width: 100%;
-        }
+    //     @media (max-width: 576px) {
+    //         display: flex;
+    //         justify-content: space-evenly;
+    //         width: 100%;
+    //     }
+    // }
+}
+
+.navBarTop-account {
+    @include flex(row, center, flex-end);
+    .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root,
+    .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select 
+    {
+        color:white;
     }
 }
+
+
 .css-ov3z8l-MuiMenuItem-root:first-child,.css-ov3z8l-MuiMenuItem-root:last-child{
     color:$secondary-color;
     font-family: 'Termina Test';
@@ -67,15 +82,15 @@
     }
 }
 
-// .nav-link {
-//     @include flex(row, center, space-evenly);
+.nav-link {
+    @include flex(row, center, space-evenly);
 
-//     @media (max-width: 576px) {
-//         display: flex;
-//         justify-content: space-evenly;
-//         width: 100%;
-//     }
-// }
+    @media (max-width: 576px) {
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+    }
+}
 
 nav button:hover {
     color: $secondary-color;
