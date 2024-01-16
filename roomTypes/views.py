@@ -22,6 +22,6 @@ class RoomTypeDetailView(RetrieveUpdateDestroyAPIView):
 
     def get_serializer_class(self):
         # print('self request method -»', self.request.method) 
-        if self.request.method == 'PUT':
+        if self.request.method == 'PATCH':
             return RoomTypeSerializer
         return PopulatedRoomTypeSerializer

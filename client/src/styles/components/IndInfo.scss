@@ -15,5 +15,21 @@
 
 }
 
+.page-title {
+    text-align: end;
+}
 
+.section-separation {
+    padding-top: 5em;
+    border-bottom: 1px solid black;
+    margin-bottom: 1em;
+}
 
+.ffe-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: 1px dashed black;
+    :last-child{
+        text-align: end;
+    }
+}

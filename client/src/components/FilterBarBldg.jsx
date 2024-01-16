@@ -102,7 +102,7 @@ export default function FilterBarBldg() {
                                         <IndexBuildings id={building.id} key={building.id} />
                                     ))}
                                 </Row>
-                            </Container>
+                            </Container>  
                         </section>
                     )
             }

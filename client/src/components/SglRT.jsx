@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useLoaderData } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 //! Components
 import FilterBarFFE from './FilterBarFFE'
@@ -14,6 +14,7 @@ import Modal from 'react-bootstrap/Modal'
 export default function IndRT() {
     const indRT = useLoaderData()
     const [open, setOpen] = useState(false)
+    const [roomCollection, setRoomCollection] = useState([])
     const handleOpen = () => setOpen(true)
     const handleClose = () => setOpen(false)
 
@@ -25,8 +26,17 @@ export default function IndRT() {
         room_img,
         area,
         height,
+        rooms,
         ffes } = indRT
-    console.log(room_img)
+
+    useEffect(() => {
+        const updatedCollection = []
+        rooms.forEach(object => updatedCollection.push(object.room_nbr))
+        const roomListToDisplay = updatedCollection.toString().replaceAll(',', ', ')
+        setRoomCollection(roomListToDisplay)
+    }, [rooms])
+
+
     return (
         <>
             <nav className='navBarTwo'>
@@ -39,12 +49,23 @@ export default function IndRT() {
                         <Col sm={3} className="indImgColumn" style={{ backgroundImage: `url(${room_img})` }}></Col>
                     }
                     <Col className="indInfoColumn">
-                        <Row><h3>{room_code} || {room_name}</h3></Row>
-                        <Row>
-                            <p>Area: {area}m<sup>2</sup></p>
-                            <p>Height: {height}mm </p>
+                        <Row className='page-title'><h1>{room_code} || {room_name}</h1></Row>
+                        <Row className='section-separation'><h4>Room Type Characteristics</h4>
                         </Row>
-                        <Row><h4>FFE Schedule
+                        <Row>
+                            <Col s={6}>
+                                <p><b>Area: </b>{area}m<sup>2</sup></p>
+                                <p><b>Height: </b>{height}mm </p>
+                                <p><b>Flooring: </b> spec_code and spec_name </p>
+                                <p><b>Wall finish: </b> spec_code and spec_name</p>
+                                <p><b>Ceilings: </b> spec_code and spec_name</p>
+                            </Col>
+                            <Col>
+                                <p><b>Amount of rooms following this type: </b>{rooms.length}</p>
+                                <Row><p><b>Room numbers: </b> {roomCollection}</p></Row>
+                            </Col>
+                        </Row>
+                        <Row className='section-separation'><h4>FFE Schedule
                             <button className='submitBtn' onClick={handleOpen}> <span style={{ fontSize: 'x-small', alignSelf: 'center' }}>add FFE </span>✚</button>
                         </h4>
                         </Row>
@@ -73,18 +94,19 @@ export default function IndRT() {
                                 .sort((a, b) => a.ffe_code.localeCompare(b.ffe_code))
                                 .map(ffe => (
                                     // console.log(ffe)
-                                    <Row key={ffe.id}>
-                                        <Link
-                                            to={`/buildings/${roomType_id}/${ffe.id}`}
-                                            style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid black' }}>
-                                            <p>{ffe.ffe_code}</p>
-                                            <p>{ffe.ffe_name}</p>
-                                            <p>{ffe.ffe_group}</p>
-                                        </Link>
-                                    </Row>
+                                    <Col
+                                        key={ffe.id}
+                                        className='ffe-list'
+                                        // as={Link}
+                                        // to={`/buildings/${roomType_id}/${ffe.id}`}
+                                    >
+                                        <p>{ffe.ffe_code}</p>
+                                        <p>{ffe.ffe_name}</p>
+                                        <p>{ffe.ffe_group}</p>
+                                    </Col>
                                 )
                                 )}
-                        </Container>s
+                        </Container>
                     </Col>
                 </Row>
 

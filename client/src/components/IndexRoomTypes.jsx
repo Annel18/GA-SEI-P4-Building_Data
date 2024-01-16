@@ -6,15 +6,13 @@ import { useEffect, useState } from 'react'
 import { useOutletContext } from 'react-router-dom'
 
 import { getIndRoomType } from "../utils/loaders/roomTypesLoader"
-import { getIndBuilding } from "../utils/loaders/buildingsLoader"
 
 //! Styling 
 import Col from 'react-bootstrap/Col'
 
-export default function IndexRoomTypes({ roomType_id, addItem, bldg_id, addType, sglRT }) {
+export default function IndexRoomTypes({ roomType_id, addItem, building, updateBldg, addType, sglRT }) {
     //! States
     const [roomTypes, setRoomTypes] = useState([])
-    const [buildings, setBuildings] = useState([])
     const userData = useOutletContext()
     // const navigate = useNavigate()
     // const [style, setStyle] = useState('display')
@@ -27,16 +25,8 @@ export default function IndexRoomTypes({ roomType_id, addItem, bldg_id, addType,
         roomTypeRetrieve()
     }, [roomType_id])
 
-    useEffect(() => {
-        async function buildingsRetrieve() {
-            const building = await getIndBuilding(bldg_id)
-            setBuildings(building)
-        }
-        buildingsRetrieve()
-    }, [bldg_id])
-
     async function selection(createdRoom) {
-        const { roomTypes } = buildings
+        const { roomTypes } = building
         const roomTypeIDArray = []
         {roomTypes &&
                 roomTypes.forEach(object => {
@@ -73,22 +63,6 @@ export default function IndexRoomTypes({ roomType_id, addItem, bldg_id, addType,
             console.log(createdRoom)
             updateBldg(addedRoom)
             // setBuildings(newData)
-            // navigate(`/buildings/${bldg_id}/`)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    async function updateBldg(addedRoom) {
-
-        try {
-            const res = await axios.patch(`/api/buildings/${bldg_id}/`, { roomTypes: addedRoom }, {
-                headers: {
-                    Authorization: `Bearer ${userData[0].access}`
-                }
-            })
-            const newData = { ...res.data, access: userData[0].access }
-            setBuildings(newData)
             // navigate(`/buildings/${bldg_id}/`)
         } catch (error) {
             console.log(error)

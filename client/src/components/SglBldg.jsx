@@ -2,7 +2,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { useLoaderData } from 'react-router-dom'
 import { useOutletContext } from 'react-router-dom'
-import { useState } from "react"
+import { useState, useEffect } from "react"
 // import { useNavigate } from 'react-router-dom'
 //! Components
 import FilterBarRT from './FilterBarRT'
@@ -31,7 +31,7 @@ export default function IndBldg() {
         roomTypes } = indBldg
 
     const [roomTypesToUpdate, setRoomTypesToUpdate] = useState(roomTypes)
-
+    console.log(indBldg)
 
     async function removeRT(e, roomId) {
         e.preventDefault()
@@ -43,7 +43,7 @@ export default function IndBldg() {
         const roomTypeIds = filteredRT.map(roomType => roomType.id)
 
         try {
-            const res = await axios.patch(`/api/buildings/${bldg_id}/`, { roomTypes: roomTypeIds }, {
+            await axios.patch(`/api/buildings/${bldg_id}/`, { roomTypes: roomTypeIds }, {
                 headers: {
                     Authorization: `Bearer ${userData[0].access}`,
                 },
@@ -53,6 +53,23 @@ export default function IndBldg() {
 
         } catch (error) {
             console.error("Error removing room type:", error)
+        }
+    }
+
+    async function updateBldg(addedRoom) {
+
+        try {
+            await axios.patch(`/api/buildings/${indBldg.id}/`, { roomTypes: addedRoom }, {
+                headers: {
+                    Authorization: `Bearer ${userData[0].access}`
+                }
+            })
+            // const newData = { ...res.data, access: userData[0].access }
+            // setBuilding(newData)
+            // navigate(`/buildings/${bldg_id}/`)
+            indBldg.roomTypes = {...indBldg.roomTypes, addedRoom}
+        } catch (error) {
+            console.log(error)
         }
     }
 
@@ -67,8 +84,10 @@ export default function IndBldg() {
                         <Col sm={3} className="indImgColumn" style={{ backgroundImage: `url(${bldg_img})` }}></Col>
                     }
                     <Col className="indInfoColumn">
-                        <Row><h3>{bldg_code} || {bldg_name}</h3></Row>
-                        <Row><p>{bldg_description}</p></Row>
+                        <Row className='page-title'>
+                            <h3 className='page-title'>{bldg_code} || {bldg_name}</h3>
+                            <p>DESCRIPTION:{'\n'}{bldg_description}</p>
+                        </Row>
                         <Row><h4>Room Schedule
                             <button className='submitBtn' onClick={handleOpen}> <span style={{ fontSize: 'x-small', alignSelf: 'center' }}>add roomtype </span>✚</button>
                         </h4>
@@ -85,9 +104,7 @@ export default function IndBldg() {
                                 </Modal.Title>
                             </Modal.Header>
                             <Modal.Body className="modal-container">
-                                <>
-                                    <FilterBarRT addItem={true} bldg_id={bldg_id} />
-                                </>
+                                <FilterBarRT addItem={true} building={indBldg} updateBldg={updateBldg}/>
                             </Modal.Body>
                         </Modal>
                         <Container fluid className="container-grid">
@@ -102,7 +119,6 @@ export default function IndBldg() {
                                 {roomTypesToUpdate
                                     .sort((a, b) => a.room_code.localeCompare(b.room_code))
                                     .map(roomType => (
-                                        // console.log(roomType)
                                         <Row
                                             key={roomType.id}
                                             as={Link}
@@ -115,8 +131,10 @@ export default function IndBldg() {
                                                 <div style={{ display: 'flex' }}>
                                                     <h5 className='table-content'>{roomType.room_code}</h5>
                                                     <p className='table-content'>{roomType.room_name}</p>
+                                                    {/* <p className='table-content'>{roomType.room_nbrs.length}</p> */}
                                                 </div>
                                                 <h3
+                                                
                                                     onClick={(e) => removeRT(e, roomType.id)}
                                                 >❌</h3>
                                             </div>

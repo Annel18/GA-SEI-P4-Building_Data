@@ -13,7 +13,7 @@ import RadioGroup from '@mui/material/RadioGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormControl from '@mui/material/FormControl'
 
-export default function FilterBarRT({ bldg_id, addItem }) {
+export default function FilterBarRT({ building, addItem, updateBldg }) {
     //! States
     const [searchData, setSearchData] = useState({ roomTypesDataSearch: [] })
     const [roomTypes, setRoomTypes] = useState([])
@@ -83,7 +83,7 @@ export default function FilterBarRT({ bldg_id, addItem }) {
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body className="modal-container">
-                        <UploadDivRT bldg_id={bldg_id} />
+                        <UploadDivRT bldg_id={building.id} />
                     </Modal.Body>
                 </Modal>
             </div>
@@ -106,7 +106,7 @@ export default function FilterBarRT({ bldg_id, addItem }) {
                                 </FormControl>
                                 <Row className="items-list">
                                     {roomTypes.map(roomType => (
-                                        <IndexRoomTypes roomType_id={roomType.id} key={roomType.id} addItem={addItem} bldg_id={bldg_id} addType={value} sglRT={roomType}/>
+                                        <IndexRoomTypes roomType_id={roomType.id} key={roomType.id} addItem={addItem} building={building} addType={value} sglRT={roomType} updateBldg={updateBldg}/>
                                     ))}
                                 </Row>
                             </Container>
@@ -129,7 +129,7 @@ export default function FilterBarRT({ bldg_id, addItem }) {
                                 </FormControl>
                                 <Row className="items-list">
                                     {searchData.roomTypesDataSearch.map(roomType => (
-                                        <IndexRoomTypes roomType_id={roomType.id} key={roomType.id} addItem={addItem} bldg_id={bldg_id} addType={value} sglRT={roomType}/>
+                                        <IndexRoomTypes roomType_id={roomType.id} key={roomType.id} addItem={addItem} building={building} addType={value} sglRT={roomType} updateBldg={updateBldg}/>
                                     ))}
                                 </Row>
                             </Container>
