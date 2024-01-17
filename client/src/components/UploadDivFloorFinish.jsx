@@ -1,13 +1,10 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import axios from 'axios'
 import { useState } from 'react'
 import { useOutletContext } from 'react-router-dom'
-// import { useNavigate } from 'react-router-dom'
 
-export default function UploadDivFFE() {
+export default function UploadDivFloorFinish() {
     // Get User ID
     const userData = useOutletContext()
-    // const navigate = useNavigate()
     const [inputs, setInputs] = useState({})
 
     const handleChange = (event) => {
@@ -25,13 +22,13 @@ export default function UploadDivFFE() {
 
     async function submit(json) {
         try {
-            const res = await axios.post('/api/ffes/', json, {
+            const res = await axios.post('/api/floorFinishes/', json, {
                 headers: {
                     Authorization: `Bearer ${userData[0].access}`,
                 },
             })
-            const roomTypeId = res.data._id
-            console.log(roomTypeId)
+            const flooringFinishID = res.data._id
+            console.log(flooringFinishID)
         } catch (error) {
             console.log(error)
         }
@@ -42,13 +39,11 @@ export default function UploadDivFFE() {
         <>
             {/* <section className='index-page'> */}
             <form onSubmit={handleSubmit} method="POST">
-                <label hidden htmlFor="ffe_code">ffe_code</label>
-                <input type="text" name="ffe_code" placeholder='FFE code' value={inputs.ffe_code || ''} onChange={handleChange} required />
-                <label hidden htmlFor="ffe_name">ffe_name</label>
-                <input type="text" name="ffe_name" placeholder='FFE name' value={inputs.ffe_name || ''} onChange={handleChange} required />
-                <label hidden htmlFor="ffe_group">ffe_group</label>
-                <input type="text" name="ffe_group" placeholder='FFE group' value={inputs.ffe_group || ''} onChange={handleChange} required />
-                <button type="submit" className="submitBtn">Upload FFE</button>
+                <label hidden htmlFor="spec_code">spec_code</label>
+                <input type="text" name="spec_code" placeholder='Spec code' value={inputs.spec_code || ''} onChange={handleChange} required />
+                <label hidden htmlFor="spec_name">spec_name</label>
+                <input type="text" name="spec_name" placeholder='Spec name' value={inputs.spec_name || ''} onChange={handleChange} required />
+                <button type="submit" className="submitBtn">Upload Floor Finishes Specifications</button>
             </form>
             {/* </section> */}
         </>

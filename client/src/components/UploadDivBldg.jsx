@@ -2,12 +2,12 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useOutletContext } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 
 export default function UploadDivBldg() {
     // Get User ID
     const userData = useOutletContext()
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     const [uploadImg, setUploadImg] = useState('')
     const [inputs, setInputs] = useState({})
 
@@ -27,7 +27,7 @@ export default function UploadDivBldg() {
 
     async function submit(json) {
         try {
-            const res = await axios.post('/api/buildings/', json, {
+            await axios.post('/api/buildings/', json, {
                 headers: {
                     Authorization: `Bearer ${userData[0].access}`,
                 },
@@ -64,11 +64,11 @@ export default function UploadDivBldg() {
         <>
             <form onSubmit={handleSubmit} method="POST">
                 <label hidden htmlFor="bldg_code">bldg_code</label>
-                <input type="text" name="bldg_code" placeholder='Code of Room Type' autoComplete="off" value={inputs.bldg_code || ''} onChange={handleChange} required />
+                <input type="text" name="bldg_code" placeholder='Building Code' value={inputs.bldg_code || ''} onChange={handleChange} required />
                 <label hidden htmlFor="bldg_name">bldg_name</label>
-                <input type="text" name="bldg_name" placeholder='Name of Room Type' autoComplete="off" value={inputs.bldg_name || ''} onChange={handleChange} required />
+                <input type="text" name="bldg_name" placeholder='Building Name' value={inputs.bldg_name || ''} onChange={handleChange} required />
                 <label hidden htmlFor="bldg_description">bldg_description</label>
-                <input type="text" name="bldg_description" placeholder='Description' autoComplete="off" value={inputs.bldg_description || ''} onChange={handleChange} required />
+                <input type="text" name="bldg_description" placeholder='Description' value={inputs.bldg_description || ''} onChange={handleChange} required />
                 <input type='file' className='uploadField' name='bldg_img' onChange={handleImageUpload} />
                 <button type='submit'>Upload Building</button>
                 {/* <input type="submit" className="submitBtn" value="Upload Building" /> */}

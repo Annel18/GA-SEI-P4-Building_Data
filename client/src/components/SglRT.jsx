@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 
 //! Components
 import FilterBarFFE from './FilterBarFFE'
+import FilterBarFloorFinish from './FilterBarFloorFinish'
 
 //! Styles
 import Container from 'react-bootstrap/Container'
@@ -13,10 +14,13 @@ import Modal from 'react-bootstrap/Modal'
 
 export default function IndRT() {
     const indRT = useLoaderData()
-    const [open, setOpen] = useState(false)
     const [roomCollection, setRoomCollection] = useState([])
+    const [open, setOpen] = useState(false)
+    const [openFloorFinishUpload, setOpenFloorFinishUpload] = useState(false)
     const handleOpen = () => setOpen(true)
     const handleClose = () => setOpen(false)
+    const handleOpenFloorFinishUpload = () => setOpenFloorFinishUpload(true)
+    const handleCloseFloorFinishUPload = () => setOpenFloorFinishUpload(false)
 
 
     const {
@@ -59,7 +63,7 @@ export default function IndRT() {
                             <Col s={6}>
                                 <p><b>Area: </b>{area}m<sup>2</sup> <button className='submitBtn'>edit</button ></p>
                                 <p><b>Height: </b>{height}mm <button className='submitBtn'>edit</button ></p>
-                                <p><b>Flooring: </b> {floorFinishes.spec_code} - {floorFinishes.spec_name} <button className='submitBtn'>edit</button></p>
+                                <p><b>Flooring: </b> {floorFinishes.spec_code} - {floorFinishes.spec_name} <button className='submitBtn' onClick={handleOpenFloorFinishUpload}>edit</button></p>
                                 <p><b>Wall finish: </b> {wallFinishes.spec_code} - {wallFinishes.spec_name} <button className='submitBtn'>edit</button></p>
                                 <p><b>Ceilings: </b> {ceilings.spec_code} - {ceilings.spec_name} <button className='submitBtn'>edit</button ></p>
                             </Col>
@@ -73,6 +77,7 @@ export default function IndRT() {
                         </h4>
                         </Row>
 
+                        {/* Modal to upload FFE */}
                         <Modal
                             size="lg"
                             show={open}
@@ -91,17 +96,33 @@ export default function IndRT() {
                             </Modal.Body>
                         </Modal>
 
+                        {/* Modal to upload Floor Finish */}
+                        <Modal
+                            size="lg"
+                            show={openFloorFinishUpload}
+                            onHide={handleCloseFloorFinishUPload}
+                            aria-labelledby="example-modal-sizes-title-lg"
+                        >
+                            <Modal.Header closeButton>
+                                <Modal.Title id="example-modal-sizes-title-lg">
+                                    Select Floor Finish to add to Roomtype or create new Floor Finish
+                                </Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body className="modal-container">
+                                <>
+                                    <FilterBarFloorFinish addItem={true} roomType_id={roomType_id} />
+                                </>
+                            </Modal.Body>
+                        </Modal>
+
                         <Container fluid className="container-grid">
                             <div className='ffe-list' ><h5>Code</h5><h5>Name</h5><h5>Group</h5><p>Remove</p></div>
                             {ffes
                                 .sort((a, b) => a.ffe_code.localeCompare(b.ffe_code))
                                 .map(ffe => (
-                                    // console.log(ffe)
                                     <Col
                                         key={ffe.id}
                                         className='ffe-list'
-                                        // as={Link}
-                                        // to={`/buildings/${roomType_id}/${ffe.id}`}
                                     >
                                         <p>{ffe.ffe_code}</p>
                                         <p>{ffe.ffe_name}</p>

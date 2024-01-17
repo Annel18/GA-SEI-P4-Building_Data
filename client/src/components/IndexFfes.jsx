@@ -38,7 +38,7 @@ export default function IndexFfes({ ffe_id, addItem, roomType_id }) {
     async function updateRT(addedFFE) {
 
         try {
-            const res = await axios.patch(`/api/roomTypes/${roomType_id}/`, { roomTypes: addedFFE }, {
+            const res = await axios.patch(`/api/roomTypes/${roomType_id}/`, { ffes: addedFFE }, {
                 headers: {
                     Authorization: `Bearer ${userData[0].access}`
                 }
