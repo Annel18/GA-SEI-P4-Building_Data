@@ -1,10 +1,6 @@
 /* eslint-disable react/prop-types */
-// import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-// import { useNavigate } from 'react-router-dom'
-// import { useOutletContext } from 'react-router-dom'
-
 import { getIndRoomType } from "../utils/loaders/roomTypesLoader"
 
 //! Styling 

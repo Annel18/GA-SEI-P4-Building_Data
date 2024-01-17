@@ -14,18 +14,24 @@ class RoomType(models.Model):
         to='ffes.Ffe',
         related_name='roomTypes'
     )
-    floorFinishes = models.ManyToManyField(
+    floorFinishes = models.ForeignKey(
         blank=True,
+        null=True,
+        on_delete=models.CASCADE,
         to='floorFinishes.FloorFinish', 
         related_name='rooms'
     )
-    wallFinishes = models.ManyToManyField(
+    wallFinishes = models.ForeignKey(
         blank=True,
+        null=True,
+        on_delete=models.CASCADE,
         to='wallFinishes.WallFinish', 
         related_name='rooms'
     )
-    ceilings = models.ManyToManyField(
+    ceilings = models.ForeignKey(
         blank=True,
+        null=True,
+        on_delete=models.CASCADE,
         to='ceilings.Ceiling', 
         related_name='rooms'
     )

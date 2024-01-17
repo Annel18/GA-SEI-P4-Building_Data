@@ -10,7 +10,7 @@ import Container from "react-bootstrap/esm/Container"
 import Row from "react-bootstrap/esm/Row"
 import Modal from 'react-bootstrap/Modal'
 
-export default function FilterBarFloorFinish({ roomType_id, addItem }) {
+export default function FilterBarFloorFinish({ roomType_id, addItem, updateRoomTypeWithFloorFinish }) {
     //! States
     const [searchData, setSearchData] = useState({ dataSearch: [] })
     const [floorFinishes, setFloorFinishes] = useState([])
@@ -60,8 +60,6 @@ export default function FilterBarFloorFinish({ roomType_id, addItem }) {
                         name="searchField"
                         placeholder="Search by name..."
                         className="search"
-                    // onChange={(e) => setSearch(e.target.value)}
-                    // value={search} 
                     />
                 </form>
                 <button onClick={handleOpen}>✚</button>
@@ -89,7 +87,7 @@ export default function FilterBarFloorFinish({ roomType_id, addItem }) {
                                 <Row /*className="items-list"*/
                                 >
                                     {floorFinishes.map(floorFinish => (
-                                        <IndexFloorFinishes spec_id={floorFinish.id} key={floorFinish.id} addItem={addItem} roomType_id={roomType_id} />
+                                        <IndexFloorFinishes spec_id={floorFinish.id} key={floorFinish.id} addItem={addItem} roomType_id={roomType_id} updateRoomTypeWithFloorFinish={updateRoomTypeWithFloorFinish}/>
                                     ))}
                                 </Row>
                             </Container>
@@ -100,7 +98,7 @@ export default function FilterBarFloorFinish({ roomType_id, addItem }) {
                             <Container fluid className="container-grid" style={{ padding: '5em' }}>
                                 <Row /*className="items-list"*/>
                                     {searchData.specsDataSearch.map(floorFinish => {
-                                        <IndexFloorFinishes spec_id={floorFinish.id} key={floorFinish.id} addItem={addItem} roomType_id={roomType_id} />
+                                        <IndexFloorFinishes spec_id={floorFinish.id} key={floorFinish.id} addItem={addItem} roomType_id={roomType_id} updateRoomTypeWithFloorFinish={updateRoomTypeWithFloorFinish} />
                                     })}
                                 </Row>
                             </Container>

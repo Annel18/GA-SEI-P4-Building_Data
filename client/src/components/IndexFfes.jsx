@@ -1,23 +1,23 @@
 /* eslint-disable react/prop-types */
 // import { Link } from 'react-router-dom'
-import axios from 'axios'
+// import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { useOutletContext } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
+// import { useOutletContext } from 'react-router-dom'
 
 import { getIndFfe } from "../utils/loaders/ffesLoader"
-import { getIndRoomType } from "../utils/loaders/roomTypesLoader"
+// import { getIndRoomType } from "../utils/loaders/roomTypesLoader"
 
 //! Styling 
 // import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
-export default function IndexFfes({ ffe_id, addItem, roomType_id }) {
+export default function IndexFfes({ ffe_id, addItem, updateRT }) {
     //! States
     const [ffes, setFfes] = useState([])
-    const [roomTypes, setRoomTypes] = useState([])
-    const userData = useOutletContext()
-    const navigate = useNavigate()
+    // const [roomTypes, setRoomTypes] = useState([])
+    // const userData = useOutletContext()
+    // const navigate = useNavigate()
 
     useEffect(() => {
         async function ffeRetrieve() {
@@ -27,72 +27,38 @@ export default function IndexFfes({ ffe_id, addItem, roomType_id }) {
         ffeRetrieve()
     }, [ffe_id])
 
-    useEffect(() => {
-        async function roomTypeRetrieve() {
-            const roomType = await getIndRoomType(roomType_id)
-            setRoomTypes(roomType)
-        }
-        roomTypeRetrieve()
-    }, [roomType_id])
+    // useEffect(() => {
+    //     async function roomTypeRetrieve() {
+    //         const roomType = await getIndRoomType(roomType_id)
+    //         setRoomTypes(roomType)
+    //     }
+    //     roomTypeRetrieve()
+    // }, [roomType_id])
 
-    async function updateRT(addedFFE) {
 
-        try {
-            const res = await axios.patch(`/api/roomTypes/${roomType_id}/`, { ffes: addedFFE }, {
-                headers: {
-                    Authorization: `Bearer ${userData[0].access}`
-                }
-            })
-            const newData = { ...res.data, access: userData[0].access }
-            setRoomTypes(newData)
-            navigate(`/roomTypes/${roomType_id}/`)
-        } catch (error) {
-            console.log(error)
-        }
-    }
 
     //! JSX
     return (
         <>
-            {/* <div
-                className='single-container'
-                Link helps the individual ffe page function
-                as={Link}
-                xs={12}
-                s={6}
-                md={4}
-                lg={3}
-                xl={2}
-                to={`/ffes/${ffes.ffe_id}`}
-            > */}
-            {/* <div /*className="rails" style={{ height: '200px', paddingBottom: '3em' }} */}
-            {/* <div
-                        className="thumbnail"
-                        to={`/ffes/${ffes.ffe_id}`}
-                        style={{ backgroundImage: `url(${ffes.ffe_img})` }}>
-                    </div> */}
-            <Row>
-                <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid black' }}>
+            <Col
+                className='ffe-list'
+                key={ffe_id}
+            >
+                    <p>{ffes.ffe_code}</p>
+                    <p>{ffes.ffe_name}</p>
+                    <p>{ffes.ffe_group}</p>
                     <button
                         className='submitBtn'
                         style={{ display: addItem }}
                         onClick={(e) => {
                             e.preventDefault()
-                            const { ffes } = roomTypes
-                            const ffeIdArray = []
-                            ffes.forEach(object => {
-                                ffeIdArray.push(object.id)
-                            })
-                            const addedFFE = [...ffeIdArray, ffe_id]
+                            const addedFFE = ffe_id
                             updateRT(addedFFE)
                         }
                         }
                     >Add</button>
-                    <h5>{ffes.ffe_code}</h5>
-                    <p>{ffes.ffe_name}</p>
-                    <h5>{ffes.ffe_group}</h5>
-                </div>
-            </Row>
+
+            </Col>
             {/* </div> */}
             {/* </div> */}
         </>

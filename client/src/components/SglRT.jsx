@@ -1,5 +1,7 @@
+import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { useLoaderData } from 'react-router-dom'
+import { useOutletContext } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
 //! Components
@@ -13,7 +15,9 @@ import Col from 'react-bootstrap/Col'
 import Modal from 'react-bootstrap/Modal'
 
 export default function IndRT() {
-    const indRT = useLoaderData()
+    const userData = useOutletContext()
+    const builingPreviousPageId = localStorage.getItem('previousPageId')
+    const builingPreviousPageName = localStorage.getItem('previousPageName')
     const [roomCollection, setRoomCollection] = useState([])
     const [open, setOpen] = useState(false)
     const [openFloorFinishUpload, setOpenFloorFinishUpload] = useState(false)
@@ -22,7 +26,7 @@ export default function IndRT() {
     const handleOpenFloorFinishUpload = () => setOpenFloorFinishUpload(true)
     const handleCloseFloorFinishUPload = () => setOpenFloorFinishUpload(false)
 
-
+    const indRT = useLoaderData()
     const {
         id: roomType_id,
         room_code,
@@ -32,23 +36,87 @@ export default function IndRT() {
         height,
         rooms,
         floorFinishes,
-        ceilings,
-        wallFinishes,
+        // ceilings,
+        // wallFinishes,
         ffes } = indRT
+    const [ffesToUpdate, setFfesToUpdate] = useState(ffes)
+    const [floorFinishesToUpdate, setFloorFinishesToUpdate] = useState(floorFinishes)
+    // const [wallFinishesToUpdate, setWallFinishesToUpdate] = useState(wallFinishes)
+    // const [ceilingsToUpdate, setCeilingsToUpdate] = useState(ceilings)
+
 
     useEffect(() => {
-        const updatedCollection = []
-        rooms.forEach(object => updatedCollection.push(object.room_nbr))
-        const roomListToDisplay = updatedCollection.toString().replaceAll(',', ', ')
-        setRoomCollection(roomListToDisplay)
+        const updatedSingleRoomCollection = rooms.map(object => object.room_nbr).join(', ')
+        console.log("Updated Collection:", updatedSingleRoomCollection)
+        setRoomCollection(updatedSingleRoomCollection)
+        async function retrieveFloorFinish(){}
+        retrieveFloorFinish()
     }, [rooms])
 
+    //! Functions
+    async function removeFFE(e, ffeId) {
+        e.preventDefault()
+        console.log("Removing FFE. FFE ID:", ffeId)
+        try {
+            // Filter out the room with the specified ID
+            const filteredFFE = ffesToUpdate.filter(value => value.id !== ffeId)
+            // Extract the IDs from the filtered array
+            const ffesIds = filteredFFE.map(ffe => ffe.id)
+            // Update the state with the filtered FFE IDs
+            setFfesToUpdate(filteredFFE)
+            // Send the patch request
+            await axios.patch(`/api/roomTypes/${roomType_id}/`, { ffes: ffesIds }, {
+                headers: {
+                    Authorization: `Bearer ${userData[0].access}`,
+                },
+            })
+        } catch (error) {
+            console.error("Error removing FFE type:", error)
+        }
+    }
+
+    async function updateRT(addedItem) {
+        console.log("Updating RT. Added Item:", addedItem)
+        const ffeIDArray = ffesToUpdate.map(object => object.id)
+        const ffeIDArrayPopulated = [...ffeIDArray, addedItem]
+        try {
+            await axios.patch(`/api/roomTypes/${roomType_id}/`, { ffes: ffeIDArrayPopulated }, {
+                headers: {
+                    Authorization: `Bearer ${userData[0].access}`
+                }
+            })
+            const updatedData = await axios.get(`/api/roomTypes/${roomType_id}/`)
+            console.log(updatedData)
+            setFfesToUpdate(updatedData.data.ffes)
+
+            setOpen(!open)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    async function updateRoomTypeWithFloorFinish(addedItem) {
+        console.log("Updating Room Type with Floor Finish. Added Item:", addedItem)
+        try {
+            await axios.patch(`/api/roomTypes/${roomType_id}/`, { floorFinishes: addedItem }, {
+                headers: {
+                    Authorization: `Bearer ${userData[0].access}`
+                }
+            })
+            const updatedData = await axios.get(`/api/floorFinishes/${addedItem}/`)
+            console.log(updatedData.data)
+            setFloorFinishesToUpdate(updatedData.data)
+            setOpenFloorFinishUpload(!openFloorFinishUpload)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    console.log("Component Re-rendered!")
 
     return (
         <>
             <nav className='navBarTwo'>
                 <Link className="nav-button" to={'/buildings/'}>{'>'} Buildings</Link>
-                <Link className="nav-button" to={'/buildings/'}>{'>'} Bldg_name</Link>
+                <Link className="nav-button" to={`/buildings/${builingPreviousPageId}`}>{'>'} {builingPreviousPageName}</Link>
             </nav>
             <Container className="ind-Container" fluid>
                 <Row>
@@ -63,9 +131,9 @@ export default function IndRT() {
                             <Col s={6}>
                                 <p><b>Area: </b>{area}m<sup>2</sup> <button className='submitBtn'>edit</button ></p>
                                 <p><b>Height: </b>{height}mm <button className='submitBtn'>edit</button ></p>
-                                <p><b>Flooring: </b> {floorFinishes.spec_code} - {floorFinishes.spec_name} <button className='submitBtn' onClick={handleOpenFloorFinishUpload}>edit</button></p>
-                                <p><b>Wall finish: </b> {wallFinishes.spec_code} - {wallFinishes.spec_name} <button className='submitBtn'>edit</button></p>
-                                <p><b>Ceilings: </b> {ceilings.spec_code} - {ceilings.spec_name} <button className='submitBtn'>edit</button ></p>
+                                <p><b>Flooring: </b> {floorFinishesToUpdate.spec_code} - {floorFinishesToUpdate.spec_name} <button className='submitBtn' onClick={handleOpenFloorFinishUpload}>edit</button></p>
+                                <p><b>Wall finish: </b> { } - { } <button className='submitBtn'>edit</button></p>
+                                <p><b>Ceilings: </b> { } - { } <button className='submitBtn'>edit</button ></p>
                             </Col>
                             <Col>
                                 <p><b>Amount of rooms following this type: </b>{rooms.length}</p>
@@ -91,7 +159,7 @@ export default function IndRT() {
                             </Modal.Header>
                             <Modal.Body className="modal-container">
                                 <>
-                                    <FilterBarFFE addItem={true} roomType_id={roomType_id} />
+                                    <FilterBarFFE addItem={true} roomType_id={roomType_id} updateRT={updateRT} />
                                 </>
                             </Modal.Body>
                         </Modal>
@@ -110,14 +178,14 @@ export default function IndRT() {
                             </Modal.Header>
                             <Modal.Body className="modal-container">
                                 <>
-                                    <FilterBarFloorFinish addItem={true} roomType_id={roomType_id} />
+                                    <FilterBarFloorFinish addItem={true} roomType_id={roomType_id} updateRoomTypeWithFloorFinish={updateRoomTypeWithFloorFinish} />
                                 </>
                             </Modal.Body>
                         </Modal>
 
                         <Container fluid className="container-grid">
                             <div className='ffe-list' ><h5>Code</h5><h5>Name</h5><h5>Group</h5><p>Remove</p></div>
-                            {ffes
+                            {ffesToUpdate
                                 .sort((a, b) => a.ffe_code.localeCompare(b.ffe_code))
                                 .map(ffe => (
                                     <Col
@@ -127,7 +195,7 @@ export default function IndRT() {
                                         <p>{ffe.ffe_code}</p>
                                         <p>{ffe.ffe_name}</p>
                                         <p>{ffe.ffe_group}</p>
-                                        <p>❌</p>
+                                        <p onClick={(e) => removeFFE(e, ffe.id)}>❌</p>
                                     </Col>
                                 )
                                 )}

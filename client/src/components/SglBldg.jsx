@@ -15,14 +15,14 @@ import Modal from 'react-bootstrap/Modal'
 
 
 export default function IndBldg() {
-    // const navigate = useNavigate()
+    //! States
     const userData = useOutletContext()
     const [addType, setAddType] = useState('')
     const [open, setOpen] = useState(false)
     const handleOpen = () => setOpen(true)
     const handleClose = () => setOpen(false)
-    const indBldg = useLoaderData()
 
+    const indBldg = useLoaderData()
     const {
         id: bldg_id,
         bldg_code,
@@ -30,10 +30,9 @@ export default function IndBldg() {
         bldg_description,
         bldg_img,
         roomTypes } = indBldg
-
     const [roomTypesToUpdate, setRoomTypesToUpdate] = useState(roomTypes)
-    console.log(indBldg)
-
+    localStorage.setItem('previousPageId', bldg_id)
+    localStorage.setItem('previousPageName', bldg_name)
 
     //! Functions
 
@@ -65,26 +64,21 @@ export default function IndBldg() {
         try {
             const response = await axios.get(`/api/roomTypes/${createdRoom}`)
             const roomToCopy = response.data
-            console.log(roomToCopy)
 
             const ffeArray = []
             roomToCopy.ffes.forEach(object => ffeArray.push(object.id))
-            const floorFinishesArray = []
-            roomToCopy.floorFinishes.forEach(object => floorFinishesArray.push(object.id))
-            const wallFinishesArray = []
-            roomToCopy.wallFinishes.forEach(object => wallFinishesArray.push(object.id))
-            const ceilingsArray = []
-            roomToCopy.ceilings.forEach(object => ceilingsArray.push(object.id))
+            // const floorFinishesArray = []
+            // roomToCopy.floorFinishes.forEach(object => floorFinishesArray.push(object.id))
+            // const wallFinishesArray = []
+            // roomToCopy.wallFinishes.forEach(object => wallFinishesArray.push(object.id))
+            // const ceilingsArray = []
+            // roomToCopy.ceilings.forEach(object => ceilingsArray.push(object.id))
 
-            console.log(ffeArray)
-
-            const res = await axios.post('/api/roomTypes/', { ...roomToCopy, room_code: `${roomToCopy.room_code}_copy`, ffes: ffeArray, floorFinishes: floorFinishesArray, wallFinishes: wallFinishesArray, ceilings: ceilingsArray }, {
+            const res = await axios.post('/api/roomTypes/', { ...roomToCopy, room_code: `${roomToCopy.room_code}_copy`, ffes: ffeArray }, {
                 headers: {
                     Authorization: `Bearer ${userData[0].access}`,
                 },
             })
-            // const newData = { ...res.data, access: userData[0].access }
-            // const roomIdToAdd = newData.id
             updateBldg(res.data.id)
             setOpen(!open)
         } catch (error) {
@@ -94,8 +88,6 @@ export default function IndBldg() {
 
     async function selection(createdRoom) {
         console.log(createdRoom)
-
-
         if (addType === "create") {
             createRT(createdRoom)
         }
@@ -124,6 +116,7 @@ export default function IndBldg() {
             indBldg.roomTypes = { ...indBldg.roomTypes, addedRoom }
             const updatedData = await axios.get(`/api/buildings/${bldg_id}/`)
             setRoomTypesToUpdate(updatedData.data.roomTypes)
+            setOpen(!open)
         } catch (error) {
             console.log(error)
         }
