@@ -49,7 +49,7 @@ export default function IndRT() {
         const updatedSingleRoomCollection = rooms.map(object => object.room_nbr).join(', ')
         console.log("Updated Collection:", updatedSingleRoomCollection)
         setRoomCollection(updatedSingleRoomCollection)
-        async function retrieveFloorFinish(){}
+        async function retrieveFloorFinish() { }
         retrieveFloorFinish()
     }, [rooms])
 
@@ -89,7 +89,7 @@ export default function IndRT() {
             console.log(updatedData)
             setFfesToUpdate(updatedData.data.ffes)
 
-            setOpen(!open)
+            setOpen(false)
         } catch (error) {
             console.log(error)
         }
@@ -131,7 +131,9 @@ export default function IndRT() {
                             <Col s={6}>
                                 <p><b>Area: </b>{area}m<sup>2</sup> <button className='submitBtn'>edit</button ></p>
                                 <p><b>Height: </b>{height}mm <button className='submitBtn'>edit</button ></p>
-                                <p><b>Flooring: </b> {floorFinishesToUpdate.spec_code} - {floorFinishesToUpdate.spec_name} <button className='submitBtn' onClick={handleOpenFloorFinishUpload}>edit</button></p>
+                                <p><b>Flooring: </b>
+                                    {floorFinishesToUpdate &&floorFinishesToUpdate.spec_code} - {floorFinishesToUpdate &&floorFinishesToUpdate.spec_name}
+                                    <button className='submitBtn' onClick={handleOpenFloorFinishUpload}>edit</button></p>
                                 <p><b>Wall finish: </b> { } - { } <button className='submitBtn'>edit</button></p>
                                 <p><b>Ceilings: </b> { } - { } <button className='submitBtn'>edit</button ></p>
                             </Col>

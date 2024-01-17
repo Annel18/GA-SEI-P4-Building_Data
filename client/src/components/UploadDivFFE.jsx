@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
 import axios from 'axios'
 import { useState } from 'react'
 import { useOutletContext } from 'react-router-dom'
 // import { useNavigate } from 'react-router-dom'
 
-export default function UploadDivFFE() {
+export default function UploadDivFFE({ updateRT }) {
     // Get User ID
     const userData = useOutletContext()
     // const navigate = useNavigate()
@@ -30,8 +31,9 @@ export default function UploadDivFFE() {
                     Authorization: `Bearer ${userData[0].access}`,
                 },
             })
-            const roomTypeId = res.data._id
-            console.log(roomTypeId)
+            const updatedData = res.data.id
+            updateRT(updatedData)
+            console.log(updatedData)
         } catch (error) {
             console.log(error)
         }

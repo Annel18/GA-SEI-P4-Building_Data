@@ -73,7 +73,7 @@ export default function FilterBarFFE({ roomType_id, addItem, updateRT }) {
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body className="modal-container">
-                        <UploadDivFFE roomType_id={roomType_id} />
+                        <UploadDivFFE roomType_id={roomType_id} updateRT={updateRT}/>
                     </Modal.Body>
                 </Modal>
             </div >
