@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class RoomType(models.Model):
-    room_code = models.CharField(max_length=10, unique=True)
+    room_code = models.CharField(unique=True)
     room_name = models.CharField()
     area = models.FloatField(blank=True, null=True)
     height = models.FloatField(blank=True, null=True)

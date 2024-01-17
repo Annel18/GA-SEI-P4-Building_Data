@@ -9,9 +9,9 @@ class Building(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     roomTypes = models.ManyToManyField(
-        blank=True,
         to='roomTypes.RoomType',
-        related_name='buildings'
+        related_name='buildings',
+        blank=True
     )
     owner = models.ForeignKey(
         to='users.User',

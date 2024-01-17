@@ -10,7 +10,7 @@ from lib.permissions import IsOwnerOrReadOnly
 # Methods: GET, POST
 class BuildingListCreateView(OwnerListCreateView):
     queryset = Building.objects.all()
-    serializer_class = PopulatedBuildingSerializer
+    serializer_class = BuildingSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
 
 # Path: /buildings/:id

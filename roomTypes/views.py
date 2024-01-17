@@ -5,18 +5,21 @@ from .serializers.common import RoomTypeSerializer
 from .serializers.populated import PopulatedRoomTypeSerializer
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from lib.permissions import IsOwnerOrReadOnly
+from rest_framework import status 
+from rest_framework.response import Response
+from rest_framework.exceptions import ValidationError
 
 # Path: /roomTypes/
 # Methods: GET, POST
 class RoomTypeListCreateView(OwnerListCreateView):
-    queryset = RoomType.objects.all()
+    queryset = RoomType.objects.all().prefetch_related()
     serializer_class = RoomTypeSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
 
 # Path: /roomTypes/:id
 # Methods: GET, PUT/PATCH, DELETE
 class RoomTypeDetailView(RetrieveUpdateDestroyAPIView):
-    queryset = RoomType.objects.all()
+    queryset = RoomType.objects.all().prefetch_related()
     # serializer_class = RoomTypeSerializer
     permission_classes = [IsOwnerOrReadOnly]
 
