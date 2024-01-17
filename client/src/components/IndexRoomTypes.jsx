@@ -1,21 +1,18 @@
 /* eslint-disable react/prop-types */
-import axios from 'axios'
+// import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 // import { useNavigate } from 'react-router-dom'
-import { useOutletContext } from 'react-router-dom'
+// import { useOutletContext } from 'react-router-dom'
 
 import { getIndRoomType } from "../utils/loaders/roomTypesLoader"
 
 //! Styling 
 import Col from 'react-bootstrap/Col'
 
-export default function IndexRoomTypes({ roomType_id, addItem, building, updateBldg, addType, sglRT }) {
+export default function IndexRoomTypes({ roomType_id, addItem, selection }) {
     //! States
     const [roomTypes, setRoomTypes] = useState([])
-    const userData = useOutletContext()
-    // const navigate = useNavigate()
-    // const [style, setStyle] = useState('display')
 
     useEffect(() => {
         async function roomTypeRetrieve() {
@@ -24,50 +21,6 @@ export default function IndexRoomTypes({ roomType_id, addItem, building, updateB
         }
         roomTypeRetrieve()
     }, [roomType_id])
-
-    async function selection(createdRoom) {
-        const { roomTypes } = building
-        const roomTypeIDArray = []
-        {roomTypes &&
-                roomTypes.forEach(object => {
-                    roomTypeIDArray.push(object.id)
-                })
-            }
-
-            // console.log(roomTypeIDArray)
-            // console.log(roomTypesIDList)
-            // const createdRoom = roomType_id
-            const addedRoom = [...roomTypeIDArray, createdRoom]
-            console.log(addedRoom)
-
-            if (addType === "add") {
-                updateBldg(addedRoom)
-            } else if (addType === "create") {
-                console.log('BEFORE SPREAD ', sglRT)
-                sglRT = {... sglRT, room_code: `${sglRT.room_code}_copy`}
-                console.log('AFTER SPREAD ',sglRT)
-                createRT(sglRT)
-            }
-    }
-
-    async function createRT(createdRoom) {
-
-        try {
-            const res = await axios.post('/api/roomTypes/', createdRoom, {
-                headers: {
-                    Authorization: `Bearer ${userData[0].access}`,
-                },
-            })
-            const newData = { ...res.data, access: userData[0].access }
-            const createdRoom = newData.id
-            console.log(createdRoom)
-            updateBldg(addedRoom)
-            // setBuildings(newData)
-            // navigate(`/buildings/${bldg_id}/`)
-        } catch (error) {
-            console.log(error)
-        }
-    }
 
     //! JSX
     return (
@@ -93,19 +46,7 @@ export default function IndexRoomTypes({ roomType_id, addItem, building, updateB
                                 e.preventDefault()
                                 e.target.innerText === '✅'
                                 const createdRoom = roomType_id
-                                // const { roomTypes } = buildings
-                                // const roomTypeIDArray = []
-                                // {roomTypes &&
-                                //         roomTypes.forEach(object => {
-                                //             roomTypeIDArray.push(object.id)
-                                //         })
-                                //     }
-
-                                //     // console.log(roomTypeIDArray)
-                                //     // console.log(roomTypesIDList)
-                                //     const addedRoom = [...roomTypeIDArray, roomType_id]
-                                //     console.log(addedRoom)
-                                    selection(createdRoom)
+                                selection(createdRoom)
                             }
                             }
                         >☑️</h3>

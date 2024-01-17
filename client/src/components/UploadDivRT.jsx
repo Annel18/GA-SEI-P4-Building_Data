@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useOutletContext } from 'react-router-dom'
 // import { useNavigate } from 'react-router-dom'
 
-export default function UploadDivRT() {
+export default function UploadDivRT({ selection }) {
     // Get User ID
     const userData = useOutletContext()
     // const navigate = useNavigate()
@@ -32,11 +33,8 @@ export default function UploadDivRT() {
                     Authorization: `Bearer ${userData[0].access}`,
                 },
             })
-            const roomTypeId = res.data._id
-            console.log(roomTypeId)
-            // push to artist collection
-            // const artistCollection = [...personal_collection, artID]
-            // navigate(`/roomTypes/${res.data._id}`)
+            const roomTypeId = res.data.id
+            selection(roomTypeId)
         } catch (error) {
             console.log(error)
         }

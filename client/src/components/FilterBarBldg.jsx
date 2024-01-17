@@ -15,6 +15,7 @@ export default function FilterBarBldg() {
     //! States
     const [searchData, setSearchData] = useState({ buildingsDataSearch: [] })
     const [buildings, setBuildings] = useState([])
+    const [toDelete, setToDelete] = useState(false)
     const [open, setOpen] = useState(false)
     const handleOpen = () => setOpen(true)
     const handleClose = () => setOpen(false)
@@ -31,7 +32,7 @@ export default function FilterBarBldg() {
             }
         }
         getBuildingsData()
-    }, [buildings])
+    }, [open, toDelete])
 
     //! Functions
     async function search(e) {
@@ -88,7 +89,7 @@ export default function FilterBarBldg() {
                             <Container fluid className="container-grid">
                                 <Row className="items-list">
                                     {buildings.map(building => (
-                                        <IndexBuildings id={building.id} key={building.id} crossDisplay={true} />
+                                        <IndexBuildings id={building.id} key={building.id} crossDisplay={true} setToDelete={setToDelete}/>
                                     ))}
                                 </Row>
                             </Container>
@@ -99,7 +100,7 @@ export default function FilterBarBldg() {
                             <Container fluid className="container-grid">
                                 <Row className="items-list">
                                     {searchData.buildingsDataSearch.map(building => (
-                                        <IndexBuildings id={building.id} key={building.id} />
+                                        <IndexBuildings id={building.id} key={building.id} crossDisplay={true} setToDelete={setToDelete}/>
                                     ))}
                                 </Row>
                             </Container>  

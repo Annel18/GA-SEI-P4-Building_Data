@@ -10,7 +10,7 @@ import Col from 'react-bootstrap/Col'
 import axios from 'axios'
 
 
-export default function IndexBuildings({ id, crossDisplay }) {
+export default function IndexBuildings({ id, crossDisplay, setToDelete }) {
     //! States
     const [buildings, setBuildings] = useState([])
     const userData = useOutletContext()
@@ -32,6 +32,7 @@ export default function IndexBuildings({ id, crossDisplay }) {
                 }
             })
             setBuildings(res.data)
+            setToDelete(true)
         } catch (error) {
             console.log(error)
         }

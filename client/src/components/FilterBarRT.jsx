@@ -13,18 +13,14 @@ import RadioGroup from '@mui/material/RadioGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormControl from '@mui/material/FormControl'
 
-export default function FilterBarRT({ building, addItem, updateBldg }) {
+export default function FilterBarRT({ building, addItem, updateBldg, selection, createRT, addType, handleChangeRoomUploadType }) {
     //! States
     const [searchData, setSearchData] = useState({ roomTypesDataSearch: [] })
     const [roomTypes, setRoomTypes] = useState([])
     const [open, setOpen] = useState(false)
     const handleOpen = () => setOpen(true)
     const handleClose = () => setOpen(false)
-    const [value, setValue] = useState('')
-
-    const handleChange = (event) => {
-        setValue(event.target.value);
-    }
+    
 
     //! Effects
     useEffect(() => {
@@ -38,7 +34,7 @@ export default function FilterBarRT({ building, addItem, updateBldg }) {
             }
         }
         getRoomTypesData()
-    }, [])
+    }, [open])
 
     //! Functions
     async function search(e) {
@@ -83,7 +79,7 @@ export default function FilterBarRT({ building, addItem, updateBldg }) {
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body className="modal-container">
-                        <UploadDivRT bldg_id={building.id} />
+                        <UploadDivRT building={building} updateBldg={updateBldg} selection={selection} createRT={createRT}/>
                     </Modal.Body>
                 </Modal>
             </div>
@@ -97,16 +93,16 @@ export default function FilterBarRT({ building, addItem, updateBldg }) {
                                         row
                                         aria-labelledby="demo-row-radio-buttons-group-label"
                                         name="row-radio-buttons-group"
-                                        value={value}
-                                        onChange={handleChange}
+                                        value={addType}
+                                        onChange={handleChangeRoomUploadType}
                                     >
                                         <FormControlLabel value="add" control={<Radio />} label="Add to Building" />
-                                        <FormControlLabel value="create" control={<Radio />} label="Create duplicate" />
+                                        <FormControlLabel value="create" control={<Radio />} label="Add duplicate" />
                                     </RadioGroup>
                                 </FormControl>
                                 <Row className="items-list">
                                     {roomTypes.map(roomType => (
-                                        <IndexRoomTypes roomType_id={roomType.id} key={roomType.id} addItem={addItem} building={building} addType={value} sglRT={roomType} updateBldg={updateBldg}/>
+                                        <IndexRoomTypes key={roomType.id} roomType_id={roomType.id} addItem={addItem} selection={selection} />
                                     ))}
                                 </Row>
                             </Container>
@@ -120,16 +116,16 @@ export default function FilterBarRT({ building, addItem, updateBldg }) {
                                         row
                                         aria-labelledby="demo-row-radio-buttons-group-label"
                                         name="row-radio-buttons-group"
-                                        value={value}
-                                        onChange={handleChange}
+                                        value={addType}
+                                        onChange={handleChangeRoomUploadType}
                                     >
                                         <FormControlLabel value="add" control={<Radio />} label="Add to Building" />
-                                        <FormControlLabel value="create" control={<Radio />} label="Create duplicate" />
+                                        <FormControlLabel value="create" control={<Radio />} label="Add duplicate" />
                                     </RadioGroup>
                                 </FormControl>
                                 <Row className="items-list">
                                     {searchData.roomTypesDataSearch.map(roomType => (
-                                        <IndexRoomTypes roomType_id={roomType.id} key={roomType.id} addItem={addItem} building={building} addType={value} sglRT={roomType} updateBldg={updateBldg}/>
+                                        <IndexRoomTypes key={roomType.id} roomType_id={roomType.id} addItem={addItem} selection={selection} />
                                     ))}
                                 </Row>
                             </Container>
