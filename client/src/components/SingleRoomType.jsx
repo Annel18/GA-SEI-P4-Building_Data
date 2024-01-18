@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 //! Components
 import PageFFES from './PageFFEs'
 import PageFloorFinishes from './PageFloorFinishes'
+import UploadEditRT from './UploadEditRT'
 
 //! Styles
 import Container from 'react-bootstrap/Container'
@@ -20,13 +21,18 @@ export default function SingleRoomType() {
     const builingPreviousPageName = localStorage.getItem('previousPageName')
     const [roomCollection, setRoomCollection] = useState([])
     const [open, setOpen] = useState(false)
-    const [openFloorFinishUpload, setOpenFloorFinishUpload] = useState(false)
     const handleOpen = () => setOpen(true)
     const handleClose = () => setOpen(false)
+    const [openEdit, setOpenEdit] = useState(false)
+    const handleOpenEdit = () => setOpenEdit(true)
+    const handleCloseEdit = () => setOpenEdit(false)
+    const [openFloorFinishUpload, setOpenFloorFinishUpload] = useState(false)
     const handleOpenFloorFinishUpload = () => setOpenFloorFinishUpload(true)
     const handleCloseFloorFinishUPload = () => setOpenFloorFinishUpload(false)
 
     const indRT = useLoaderData()
+
+    
     const {
         id: roomType_id,
         room_code,
@@ -39,6 +45,8 @@ export default function SingleRoomType() {
         // ceilings,
         // wallFinishes,
         ffes } = indRT
+    const [codeToUpdate, setCodeToUpdate] = useState(room_code)
+    const [nameToUpdate, setNameToUpdate] = useState(room_name)
     const [ffesToUpdate, setFfesToUpdate] = useState(ffes)
     const [floorFinishesToUpdate, setFloorFinishesToUpdate] = useState(floorFinishes)
     // const [wallFinishesToUpdate, setWallFinishesToUpdate] = useState(wallFinishes)
@@ -56,7 +64,6 @@ export default function SingleRoomType() {
     //! Functions
     async function removeFFE(e, ffeId) {
         e.preventDefault()
-        console.log("Removing FFE. FFE ID:", ffeId)
         try {
             // Filter out the room with the specified ID
             const filteredFFE = ffesToUpdate.filter(value => value.id !== ffeId)
@@ -76,7 +83,6 @@ export default function SingleRoomType() {
     }
 
     async function updateRT(addedItem) {
-        console.log("Updating RT. Added Item:", addedItem)
         const ffeIDArray = ffesToUpdate.map(object => object.id)
         const ffeIDArrayPopulated = [...ffeIDArray, addedItem]
         try {
@@ -86,16 +92,29 @@ export default function SingleRoomType() {
                 }
             })
             const updatedData = await axios.get(`/api/roomTypes/${roomType_id}/`)
-            console.log(updatedData)
             setFfesToUpdate(updatedData.data.ffes)
-
             setOpen(false)
         } catch (error) {
             console.log(error)
         }
     }
+    async function edit(json) {
+        try {
+            await axios.patch(`/api/roomTypes/${roomType_id}/`, json, {
+                headers: {
+                    Authorization: `Bearer ${userData[0].access}`,
+                },
+            })
+            const updatedData = await axios.get(`/api/roomTypes/${roomType_id}/`)
+            setCodeToUpdate(updatedData.data.room_code)
+            setNameToUpdate(updatedData.data.room_name)
+            setOpenEdit(!openEdit)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     async function updateRoomTypeWithFloorFinish(addedItem) {
-        console.log("Updating Room Type with Floor Finish. Added Item:", addedItem)
         try {
             await axios.patch(`/api/roomTypes/${roomType_id}/`, { floorFinishes: addedItem }, {
                 headers: {
@@ -103,14 +122,12 @@ export default function SingleRoomType() {
                 }
             })
             const updatedData = await axios.get(`/api/floorFinishes/${addedItem}/`)
-            console.log(updatedData.data)
             setFloorFinishesToUpdate(updatedData.data)
             setOpenFloorFinishUpload(!openFloorFinishUpload)
         } catch (error) {
             console.log(error)
         }
     }
-    console.log("Component Re-rendered!")
 
     return (
         <>
@@ -126,7 +143,7 @@ export default function SingleRoomType() {
                         <Col sm={3} className="indImgColumn" style={{ backgroundImage: `url(${room_img})` }}></Col>
                     }
                     <Col className="indInfoColumn">
-                        <Row className='page-title'><h1>{room_code} || {room_name}</h1></Row>
+                        <Row className='page-title'><h1><button className='submitBtn' style={{ fontSize: '1rem' }} onClick={handleOpenEdit}>edit</button>{codeToUpdate} || {nameToUpdate}</h1></Row>
                         <Row className='section-separation'><h4>Room Type Characteristics</h4>
                         </Row>
                         <Row>
@@ -183,6 +200,25 @@ export default function SingleRoomType() {
                             <Modal.Body className="modal-container">
                                 <>
                                     <PageFloorFinishes addItem={true} roomType_id={roomType_id} updateRoomTypeWithFloorFinish={updateRoomTypeWithFloorFinish} />
+                                </>
+                            </Modal.Body>
+                        </Modal>
+
+                        {/* Modal to EDIT code and name */}
+                        <Modal
+                            size="lg"
+                            show={openEdit}
+                            onHide={handleCloseEdit}
+                            aria-labelledby="example-modal-sizes-title-lg"
+                        >
+                            <Modal.Header closeButton>
+                                <Modal.Title id="example-modal-sizes-title-lg">
+                                    Edit
+                                </Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body className="modal-container">
+                                <>
+                                    <UploadEditRT roomType_id={roomType_id} edit={edit} />
                                 </>
                             </Modal.Body>
                         </Modal>
