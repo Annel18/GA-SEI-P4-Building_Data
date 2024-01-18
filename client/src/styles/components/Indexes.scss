@@ -3,10 +3,14 @@
     background-color: white;
     // margin: 5em;
     padding: 2em;
+    width: 100vw;
     }
 
 .container-grid {
     margin: 1em;
+    background-color: white;
+    margin: 0;
+    width: -webkit-fill-available;
 }
 
 .filter-bar {
@@ -30,6 +34,9 @@
     }
 }
 
+.rails {
+    aspect-ratio: 1/1;
+}
 
 .items-list {
     .single-container {
@@ -41,7 +48,7 @@
         // width: auto;
         
         .thumbnail {
-            padding: 1em;
+            // padding: 1em;
             text-align: right;
             height: 90%;
             width: 90%;

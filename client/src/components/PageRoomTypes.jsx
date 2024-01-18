@@ -88,16 +88,15 @@ export default function PageRoomTypes({ building, display, updateBldg, selection
                     ? (
                         <section className='index-page'>
                             <Container fluid className="container-grid">
-                                <FormControl style={{ marginBottom: '2em', display:display }}>
+                                <FormControl style={{ marginBottom: '2em', display: display }}>
                                     <RadioGroup
                                         row
                                         aria-labelledby="demo-row-radio-buttons-group-label"
                                         name="row-radio-buttons-group"
-                                    value={addType}
-                                    onChange={handleChangeRoomUploadType}
-                                >
-                                    {/* <FormControlLabel value="add" control={<Radio />} label="Add to Building" /> */}
-                                    <FormControlLabel value="create" control={<Radio />} label="Add duplicate" />
+                                        value={addType}
+                                        onChange={handleChangeRoomUploadType}
+                                    >
+                                        <FormControlLabel value="create" control={<Radio />} label="Add duplicate" />
                                     </RadioGroup>
                                 </FormControl>
                                 <Row className="items-list">
@@ -111,7 +110,7 @@ export default function PageRoomTypes({ building, display, updateBldg, selection
                     : (
                         <section className='index-page'>
                             <Container fluid className="container-grid">
-                                <FormControl style={{ marginBottom: '2em' }}>
+                                <FormControl style={{ marginBottom: '2em', display: display }}>
                                     <RadioGroup
                                         row
                                         aria-labelledby="demo-row-radio-buttons-group-label"
@@ -119,7 +118,6 @@ export default function PageRoomTypes({ building, display, updateBldg, selection
                                         value={addType}
                                         onChange={handleChangeRoomUploadType}
                                     >
-                                        <FormControlLabel value="add" control={<Radio />} label="Add to Building" />
                                         <FormControlLabel value="create" control={<Radio />} label="Add duplicate" />
                                     </RadioGroup>
                                 </FormControl>

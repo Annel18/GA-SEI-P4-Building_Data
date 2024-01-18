@@ -5,7 +5,7 @@ import IndexFfes from "./IndexFfes"
 import UploadDivFFE from "./UploadDivFFE"
 
 //! Styles
-import Container from "react-bootstrap/esm/Container"
+import Row from "react-bootstrap/esm/Container"
 import Modal from 'react-bootstrap/Modal'
 
 export default function PageFFEs({ roomType_id, display, updateRT }) {
@@ -21,7 +21,7 @@ export default function PageFFEs({ roomType_id, display, updateRT }) {
     useEffect(() => {
         async function getFfesData() {
             try {
-                const res = await axios.get('/api/ffes')
+                const res = await axios.get('/api/ffes/')
                 const sortedData = res.data.sort((a, b) => a.ffe_code.localeCompare(b.ffe_code))
                 setFfes(sortedData)
             } catch (error) {
@@ -29,7 +29,7 @@ export default function PageFFEs({ roomType_id, display, updateRT }) {
             }
         }
         getFfesData()
-    }, [])
+    }, [open])
 
     //! Functions
     async function search(e) {
@@ -40,7 +40,7 @@ export default function PageFFEs({ roomType_id, display, updateRT }) {
             const inputValue = e.target.elements.searchField.value
             const pattern = new RegExp(inputValue, 'i')
             // Getting All ffes data and filtering it
-            const res = await axios.get('/api/ffes')
+            const res = await axios.get('/api/ffes/')
             const rawFfesData = res.data.sort((a, b) => a.ffe_code.localeCompare(b.ffe_code))
             const filteredFfesData = rawFfesData.filter(item => pattern.test(item.ffe_name))
             setSearchData({ ffesDataSearch: filteredFfesData })
@@ -53,7 +53,7 @@ export default function PageFFEs({ roomType_id, display, updateRT }) {
     return (
         <>
             <div className="filter-bar">
-                <form onSubmit={search} className="filter-seach">
+                <form onSubmit={search}>
                     <input
                         type="text"
                         name="searchField"
@@ -74,32 +74,32 @@ export default function PageFFEs({ roomType_id, display, updateRT }) {
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body className="modal-container">
-                        <UploadDivFFE roomType_id={roomType_id} updateRT={updateRT}/>
+                        <UploadDivFFE roomType_id={roomType_id} updateRT={updateRT} />
                     </Modal.Body>
                 </Modal>
             </div >
             {
                 searchData.ffesDataSearch.length === 0
                     ? (
-                        <>
-                            <Container fluid className="container-grid" >
-                            <div className='ffe-list'><h5>Code</h5><h5>Name</h5><h5>GROUP</h5><h5 style={{display:display}}>add</h5></div>
+                        <section className='index-page'>
+                            <Row fluid className="container-grid">
+                                <div className='ffe-list'><h5>Code</h5><h5>Name</h5><h5>GROUP</h5><h5 style={{ display: display }}>add</h5></div>
                                 {ffes.map(ffe => (
-                                    <IndexFfes ffe_id={ffe.id} key={ffe.id} roomType_id={roomType_id} updateRT={updateRT} display={display}/>
+                                    <IndexFfes ffe_id={ffe.id} key={ffe.id} roomType_id={roomType_id} updateRT={updateRT} display={display} />
                                 ))}
 
-                            </Container>
-                        </>
+                            </Row>
+                        </section>
                     )
                     : (
-                        <>
-                        <Container fluid className="container-grid" >
-                            <div className='ffe-list'><h5>Code</h5><h5>Name</h5><h5>GROUP</h5><h5 style={{display:display}}>add</h5></div>
-                            {searchData.ffesDataSearch.map(ffe => {
-                                <IndexFfes ffe_id={ffe.id} key={ffe.id} roomType_id={roomType_id} updateRT={updateRT} display={display} />
-                            })}
-                        </Container>
-                        </>
+                        <section className='index-page'>
+                            <Row fluid className="container-grid">
+                                <div className='ffe-list'><h5>Code</h5><h5>Name</h5><h5>GROUP</h5><h5 style={{ display: display }}>add</h5></div>
+                                {searchData.ffesDataSearch.map(ffe => (
+                                    <IndexFfes ffe_id={ffe.id} key={ffe.id} roomType_id={roomType_id} updateRT={updateRT} display={display} />
+                                ))}
+                            </Row>
+                        </section>
                     )
             }
         </>

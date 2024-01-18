@@ -42,7 +42,7 @@ export default function PageBuildings() {
             const inputValue = e.target.elements.searchField.value
             const pattern = new RegExp(inputValue, 'i')
             // Getting All buildings data and filtering it
-            const res = await axios.get('/api/buildings')
+            const res = await axios.get('/api/buildings/')
             const rawBuildingsData = res.data.sort((a, b) => a.bldg_code.localeCompare(b.bldg_code))
             const filteredBuildingsData = rawBuildingsData.filter(item => pattern.test(item.bldg_name))
             setSearchData({ buildingsDataSearch: filteredBuildingsData })
@@ -57,7 +57,6 @@ export default function PageBuildings() {
             <div className="filter-bar">
                 <form onSubmit={search} >
                     <input
-                        // className="filter-seach"
                         type="text"
                         name="searchField"
                         placeholder="Search by name..."

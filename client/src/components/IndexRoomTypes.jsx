@@ -28,24 +28,24 @@ export default function IndexRoomTypes({ roomType_id, display, selection }) {
                 s={6}
                 md={4}
                 lg={3}
-                xl={2}
+                xl={3}
                 to={`/roomTypes/${roomTypes.id}`}
             >
-                <div className="rails" style={{ height: '200px', paddingBottom: '3em' }}>
+                <div className="rails">
                     <div
                         className="thumbnail"
                         to={`/roomTypes/${roomTypes.id}`}
                         style={{ backgroundImage: `url(${roomTypes.room_img})` }}>
-                        <h3
+                        <button
                             style={{ display: display }}
+                            className='submitBtn'
                             onClick={(e) => {
                                 e.preventDefault()
-                                e.target.innerText === '✅'
                                 const createdRoom = roomType_id
                                 selection(createdRoom)
                             }
                             }
-                        >☑️</h3>
+                        >Add</button>
                     </div>
                     <div>
                         <h5>{roomTypes.room_code}</h5>
