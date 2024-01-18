@@ -2,11 +2,15 @@ from django.db import models
 
 # Create your models here.
 class RoomType(models.Model):
-    room_code = models.CharField(unique=True)
-    room_name = models.CharField()
+    room_code = models.CharField(unique=True, max_length=255)
+    room_name = models.CharField(max_length=255)
     area = models.FloatField(blank=True, null=True)
     height = models.FloatField(blank=True, null=True)
-    room_img = models.CharField(blank=True, null=True)
+    room_img = models.CharField(
+        max_length=2000,
+        blank=True,
+        null=True
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     ffes = models.ManyToManyField(

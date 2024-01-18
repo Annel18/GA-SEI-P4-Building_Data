@@ -67,7 +67,7 @@ export default function UploadDivRT({ selection }) {
                 <input type="text" name="room_code" placeholder='Code of Room Type' value={inputs.room_code || ''} onChange={handleChange} required />
                 <label hidden htmlFor="room_name">room_name</label>
                 <input type="text" name="room_name" placeholder='Name of Room Type' value={inputs.room_name || ''} onChange={handleChange} required />
-                <label hidden htmlFor="area">Width</label>
+                <label hidden htmlFor="area">Area</label>
                 <input type="number" name="area" placeholder='Area in m2' value={inputs.area || ''} onChange={handleChange} required />
                 <label hidden htmlFor="height">Height</label>
                 <input type="number" name="height" placeholder='Height in mm' value={inputs.height || ''} onChange={handleChange} required />
