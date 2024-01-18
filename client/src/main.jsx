@@ -11,6 +11,7 @@ import PageRoomTypes from './components/PageRoomTypes.jsx'
 import PageFFEs from './components/PageFFEs.jsx'
 import SingleBuilding from './components/SingleBuilding.jsx'
 import SingleRoomType from './components/SingleRoomType.jsx'
+import PageProfile from './components/PageProfile.jsx'
 // import IndexRoomTypes from './components/IndexRoomTypes.jsx'
 // import IndexFfes from './components/IndexFfes.jsx'
 
@@ -66,7 +67,8 @@ const router = createBrowserRouter([
             },
             {
                 path: '/profile/',
-                // element: <Profile />,
+                element: <PageProfile />,
+                // loader: async () => getLoggedInUser()
             },
             {
                 path: '/login/',

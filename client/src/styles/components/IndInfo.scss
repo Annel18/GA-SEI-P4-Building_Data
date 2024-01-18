@@ -6,6 +6,7 @@
 .indInfoColumn {
     background-color: white;
     padding: 5em;
+    @include boxShadow();
     // margin-left: 5em;
 }
 

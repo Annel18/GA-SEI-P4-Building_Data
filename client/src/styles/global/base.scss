@@ -49,5 +49,6 @@ form {
 }
 
 .spinner {
+    padding-top: 5em;
     @include flex(row, center, center);
 }

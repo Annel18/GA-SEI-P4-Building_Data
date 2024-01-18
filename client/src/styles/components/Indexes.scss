@@ -39,8 +39,10 @@
         padding-bottom: 5em;
         box-shadow: 10px;
         // width: auto;
-
+        
         .thumbnail {
+            padding: 1em;
+            text-align: right;
             height: 90%;
             width: 90%;
             border: 10px solid;
