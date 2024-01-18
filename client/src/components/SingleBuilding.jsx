@@ -5,7 +5,7 @@ import { useOutletContext } from 'react-router-dom'
 import { useState } from "react"
 
 //! Components
-import FilterBarRT from './FilterBarRT'
+import PageRoomTypes from './PageRoomTypes'
 
 //! Styles
 import Container from 'react-bootstrap/Container'
@@ -14,7 +14,7 @@ import Col from 'react-bootstrap/Col'
 import Modal from 'react-bootstrap/Modal'
 
 
-export default function IndBldg() {
+export default function SingleBuilding() {
     //! States
     const userData = useOutletContext()
     const [addType, setAddType] = useState('')
@@ -154,7 +154,7 @@ export default function IndBldg() {
                                 </Modal.Title>
                             </Modal.Header>
                             <Modal.Body className="modal-container">
-                                <FilterBarRT addItem={true} building={indBldg} updateBldg={updateBldg} selection={selection} createRT={createRT} handleChangeRoomUploadType={handleChangeRoomUploadType} />
+                                <PageRoomTypes addItem={true} building={indBldg} updateBldg={updateBldg} selection={selection} createRT={createRT} handleChangeRoomUploadType={handleChangeRoomUploadType} />
                             </Modal.Body>
                         </Modal>
                         <Container fluid className="container-grid">

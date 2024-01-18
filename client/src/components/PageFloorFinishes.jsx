@@ -10,7 +10,7 @@ import Container from "react-bootstrap/esm/Container"
 import Row from "react-bootstrap/esm/Row"
 import Modal from 'react-bootstrap/Modal'
 
-export default function FilterBarFloorFinish({ roomType_id, addItem, updateRoomTypeWithFloorFinish }) {
+export default function PageFloorFinishes({ roomType_id, addItem, updateRoomTypeWithFloorFinish }) {
     //! States
     const [searchData, setSearchData] = useState({ dataSearch: [] })
     const [floorFinishes, setFloorFinishes] = useState([])

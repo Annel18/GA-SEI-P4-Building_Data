@@ -2,7 +2,6 @@ import axios from "axios"
 import { useState, useEffect } from "react"
 // import { Link } from "react-router-dom"
 import IndexBuildings from "./IndexBldgs"
-// import FilterBar from "./FilterBarRT"
 //! Styles
 // import Col from "react-bootstrap/esm/Col"
 import Container from "react-bootstrap/esm/Container"
@@ -11,7 +10,7 @@ import Modal from 'react-bootstrap/Modal'
 import UploadDivBldg from "./UploadDivBldg"
 
 
-export default function FilterBarBldg() {
+export default function PageBuildings() {
     //! States
     const [searchData, setSearchData] = useState({ buildingsDataSearch: [] })
     const [buildings, setBuildings] = useState([])

@@ -1,6 +1,6 @@
 import Login from "./Login"
 import RegisterUser from "./RegisterUser"
-export default function Home() {
+export default function PageHome() {
 
     return (
         <section className="hero">

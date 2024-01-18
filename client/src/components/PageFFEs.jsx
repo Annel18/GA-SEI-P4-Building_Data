@@ -8,7 +8,7 @@ import UploadDivFFE from "./UploadDivFFE"
 import Container from "react-bootstrap/esm/Container"
 import Modal from 'react-bootstrap/Modal'
 
-export default function FilterBarFFE({ roomType_id, addItem, updateRT }) {
+export default function PageFFES({ roomType_id, addItem, updateRT }) {
     //! States
     const [searchData, setSearchData] = useState({ ffesDataSearch: [] })
     const [ffes, setFfes] = useState([])

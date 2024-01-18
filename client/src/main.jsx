@@ -3,14 +3,14 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 //! Components
 import App from './App.jsx'
-import Home from './components/Home.jsx'
+import PageHome from './components/PageHome.jsx'
 import Login from './components/Login.jsx'
 import RegisterUser from './components/RegisterUser.jsx'
-import FilterBarBldg from './components/FilterBarBldg.jsx'
-import FilterBarRT from './components/FilterBarRT.jsx'
-import FilterBarFFE from './components/FilterBarFFE.jsx'
-import IndBldg from './components/SglBldg.jsx'
-import IndRT from './components/SglRT.jsx'
+import PageBuildings from './components/PageBuildings.jsx'
+import PageRoomTypes from './components/PageRoomTypes.jsx'
+import PageFFES from './components/PageFFES.jsx'
+import SingleBuilding from './components/SingleBuilding.jsx'
+import SingleRoomType from './components/SingleRoomType.jsx'
 // import IndexRoomTypes from './components/IndexRoomTypes.jsx'
 // import IndexFfes from './components/IndexFfes.jsx'
 
@@ -30,32 +30,32 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <Home />,
+                element: <PageHome />,
                 // loader: getTvIndex,
             },
             {
                 path: "/buildings",
-                element: <FilterBarBldg />,
+                element: <PageBuildings />,
                 // loader: getTvIndex,
             },
             {
                 path: "/buildings/:bldgId",
-                element: <IndBldg />,
+                element: <SingleBuilding />,
                 loader: async ({ params }) => getIndBuilding(params.bldgId)
             },
             {
                 path: "/roomTypes/:roomTypeId",
-                element: <IndRT />,
+                element: <SingleRoomType />,
                 loader: async ({ params }) => getIndRoomType(params.roomTypeId)
             },
             {
                 path: "/roomTypes",
-                element: <FilterBarRT />,
+                element: <PageRoomTypes />,
                 // loader: getTvIndex,
             },
             {
                 path: "/ffes",
-                element: <FilterBarFFE />,
+                element: <PageFFES />,
                 // loader: getTvIndex,
             },
             {

@@ -5,8 +5,8 @@ import { useOutletContext } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
 //! Components
-import FilterBarFFE from './FilterBarFFE'
-import FilterBarFloorFinish from './FilterBarFloorFinish'
+import PageFFES from './PageFFES'
+import PageFloorFinishes from './PageFloorFinishes'
 
 //! Styles
 import Container from 'react-bootstrap/Container'
@@ -14,7 +14,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Modal from 'react-bootstrap/Modal'
 
-export default function IndRT() {
+export default function SingleRoomType() {
     const userData = useOutletContext()
     const builingPreviousPageId = localStorage.getItem('previousPageId')
     const builingPreviousPageName = localStorage.getItem('previousPageName')
@@ -161,7 +161,7 @@ export default function IndRT() {
                             </Modal.Header>
                             <Modal.Body className="modal-container">
                                 <>
-                                    <FilterBarFFE addItem={true} roomType_id={roomType_id} updateRT={updateRT} />
+                                    <PageFFES addItem={true} roomType_id={roomType_id} updateRT={updateRT} />
                                 </>
                             </Modal.Body>
                         </Modal>
@@ -180,7 +180,7 @@ export default function IndRT() {
                             </Modal.Header>
                             <Modal.Body className="modal-container">
                                 <>
-                                    <FilterBarFloorFinish addItem={true} roomType_id={roomType_id} updateRoomTypeWithFloorFinish={updateRoomTypeWithFloorFinish} />
+                                    <PageFloorFinishes addItem={true} roomType_id={roomType_id} updateRoomTypeWithFloorFinish={updateRoomTypeWithFloorFinish} />
                                 </>
                             </Modal.Body>
                         </Modal>

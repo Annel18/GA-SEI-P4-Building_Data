@@ -13,7 +13,7 @@ import RadioGroup from '@mui/material/RadioGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormControl from '@mui/material/FormControl'
 
-export default function FilterBarRT({ building, addItem, updateBldg, selection, createRT, addType, handleChangeRoomUploadType }) {
+export default function PageRoomTypes({ building, addItem, updateBldg, selection, createRT, addType, handleChangeRoomUploadType }) {
     //! States
     const [searchData, setSearchData] = useState({ roomTypesDataSearch: [] })
     const [roomTypes, setRoomTypes] = useState([])
