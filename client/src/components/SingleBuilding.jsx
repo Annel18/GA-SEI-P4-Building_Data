@@ -129,7 +129,10 @@ export default function SingleBuilding() {
             </nav>
             <Container className="ind-Container" fluid>
                 <Row>
-                    {bldg_img &&
+                    {!bldg_img?
+                    
+                    <Col sm={3} className="indImgColumn imagePlaceHolder" /*style={{ backgroundImage: `url(https://www.clevelandohio.gov/themes/custom/clevelandohio/img/landmark-placeholder.png)` }}*/></Col>
+                    :
                         <Col sm={3} className="indImgColumn" style={{ backgroundImage: `url(${bldg_img})` }}></Col>
                     }
                     <Col className="indInfoColumn">

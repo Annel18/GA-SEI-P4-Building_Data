@@ -5,7 +5,7 @@ import { useOutletContext } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
 //! Components
-import PageFFES from './PageFFES'
+import PageFFES from './PageFFEs'
 import PageFloorFinishes from './PageFloorFinishes'
 
 //! Styles
@@ -120,7 +120,9 @@ export default function SingleRoomType() {
             </nav>
             <Container className="ind-Container" fluid>
                 <Row>
-                    {room_img &&
+                    {!room_img ?
+                        <Col sm={3} className="indImgColumn imagePlaceHolder"></Col>
+                        :
                         <Col sm={3} className="indImgColumn" style={{ backgroundImage: `url(${room_img})` }}></Col>
                     }
                     <Col className="indInfoColumn">
@@ -132,7 +134,7 @@ export default function SingleRoomType() {
                                 <p><b>Area: </b>{area}m<sup>2</sup> <button className='submitBtn'>edit</button ></p>
                                 <p><b>Height: </b>{height}mm <button className='submitBtn'>edit</button ></p>
                                 <p><b>Flooring: </b>
-                                    {floorFinishesToUpdate &&floorFinishesToUpdate.spec_code} - {floorFinishesToUpdate &&floorFinishesToUpdate.spec_name}
+                                    {floorFinishesToUpdate && floorFinishesToUpdate.spec_code} - {floorFinishesToUpdate && floorFinishesToUpdate.spec_name}
                                     <button className='submitBtn' onClick={handleOpenFloorFinishUpload}>edit</button></p>
                                 <p><b>Wall finish: </b> { } - { } <button className='submitBtn'>edit</button></p>
                                 <p><b>Ceilings: </b> { } - { } <button className='submitBtn'>edit</button ></p>
@@ -161,7 +163,7 @@ export default function SingleRoomType() {
                             </Modal.Header>
                             <Modal.Body className="modal-container">
                                 <>
-                                    <PageFFES addItem={true} roomType_id={roomType_id} updateRT={updateRT} />
+                                    <PageFFES display={true} roomType_id={roomType_id} updateRT={updateRT} />
                                 </>
                             </Modal.Body>
                         </Modal>

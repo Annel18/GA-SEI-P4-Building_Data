@@ -23,7 +23,9 @@ export default function App() {
                     navigation.state === 'idle' ?
                         <Outlet context={[userData, setUserData]} />
                         :
-                        <Spinner />
+                        <section className='spinner'>
+                            <Spinner />
+                        </section>
                 }
             </main>
         </>

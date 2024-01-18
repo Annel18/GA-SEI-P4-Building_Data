@@ -13,14 +13,14 @@ import RadioGroup from '@mui/material/RadioGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormControl from '@mui/material/FormControl'
 
-export default function PageRoomTypes({ building, addItem, updateBldg, selection, createRT, addType, handleChangeRoomUploadType }) {
+export default function PageRoomTypes({ building, display, updateBldg, selection, createRT, addType, handleChangeRoomUploadType }) {
     //! States
     const [searchData, setSearchData] = useState({ roomTypesDataSearch: [] })
     const [roomTypes, setRoomTypes] = useState([])
     const [open, setOpen] = useState(false)
     const handleOpen = () => setOpen(true)
     const handleClose = () => setOpen(false)
-    
+
 
     //! Effects
     useEffect(() => {
@@ -79,13 +79,36 @@ export default function PageRoomTypes({ building, addItem, updateBldg, selection
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body className="modal-container">
-                        <UploadDivRT building={building} updateBldg={updateBldg} selection={selection} createRT={createRT}/>
+                        <UploadDivRT building={building} updateBldg={updateBldg} selection={selection} createRT={createRT} />
                     </Modal.Body>
                 </Modal>
             </div>
             {
                 searchData.roomTypesDataSearch.length === 0
                     ? (
+                        <section className='index-page'>
+                            <Container fluid className="container-grid">
+                                <FormControl style={{ marginBottom: '2em', display:display }}>
+                                    <RadioGroup
+                                        row
+                                        aria-labelledby="demo-row-radio-buttons-group-label"
+                                        name="row-radio-buttons-group"
+                                    value={addType}
+                                    onChange={handleChangeRoomUploadType}
+                                >
+                                    {/* <FormControlLabel value="add" control={<Radio />} label="Add to Building" /> */}
+                                    <FormControlLabel value="create" control={<Radio />} label="Add duplicate" />
+                                    </RadioGroup>
+                                </FormControl>
+                                <Row className="items-list">
+                                    {roomTypes.map(roomType => (
+                                        <IndexRoomTypes key={roomType.id} roomType_id={roomType.id} display={display} selection={selection} />
+                                    ))}
+                                </Row>
+                            </Container>
+                        </section>
+                    )
+                    : (
                         <section className='index-page'>
                             <Container fluid className="container-grid">
                                 <FormControl style={{ marginBottom: '2em' }}>
@@ -101,31 +124,8 @@ export default function PageRoomTypes({ building, addItem, updateBldg, selection
                                     </RadioGroup>
                                 </FormControl>
                                 <Row className="items-list">
-                                    {roomTypes.map(roomType => (
-                                        <IndexRoomTypes key={roomType.id} roomType_id={roomType.id} addItem={addItem} selection={selection} />
-                                    ))}
-                                </Row>
-                            </Container>
-                        </section>
-                    )
-                    : (
-                        <section className='index-page'>
-                            <Container fluid className="container-grid">
-                            <FormControl style={{ marginBottom: '2em' }}>
-                                    <RadioGroup
-                                        row
-                                        aria-labelledby="demo-row-radio-buttons-group-label"
-                                        name="row-radio-buttons-group"
-                                        value={addType}
-                                        onChange={handleChangeRoomUploadType}
-                                    >
-                                        <FormControlLabel value="add" control={<Radio />} label="Add to Building" />
-                                        <FormControlLabel value="create" control={<Radio />} label="Add duplicate" />
-                                    </RadioGroup>
-                                </FormControl>
-                                <Row className="items-list">
                                     {searchData.roomTypesDataSearch.map(roomType => (
-                                        <IndexRoomTypes key={roomType.id} roomType_id={roomType.id} addItem={addItem} selection={selection} />
+                                        <IndexRoomTypes key={roomType.id} roomType_id={roomType.id} display={display} selection={selection} />
                                     ))}
                                 </Row>
                             </Container>

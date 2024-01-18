@@ -8,13 +8,14 @@ import UploadDivFFE from "./UploadDivFFE"
 import Container from "react-bootstrap/esm/Container"
 import Modal from 'react-bootstrap/Modal'
 
-export default function PageFFES({ roomType_id, addItem, updateRT }) {
+export default function PageFFEs({ roomType_id, display, updateRT }) {
     //! States
     const [searchData, setSearchData] = useState({ ffesDataSearch: [] })
     const [ffes, setFfes] = useState([])
     const [open, setOpen] = useState(false)
     const handleOpen = () => setOpen(true)
     const handleClose = () => setOpen(false)
+
 
     //! Effects
     useEffect(() => {
@@ -82,9 +83,9 @@ export default function PageFFES({ roomType_id, addItem, updateRT }) {
                     ? (
                         <>
                             <Container fluid className="container-grid" >
-                            <div className='ffe-list'><h5>Code</h5><h5>Name</h5><h5>GROUP</h5><h5>add</h5></div>
+                            <div className='ffe-list'><h5>Code</h5><h5>Name</h5><h5>GROUP</h5><h5 style={{display:display}}>add</h5></div>
                                 {ffes.map(ffe => (
-                                    <IndexFfes ffe_id={ffe.id} key={ffe.id} addItem={addItem} roomType_id={roomType_id} updateRT={updateRT} />
+                                    <IndexFfes ffe_id={ffe.id} key={ffe.id} roomType_id={roomType_id} updateRT={updateRT} display={display}/>
                                 ))}
 
                             </Container>
@@ -93,9 +94,9 @@ export default function PageFFES({ roomType_id, addItem, updateRT }) {
                     : (
                         <>
                         <Container fluid className="container-grid" >
-                            <div className='ffe-list'><h5>Code</h5><h5>Name</h5><h5>GROUP</h5><h5>add</h5></div>
+                            <div className='ffe-list'><h5>Code</h5><h5>Name</h5><h5>GROUP</h5><h5 style={{display:display}}>add</h5></div>
                             {searchData.ffesDataSearch.map(ffe => {
-                                <IndexFfes ffe_id={ffe.id} key={ffe.id} addItem={addItem} roomType_id={roomType_id} updateRT={updateRT} />
+                                <IndexFfes ffe_id={ffe.id} key={ffe.id} roomType_id={roomType_id} updateRT={updateRT} display={display} />
                             })}
                         </Container>
                         </>

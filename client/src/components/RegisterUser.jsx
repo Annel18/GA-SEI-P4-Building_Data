@@ -2,8 +2,6 @@ import { useState } from "react"
 import { useNavigate, useOutletContext } from "react-router-dom"
 import axios from "axios"
 
-import { FormLabel } from '@mui/material'
-
 export default function RegisterUser() {
     // State
     const [errorMessage, setErrorMessage] = useState('')

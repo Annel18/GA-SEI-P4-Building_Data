@@ -9,14 +9,14 @@ from lib.permissions import IsOwnerOrReadOnly
 # Path: /buildings/
 # Methods: GET, POST
 class BuildingListCreateView(OwnerListCreateView):
-    queryset = Building.objects.all()
+    queryset = Building.objects.prefetch_related('roomTypes').all()
     serializer_class = BuildingSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
 
 # Path: /buildings/:id
 # Methods: GET, PUT/PATCH, DELETE
 class BuildingDetailView(RetrieveUpdateDestroyAPIView):
-    queryset = Building.objects.all()
+    queryset = Building.objects.prefetch_related('roomTypes').all()
     # serializer_class = BuildingSerializer
     permission_classes = [IsOwnerOrReadOnly]
 

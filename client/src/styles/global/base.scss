@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-    font-family: 'Termina Test', 'Nunito', sans-serif;
+    font-family: 'Termina Test', sans-serif;
 }
 
 html {
@@ -46,4 +46,8 @@ form button:hover {
 
 form {
     @include flex(column, center, center);
+}
+
+.spinner {
+    @include flex(row, center, center);
 }

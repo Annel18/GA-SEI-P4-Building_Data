@@ -1,7 +1,7 @@
 .index-page {
     @include flex(row, flex-start, flex-start);
     background-color: white;
-    margin: 5em;
+    // margin: 5em;
     padding: 2em;
     }
 
@@ -71,4 +71,8 @@
 
 .table-content {
     padding-right: 5em;
+}
+
+.css-ahj2mt-MuiTypography-root{
+    font-family: 'Termina Test', sans-serif;;
 }

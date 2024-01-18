@@ -12,7 +12,12 @@
 .indImgColumn {
     background-size: contain;
     background-repeat: no-repeat;
+}
 
+.imagePlaceHolder {
+    background-color: rgba($color: #ffffff, $alpha: 0.5);
+    background-image: url(https://www.clevelandohio.gov/themes/custom/clevelandohio/img/landmark-placeholder.png);
+    background-blend-mode: color;
 }
 
 .page-title {

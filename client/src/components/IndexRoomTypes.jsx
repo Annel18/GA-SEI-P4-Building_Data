@@ -6,7 +6,7 @@ import { getIndRoomType } from "../utils/loaders/roomTypesLoader"
 //! Styling 
 import Col from 'react-bootstrap/Col'
 
-export default function IndexRoomTypes({ roomType_id, addItem, selection }) {
+export default function IndexRoomTypes({ roomType_id, display, selection }) {
     //! States
     const [roomTypes, setRoomTypes] = useState([])
 
@@ -37,7 +37,7 @@ export default function IndexRoomTypes({ roomType_id, addItem, selection }) {
                         to={`/roomTypes/${roomTypes.id}`}
                         style={{ backgroundImage: `url(${roomTypes.room_img})` }}>
                         <h3
-                            style={{ display: addItem }}
+                            style={{ display: display }}
                             onClick={(e) => {
                                 e.preventDefault()
                                 e.target.innerText === '✅'

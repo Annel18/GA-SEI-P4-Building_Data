@@ -52,15 +52,27 @@ export default function IndexBuildings({ id, crossDisplay, setToDelete }) {
                 to={`/buildings/${buildings.id}`}
             >
                 <div className="rails" style={{ height: '200px', paddingBottom: '3em' }}>
-                    <div
-                        className="thumbnail"
-                        to={`/buildings/${buildings.id}`}
-                        style={{ backgroundImage: `url(${buildings.bldg_img})` }}>
-                        <h3
-                            style={{ display: crossDisplay }}
-                            onClick={deleteBldg}
-                        >❌</h3>
-                    </div>
+                    {!buildings.bldg_img
+                        ?
+                        <div
+                            className="thumbnail imagePlaceHolder"
+                            to={`/buildings/${buildings.id}`}>
+                            <h3
+                                style={{ display: crossDisplay }}
+                                onClick={deleteBldg}
+                            >❌</h3>
+                        </div>
+                        :
+                        <div
+                            className="thumbnail"
+                            to={`/buildings/${buildings.id}`}
+                            style={{ backgroundImage: `url(${buildings.bldg_img})` }}>
+                            <h3
+                                style={{ display: crossDisplay }}
+                                onClick={deleteBldg}
+                            >❌</h3>
+                        </div>
+                    }
                     <div>
                         <h5>{buildings.bldg_code}</h5>
                         <p>{buildings.bldg_name}</p>

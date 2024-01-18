@@ -8,7 +8,7 @@ import Login from './components/Login.jsx'
 import RegisterUser from './components/RegisterUser.jsx'
 import PageBuildings from './components/PageBuildings.jsx'
 import PageRoomTypes from './components/PageRoomTypes.jsx'
-import PageFFES from './components/PageFFES.jsx'
+import PageFFEs from './components/PageFFEs.jsx'
 import SingleBuilding from './components/SingleBuilding.jsx'
 import SingleRoomType from './components/SingleRoomType.jsx'
 // import IndexRoomTypes from './components/IndexRoomTypes.jsx'
@@ -29,53 +29,51 @@ const router = createBrowserRouter([
         element: <App />,
         children: [
             {
-                path: "/",
+                path: '/',
                 element: <PageHome />,
                 // loader: getTvIndex,
             },
             {
-                path: "/buildings",
+                path: '/buildings',
                 element: <PageBuildings />,
                 // loader: getTvIndex,
             },
             {
-                path: "/buildings/:bldgId",
+                path: '/buildings/:bldgId',
                 element: <SingleBuilding />,
                 loader: async ({ params }) => getIndBuilding(params.bldgId)
             },
             {
-                path: "/roomTypes/:roomTypeId",
+                path: '/roomTypes/:roomTypeId',
                 element: <SingleRoomType />,
                 loader: async ({ params }) => getIndRoomType(params.roomTypeId)
             },
             {
-                path: "/roomTypes",
-                element: <PageRoomTypes />,
-                // loader: getTvIndex,
+                path: '/roomTypes/',
+                element: <PageRoomTypes display={'none'} />,
             },
             {
-                path: "/ffes",
-                element: <PageFFES />,
-                // loader: getTvIndex,
+                path: '/ffes/',
+                element: <PageFFEs display={'none'} />,
             },
             {
-                path: '/about',
+                path: '/about/',
                 // element: <About />,
             },
             {
-                path: '/resources',
-                // element: <About />,
+                path: '/resources/',
+                // element: <Resources />,
             },
             {
-                path: '/profile',
+                path: '/profile/',
                 // element: <Profile />,
             },
             {
-                path: '/login',
+                path: '/login/',
                 element: <Login />
             },
             {
-                path: '/register',
+                path: '/register/',
                 element: <RegisterUser />,
             }
         ]

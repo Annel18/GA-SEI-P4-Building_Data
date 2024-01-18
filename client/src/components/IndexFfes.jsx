@@ -12,7 +12,7 @@ import { getIndFfe } from "../utils/loaders/ffesLoader"
 // import Col from 'react-bootstrap/Col'
 import Col from 'react-bootstrap/Col'
 
-export default function IndexFfes({ ffe_id, addItem, updateRT }) {
+export default function IndexFfes({ ffe_id, updateRT, display }) {
     //! States
     const [ffes, setFfes] = useState([])
     // const [roomTypes, setRoomTypes] = useState([])
@@ -49,7 +49,7 @@ export default function IndexFfes({ ffe_id, addItem, updateRT }) {
                     <p>{ffes.ffe_group}</p>
                     <button
                         className='submitBtn'
-                        style={{ display: addItem }}
+                        style={{ display: display }}
                         onClick={(e) => {
                             e.preventDefault()
                             const addedFFE = ffe_id
