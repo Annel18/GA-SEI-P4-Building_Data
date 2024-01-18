@@ -53,10 +53,10 @@ export default function Login() {
     }
 
     return (
-        <fieldset>
+        <div className="fieldset">
             {/* If user doesen't fill one or more of the fields a warning appears */}
             {errorMessage && <section className="errorMessage"><p>{errorMessage}</p></section>}
-            <FormLabel>Sign-in if you already have an account</FormLabel>
+            <label>Sign-in if you already have an account</label>
             <form action="#" onSubmit={authenticate} className="form-container">
                 <label hidden htmlFor="username">username</label>
                 <input type="text" name="username" placeholder="Username" autoComplete="off" />
@@ -64,6 +64,6 @@ export default function Login() {
                 <input type="password" name="password" placeholder="Password" autoComplete="off"/>
                 <button type="submit">Login</button>
             </form>
-        </fieldset>
+        </div>
     )
 }

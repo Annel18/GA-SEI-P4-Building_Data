@@ -3,7 +3,7 @@
     background-color: white;
     margin: 5em;
     padding: 2em;
-}
+    }
 
 .container-grid {
     margin: 1em;
@@ -13,17 +13,19 @@
     @include flex(row, center, space-between);
     padding: 1em 5em;
 
+
     .search {
         align-self: flex-start;
         // width: calc(100vw - 20em);
-    }
+            }
 
     button {
         @include button($secondary-color, white);
         padding: 1em 2em;
         // margin-right: 1em;
     }
-    button:hover{
+
+    button:hover {
         @include button(white, $secondary-color);
     }
 }
@@ -67,6 +69,6 @@
     }
 }
 
-.table-content{
+.table-content {
     padding-right: 5em;
 }

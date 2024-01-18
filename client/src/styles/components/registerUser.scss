@@ -5,8 +5,14 @@
     padding: 1em;
 }
 
-fieldset {
-    @include flex(column,center,center);
+.fieldset {
+    // @include flex(column,center,center);
+    @include boxShadow();
+    margin: 3em 0 0 0;
+    // width: auto;
+    label {
+        padding: 3em 0 0 5em;
+    }
 }
 
 input::placeholder {

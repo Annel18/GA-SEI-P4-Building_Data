@@ -1,8 +1,14 @@
 .form-container {
     padding: 1em;
-    @include flex(column, center, center);
-    legend{
-        text-align:center;
+    // @include flex(column, center, center);
+    // @include boxShadow();
+
+    legend {
+        text-align: center;
         background-color: white;
     }
+}
+
+.hero {
+    @include flex(column, center, center)
 }

@@ -72,10 +72,10 @@ export default function RegisterUser() {
     }
 
     return (
-        <fieldset>
+        <div className="fieldset">
             {/* If user doesen't fill one or more of the fields a warning appears */}
             {errorMessage && <section className="errorMessage"><p>{errorMessage}</p></section>}
-            <FormLabel>Register</FormLabel>
+            <label>Register</label>
             <form action="#" onSubmit={authenticate} className="form-container">
                 <label hidden htmlFor="name">name</label>
                 <input type="text" name="name" placeholder="First and Last Name" autoComplete="off" />
@@ -89,6 +89,6 @@ export default function RegisterUser() {
                 <input type="password" name="password_confirmation" placeholder="Confirm Password *" autoComplete="off" />
                 <button type="submit">Join!</button>
             </form>
-        </fieldset>
+        </div>
     )
 }

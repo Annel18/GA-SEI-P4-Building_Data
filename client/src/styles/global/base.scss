@@ -16,7 +16,9 @@ body {
 main {
     min-height: calc(100vh);
     // height: 100vh;
+    background-color: rgba(255,255,255,50%);
     background-image: url('https://res.cloudinary.com/ddzwh699a/image/upload/v1705247153/GA-SEI-P4-RDS/background-1920x1080.jpg');
+    background-blend-mode: overlay;
     background-position: center;
     background-repeat: none;
     background-size: contain;
