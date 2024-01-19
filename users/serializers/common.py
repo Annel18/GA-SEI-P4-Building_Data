@@ -32,10 +32,13 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         attrs = super().validate(attrs)
         return {
             **attrs,
+            "id":self.user.id,
             "username": self.user.username,
             "email": self.user.email,
-            "img":attrs.get('img'),
-            "bio":attrs.get('bio'),
+            "first_name": self.user.last_name,
+            "last_name": self.user.first_name,
+            "img":self.user.img,
+            "bio":self.user.bio,
             "permissions": self.user.user_permissions.values_list("codename", flat=True),
             "groups": self.user.groups.values_list("name", flat=True),
         }
