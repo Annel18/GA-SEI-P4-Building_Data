@@ -29,10 +29,11 @@ export default function SingleRoomType() {
     const [openFloorFinishUpload, setOpenFloorFinishUpload] = useState(false)
     const handleOpenFloorFinishUpload = () => setOpenFloorFinishUpload(true)
     const handleCloseFloorFinishUPload = () => setOpenFloorFinishUpload(false)
+    const [display, setDisplay] = useState(true)
 
     const indRT = useLoaderData()
 
-    
+
     const {
         id: roomType_id,
         room_code,
@@ -44,21 +45,22 @@ export default function SingleRoomType() {
         floorFinishes,
         // ceilings,
         // wallFinishes,
-        ffes } = indRT
+        ffes,
+        owner } = indRT
     const [codeToUpdate, setCodeToUpdate] = useState(room_code)
     const [nameToUpdate, setNameToUpdate] = useState(room_name)
     const [ffesToUpdate, setFfesToUpdate] = useState(ffes)
     const [floorFinishesToUpdate, setFloorFinishesToUpdate] = useState(floorFinishes)
     // const [wallFinishesToUpdate, setWallFinishesToUpdate] = useState(wallFinishes)
     // const [ceilingsToUpdate, setCeilingsToUpdate] = useState(ceilings)
-
-
+    
+    useEffect(() => {
+        owner === 1 ? setDisplay('none') : setDisplay(true)
+    }, [owner])
+    
     useEffect(() => {
         const updatedSingleRoomCollection = rooms.map(object => object.room_nbr).join(', ')
-        console.log("Updated Collection:", updatedSingleRoomCollection)
         setRoomCollection(updatedSingleRoomCollection)
-        async function retrieveFloorFinish() { }
-        retrieveFloorFinish()
     }, [rooms])
 
     //! Functions
@@ -143,18 +145,18 @@ export default function SingleRoomType() {
                         <Col sm={3} className="indImgColumn" style={{ backgroundImage: `url(${room_img})` }}></Col>
                     }
                     <Col className="indInfoColumn">
-                        <Row className='page-title'><h1><button className='submitBtn' style={{ fontSize: '1rem' }} onClick={handleOpenEdit}>edit</button>{codeToUpdate} || {nameToUpdate}</h1></Row>
+                        <Row className='page-title'><h1><button className='submitBtn' style={{ fontSize: '1rem', display: display }} onClick={handleOpenEdit}>edit</button>{codeToUpdate} || {nameToUpdate}</h1></Row>
                         <Row className='section-separation'><h4>Room Type Characteristics</h4>
                         </Row>
                         <Row>
                             <Col s={6}>
-                                <p><b>Area: </b>{area}m<sup>2</sup> <button className='submitBtn'>edit</button ></p>
-                                <p><b>Height: </b>{height}mm <button className='submitBtn'>edit</button ></p>
+                                <p><b>Area: </b>{area}m<sup>2</sup> <button className='submitBtn' style={{ display: display }}>edit</button ></p>
+                                <p><b>Height: </b>{height}mm <button className='submitBtn' style={{ display: display }}>edit</button ></p>
                                 <p><b>Flooring: </b>
                                     {floorFinishesToUpdate && floorFinishesToUpdate.spec_code} - {floorFinishesToUpdate && floorFinishesToUpdate.spec_name}
-                                    <button className='submitBtn' onClick={handleOpenFloorFinishUpload}>edit</button></p>
-                                <p><b>Wall finish: </b> { } - { } <button className='submitBtn'>edit</button></p>
-                                <p><b>Ceilings: </b> { } - { } <button className='submitBtn'>edit</button ></p>
+                                    <button className='submitBtn' onClick={handleOpenFloorFinishUpload} style={{ display: display }}>edit</button></p>
+                                <p><b>Wall finish: </b> { } - { } <button className='submitBtn' style={{ display: display }}>edit</button></p>
+                                <p><b>Ceilings: </b> { } - { } <button className='submitBtn' style={{ display: display }}>edit</button ></p>
                             </Col>
                             <Col>
                                 <p><b>Amount of rooms following this type: </b>{rooms.length}</p>
@@ -162,7 +164,7 @@ export default function SingleRoomType() {
                             </Col>
                         </Row>
                         <Row className='section-separation'><h4>FFE Schedule
-                            <button className='submitBtn' onClick={handleOpen}> <span style={{ fontSize: 'x-small', alignSelf: 'center' }}>add FFE </span>✚</button>
+                            <button className='submitBtn' onClick={handleOpen} style={{display:display}}> <span style={{ fontSize: 'x-small', alignSelf: 'center' }}>add FFE </span>✚</button>
                         </h4>
                         </Row>
 
@@ -224,7 +226,7 @@ export default function SingleRoomType() {
                         </Modal>
 
                         <Container fluid className="container-grid">
-                            <div className='ffe-list' ><h5>Code</h5><h5>Name</h5><h5>Group</h5><p>Remove</p></div>
+                            <div className='ffe-list' ><h5>Code</h5><h5>Name</h5><h5>Group</h5><p style={{display:display}}>Remove</p></div>
                             {ffesToUpdate
                                 .sort((a, b) => a.ffe_code.localeCompare(b.ffe_code))
                                 .map(ffe => (
@@ -235,7 +237,7 @@ export default function SingleRoomType() {
                                         <p>{ffe.ffe_code}</p>
                                         <p>{ffe.ffe_name}</p>
                                         <p>{ffe.ffe_group}</p>
-                                        <p onClick={(e) => removeFFE(e, ffe.id)}>❌</p>
+                                        <p onClick={(e) => removeFFE(e, ffe.id)} style={{display:display}}>❌</p>
                                     </Col>
                                 )
                                 )}
