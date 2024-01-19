@@ -56,20 +56,22 @@ export default function IndexBuildings({ id, crossDisplay, setToDelete }) {
                         <div
                             className="thumbnail imagePlaceHolder"
                             to={`/buildings/${buildings.id}`}>
-                            <h3
+                            <button
+                                className='submitBtn'
                                 style={{ display: crossDisplay }}
                                 onClick={deleteBldg}
-                            >╳</h3>
+                            >╳</button>
                         </div>
                         :
                         <div
                             className="thumbnail"
                             to={`/buildings/${buildings.id}`}
                             style={{ backgroundImage: `url(${buildings.bldg_img})` }}>
-                            <h3
+                            <button
+                                className='submitBtn'
                                 style={{ display: crossDisplay }}
                                 onClick={deleteBldg}
-                            >╳</h3>
+                            >╳</button>
                         </div>
                     }
                     <div>

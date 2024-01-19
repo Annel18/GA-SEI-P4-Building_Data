@@ -70,6 +70,7 @@ export default function RegisterUser() {
         }
         // parsedData.usertype = parsedData.usertype === 'artist' ? 1 : 2
         register(parsedData)
+        // console.log(parsedData)
     }
 
     return (
@@ -81,7 +82,7 @@ export default function RegisterUser() {
                 <label hidden htmlFor="first_name">firstName</label>
                 <input type="text" name="first_name" placeholder="First Name" autoComplete="off"/>
                 <label hidden htmlFor="last_name">lastName</label>
-                <input type="text" name="last_name" placeholder="First Name" autoComplete="off"/>
+                <input type="text" name="last_name" placeholder="Last Name" autoComplete="off"/>
                 <label hidden htmlFor="username">username</label>
                 <input type="text" name="username" placeholder="Username" autoComplete="off"/>
                 <label hidden htmlFor="email">email</label>
