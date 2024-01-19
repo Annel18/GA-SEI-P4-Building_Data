@@ -1,7 +1,8 @@
 import axios from "axios"
+import { useOutletContext } from 'react-router-dom'
 import { useState, useEffect } from "react"
-// import { Link } from "react-router-dom"
 import IndexBuildings from "./IndexBldgs"
+
 //! Styles
 // import Col from "react-bootstrap/esm/Col"
 import Container from "react-bootstrap/esm/Container"
@@ -12,6 +13,10 @@ import UploadDivBldg from "./UploadDivBldg"
 
 export default function PageBuildings() {
     //! States
+    const [userData, setUserData] = useOutletContext()
+    const isUserLoggedIn = userData && userData.token
+    const userId = userData.id
+    console.log(userId)
     const [searchData, setSearchData] = useState({ buildingsDataSearch: [] })
     const [buildings, setBuildings] = useState([])
     const [toDelete, setToDelete] = useState(false)
@@ -86,9 +91,18 @@ export default function PageBuildings() {
                         <section className='index-page'>
                             <Container fluid className="container-grid">
                                 <Row className="items-list">
-                                    {buildings.map(building => (
-                                        <IndexBuildings id={building.id} key={building.id} crossDisplay={true} setToDelete={setToDelete}/>
-                                    ))}
+                                    <h3 className="page-title section-separation" style={{paddingTop:'0'}}>Template Buildings</h3>
+                                    {buildings
+                                        .filter(building => building.owner === 1)
+                                        .map(building => (
+                                            <IndexBuildings id={building.id} key={building.id} crossDisplay={"none"} setToDelete={setToDelete} />
+                                        ))}
+                                    <h3 className="page-title section-separation" style={{paddingTop:'0'}}>My Buildings</h3>
+                                    {buildings
+                                        .filter(building => building.owner === userId )
+                                        .map(building => (
+                                            <IndexBuildings id={building.id} key={building.id} crossDisplay={true} setToDelete={setToDelete}/>
+                                        ))}
                                 </Row>
                             </Container>
                         </section>
@@ -97,11 +111,13 @@ export default function PageBuildings() {
                         <section className='index-page'>
                             <Container fluid className="container-grid">
                                 <Row className="items-list">
-                                    {searchData.buildingsDataSearch.map(building => (
-                                        <IndexBuildings id={building.id} key={building.id} crossDisplay={true} setToDelete={setToDelete}/>
-                                    ))}
+                                    {searchData.buildingsDataSearch
+                                        .filter(building => (building.owner === userId || building.owner === 1))
+                                        .map(building => (
+                                            <IndexBuildings id={building.id} key={building.id} crossDisplay={true} setToDelete={setToDelete} userId={userId} />
+                                        ))}
                                 </Row>
-                            </Container>  
+                            </Container>
                         </section>
                     )
             }

@@ -45,6 +45,12 @@ export default function IndexBuildings({ id, crossDisplay, setToDelete }) {
                 className='single-container'
                 as={Link}
                 to={`/buildings/${buildings.id}`}
+                key={buildings.id}
+                xs={12}
+                s={8}
+                md={6}
+                lg={4}
+                xl={2}
             >
                 <div className="rails">
                     {!buildings.bldg_img
