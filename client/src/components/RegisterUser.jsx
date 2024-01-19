@@ -16,7 +16,10 @@ export default function RegisterUser() {
             // Get registered in
             const res = await axios.post('/api/auth/register/', parsedData)
             // Save data
-            setUserData(res.data)
+            const user = res.data
+            console.log(user)
+            setUserData(user)
+            // setUserData(res.data)
             // Go to homepage
             login(parsedData)
 
@@ -34,7 +37,7 @@ export default function RegisterUser() {
             const stagedData = res.data
             setUserData(stagedData)
             // Go to homepage
-            navigate("/")
+            navigate("/buildings/")
         } catch (error) {
             console.log(error)
         }
@@ -65,7 +68,7 @@ export default function RegisterUser() {
         if (parsedData.password !== parsedData.password_confirmation) {
             return setErrorMessage('Password confirmation must match password')
         }
-        parsedData.usertype = parsedData.usertype === 'artist' ? 1 : 2
+        // parsedData.usertype = parsedData.usertype === 'artist' ? 1 : 2
         register(parsedData)
     }
 
@@ -74,17 +77,19 @@ export default function RegisterUser() {
             {/* If user doesen't fill one or more of the fields a warning appears */}
             {errorMessage && <section className="errorMessage"><p>{errorMessage}</p></section>}
             <label>Register</label>
-            <form action="#" onSubmit={authenticate} className="form-container">
-                <label hidden htmlFor="name">name</label>
-                <input type="text" name="name" placeholder="First and Last Name" autoComplete="off" />
+            <form action="#" onSubmit={authenticate} className="form-container" >
+                <label hidden htmlFor="first_name">firstName</label>
+                <input type="text" name="first_name" placeholder="First Name" autoComplete="off"/>
+                <label hidden htmlFor="last_name">lastName</label>
+                <input type="text" name="last_name" placeholder="First Name" autoComplete="off"/>
                 <label hidden htmlFor="username">username</label>
-                <input type="text" name="username" placeholder="Username" autoComplete="off" />
+                <input type="text" name="username" placeholder="Username" autoComplete="off"/>
                 <label hidden htmlFor="email">email</label>
-                <input type="text" name="email" placeholder="Email" autoComplete="off" />
+                <input type="text" name="email" placeholder="Email" autoComplete="off"/>
                 <label hidden htmlFor="password">password</label>
-                <input type="password" name="password" placeholder="Password" />
+                <input type="password" name="password" placeholder="Password" autoComplete="off"/>
                 <label hidden htmlFor="password_confirmation">password_confirmation</label>
-                <input type="password" name="password_confirmation" placeholder="Confirm Password *" autoComplete="off" />
+                <input type="password" name="password_confirmation" placeholder="Confirm Password *" autoComplete="off"/>
                 <button type="submit">Join!</button>
             </form>
         </div>
