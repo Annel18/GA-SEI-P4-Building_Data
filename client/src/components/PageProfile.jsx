@@ -26,9 +26,23 @@ export default function PageProfile() {
                         <Row>
                             <h3 className='page-title'>Profile</h3>
                             <Row style={{alignItems:'Center'}}>
-                                <Col sm={2} style={{display:"flex", justifyContent:'flex-end'}}><b>UserName:</b></Col>
+                                <Col sm={2} style={{display:"flex", justifyContent:'flex-end'}}><b>username:</b></Col>
                                 <Col style={{display:"flex", alignItems:'baseline'}}>
                                     <div>{userData.username}</div>
+                                    <button className='submitBtn' style={{ width: 'auto' }}>edit</button >
+                                </Col>
+                            </Row>
+                            <Row style={{alignItems:'Center'}}>
+                                <Col sm={2} style={{display:"flex", justifyContent:'flex-end'}}><b>First Name:</b></Col>
+                                <Col style={{display:"flex", alignItems:'baseline'}}>
+                                    <div>{userData.first_name}</div>
+                                    <button className='submitBtn' style={{ width: 'auto' }}>edit</button >
+                                </Col>
+                            </Row>
+                            <Row style={{alignItems:'Center'}}>
+                                <Col sm={2} style={{display:"flex", justifyContent:'flex-end'}}><b>Last Name:</b></Col>
+                                <Col style={{display:"flex", alignItems:'baseline'}}>
+                                    <div>{userData.last_name}</div>
                                     <button className='submitBtn' style={{ width: 'auto' }}>edit</button >
                                 </Col>
                             </Row>

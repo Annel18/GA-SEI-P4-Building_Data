@@ -4,7 +4,7 @@ import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useNavigate } from "react-router-dom"
 
 export default function NavTop({ userData, setUserData }) {
@@ -13,6 +13,13 @@ export default function NavTop({ userData, setUserData }) {
     //! States
     const [redirection, setRedirection] = useState('')
     const [accountDrop, setAccoutDrop] = useState('')
+    const [initials, setInitials] = useState('')
+
+    useEffect (() =>{
+    (!userData ? 
+        setInitials('')
+        : setInitials(userData.first_name.slice(0, 1).toUpperCase() + userData.last_name.slice(0, 1).toUpperCase()))
+    },[userData])
 
     const handleChangeAccount = (event) => {
         setAccoutDrop(event.target.value)
@@ -88,7 +95,9 @@ export default function NavTop({ userData, setUserData }) {
                         </div>
                         <div className='navBarTop-account'>
                             <FormControl sx={{ m: 1, minWidth: 110 }}>
-                                <InputLabel id="demo-simple-select-autowidth-label" style={{ fontFamily: 'Termina Test' }}>Account</InputLabel>
+                                {initials &&
+                                    <InputLabel id="demo-simple-select-autowidth-label" style={{ fontFamily: 'Termina Test' }}>{initials}</InputLabel>
+                                }
                                 <Select
                                     // className="nav-button"
                                     labelId="demo-simple-select-autowidth-label"
