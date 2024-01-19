@@ -52,7 +52,7 @@ export default function NavTop({ userData, setUserData }) {
                         </div>
                         <div className='navBarTop-account'>
                             <FormControl sx={{ m: 1, minWidth: 160 }}>
-                                <InputLabel id="demo-simple-select-autowidth-label" style={{ fontFamily: 'Termina Test' }}>Register / Sign in</InputLabel>
+                                <InputLabel id="demo-simple-select-autowidth-label" style={{ fontFamily: 'Termina Test', color:'white',fontWeight: '500', fontSize: 'small'}}>Register / Sign in</InputLabel>
                                 <Select
                                     labelId="demo-simple-select-autowidth-label"
                                     id="demo-simple-select-autowidth"
@@ -63,8 +63,8 @@ export default function NavTop({ userData, setUserData }) {
                                     placeholder="Register/Sign in"
                                 >
                                     {/* <MenuItem value=""><em>Settings</em></MenuItem> */}
-                                    <MenuItem as={Link} className="nav-button" to="/register/" value={"register"}>Register</MenuItem>
-                                    <MenuItem as={Link} className="nav-button" to="/login/" value={"login"}>Login in your account</MenuItem>
+                                    <MenuItem as={Link} style={{ fontFamily: 'Termina Test', color:'lightcoral'}} to="/register/" value={"register"}>Register</MenuItem>
+                                    <MenuItem as={Link} style={{ fontFamily: 'Termina Test', color:'lightcoral'}} to="/login/" value={"login"}>Login in your account</MenuItem>
                                 </Select>
                             </FormControl>
                         </div>
@@ -76,7 +76,7 @@ export default function NavTop({ userData, setUserData }) {
                             <Link className="nav-button" to="/resources/" onClick={handleChange}>Resources</Link>
                             <Link className="nav-button" to="/about/" onClick={handleChange}>About</Link>
                             <FormControl sx={{ m: 1, minWidth: 180 }}>
-                                <InputLabel style={{ fontFamily: 'Termina Test' }} id="demo-simple-select-autowidth-label">DATA Collections</InputLabel>
+                                <InputLabel style={{ fontFamily: 'Termina Test', color:'white',fontWeight: '500', fontSize: 'small'}} id="demo-simple-select-autowidth-label">DATA Collections</InputLabel>
                                 <Select
                                     // className="nav-button"
                                     labelId="demo-simple-select-autowidth-label"
@@ -88,15 +88,15 @@ export default function NavTop({ userData, setUserData }) {
                                     style={{ fontFamily: 'Termina Test' }}
                                 >
                                     {/* <MenuItem className="nav-button" value=""><em>DATA Collections</em></MenuItem> */}
-                                    <MenuItem as={Link} className="drop-button" to="/roomTypes/" value={"roomTypes"}>Room Types</MenuItem>
-                                    <MenuItem as={Link} className="drop-button" to="/ffes/" value={"ffes"}>FFE</MenuItem>
+                                    <MenuItem as={Link} style={{ fontFamily: 'Termina Test', color:'lightcoral'}} to="/roomTypes/" value={"roomTypes"}>Room Types</MenuItem>
+                                    <MenuItem as={Link} style={{ fontFamily: 'Termina Test', color:'lightcoral'}} to="/ffes/" value={"ffes"}>FFE</MenuItem>
                                 </Select>
                             </FormControl>
                         </div>
                         <div className='navBarTop-account'>
                             <FormControl sx={{ m: 1, minWidth: 110 }}>
                                 {initials &&
-                                    <InputLabel id="demo-simple-select-autowidth-label" style={{ fontFamily: 'Termina Test' }}>{initials}</InputLabel>
+                                    <InputLabel id="demo-simple-select-autowidth-label" style={{ fontFamily: 'Termina Test', color:'white',fontWeight: '500', fontSize: 'small'}}>{initials}</InputLabel>
                                 }
                                 <Select
                                     // className="nav-button"
@@ -109,8 +109,8 @@ export default function NavTop({ userData, setUserData }) {
                                     style={{ fontFamily: 'Termina Test' }}
                                 >
                                     {/* <MenuItem value=""><em>Settings</em></MenuItem> */}
-                                    <MenuItem as={Link} className="drop-button" to="/profile/" value={"profile"}>Profile</MenuItem>
-                                    <MenuItem className="drop-button" value={"logout"} onClick={logOut} style={{ fontFamily: 'Termina Test', color: '$secondary-color' }}>Sign out</MenuItem>
+                                    <MenuItem as={Link} style={{ fontFamily: 'Termina Test', color:'lightcoral'}} to="/profile/" value={"profile"}>Profile</MenuItem>
+                                    <MenuItem style={{ fontFamily: 'Termina Test', color:'lightcoral'}} value={"logout"} onClick={logOut} >Sign out</MenuItem>
                                 </Select>
                             </FormControl>
                         </div>

@@ -28,7 +28,7 @@ export default function PageRoomTypes({ building, display, updateBldg, selection
     useEffect(() => {
         async function getRoomTypesData() {
             try {
-                const res = await axios.get('/api/roomTypes')
+                const res = await axios.get('/api/roomTypes/')
                 const sortedData = res.data.sort((a, b) => a.room_code.localeCompare(b.room_code))
                 setRoomTypes(sortedData)
             } catch (error) {

@@ -5,15 +5,9 @@
 
 }
 
+
 .navBarTop-menu {
     @include flex(row, center, flex-start);
-    .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root,
-    .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select 
-    {
-        color:white;
-        font-weight: 500;
-        font-size: small;
-    }
 
     .nav-button {
         padding-right: 5em;
@@ -44,13 +38,14 @@
 
 .navBarTop-account {
     @include flex(row, center, flex-end);
-    .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root,
-    .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select 
-    {
-        color:white;
-        font-weight: 500;
-        font-size: small;
-    }
+    // .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root,
+    // .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input,
+    // .MuiSelect-select 
+    // {
+    //     color:white;
+    //     font-weight: 500;
+    //     font-size: small;
+    // }
 }
 
 
