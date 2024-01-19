@@ -1,10 +1,10 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useOutletContext } from 'react-router-dom'
-// import { useNavigate } from 'react-router-dom'
 
-export default function UploadDivBldg() {
+export default function UploadDivBldg({ setOpen }) {
     // Get User ID
     const userData = useOutletContext()
     // const navigate = useNavigate()
@@ -20,7 +20,7 @@ export default function UploadDivBldg() {
     const handleSubmit = (event) => {
         event.preventDefault()
         const formData = new FormData(event.target)
-        let json = Object.fromEntries(formData.entries());
+        let json = Object.fromEntries(formData.entries())
         json = { ...json, bldg_img: uploadImg }
         submit(json)
     }
@@ -32,10 +32,10 @@ export default function UploadDivBldg() {
                     Authorization: `Bearer ${userData[0].access}`,
                 },
             })
-            // const artID = res.data._id
-            // push to artist collection
-            // const artistCollection = [...personal_collection, artID]
-            // navigate(`/buildings/${res.data.id}`)
+            setOpen(false)
+            // console.log(res.data)
+            // const Building_id = res.data.id
+            // selection(Building_id)
         } catch (error) {
             console.log(error)
         }
@@ -61,18 +61,15 @@ export default function UploadDivBldg() {
 
 
     return (
-        <>
-            <form onSubmit={handleSubmit} method="POST">
-                <label hidden htmlFor="bldg_code">bldg_code</label>
-                <input type="text" name="bldg_code" placeholder='Building Code' value={inputs.bldg_code || ''} onChange={handleChange} required />
-                <label hidden htmlFor="bldg_name">bldg_name</label>
-                <input type="text" name="bldg_name" placeholder='Building Name' value={inputs.bldg_name || ''} onChange={handleChange} required />
-                <label hidden htmlFor="bldg_description">bldg_description</label>
-                <input type="text" name="bldg_description" placeholder='Description' value={inputs.bldg_description || ''} onChange={handleChange} required />
-                <input type='file' className='uploadField' name='bldg_img' onChange={handleImageUpload} />
-                <button type='submit'>Upload Building</button>
-                {/* <input type="submit" className="submitBtn" value="Upload Building" /> */}
-            </form>
-        </>
+        <form onSubmit={handleSubmit} method="POST">
+            <label hidden htmlFor="bldg_code">bldg_code</label>
+            <input type="text" name="bldg_code" placeholder='Building Code' value={inputs.bldg_code || ''} onChange={handleChange} required />
+            <label hidden htmlFor="bldg_name">bldg_name</label>
+            <input type="text" name="bldg_name" placeholder='Building Name' value={inputs.bldg_name || ''} onChange={handleChange} required />
+            <label hidden htmlFor="bldg_description">bldg_description</label>
+            <input type="text" name="bldg_description" placeholder='Description' value={inputs.bldg_description || ''} onChange={handleChange} required />
+            <input type='file' className='uploadField' name='bldg_img' onChange={handleImageUpload} />
+            <button type='submit'>Upload Building</button>
+        </form>
     )
 }

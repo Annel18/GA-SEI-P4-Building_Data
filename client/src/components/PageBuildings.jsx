@@ -81,7 +81,7 @@ export default function PageBuildings() {
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body className="modal-container">
-                        <UploadDivBldg />
+                        <UploadDivBldg setOpen={setOpen}/>
                     </Modal.Body>
                 </Modal>
             </div>

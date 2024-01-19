@@ -3,7 +3,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useOutletContext } from 'react-router-dom'
-// import { useNavigate } from 'react-router-dom'
 
 export default function UploadDivRT({ selection }) {
     // Get User ID
@@ -60,21 +59,17 @@ export default function UploadDivRT({ selection }) {
 
 
     return (
-        <>
-            {/* <section className='index-page'> */}
-            <form onSubmit={handleSubmit} method="POST">
-                <label hidden htmlFor="room_code">room_code</label>
-                <input type="text" name="room_code" placeholder='Code of Room Type' value={inputs.room_code || ''} onChange={handleChange} required />
-                <label hidden htmlFor="room_name">room_name</label>
-                <input type="text" name="room_name" placeholder='Name of Room Type' value={inputs.room_name || ''} onChange={handleChange} required />
-                <label hidden htmlFor="area">Area</label>
-                <input type="number" name="area" placeholder='Area in m2' value={inputs.area || ''} onChange={handleChange} required />
-                <label hidden htmlFor="height">Height</label>
-                <input type="number" name="height" placeholder='Height in mm' value={inputs.height || ''} onChange={handleChange} required />
-                <input type='file' className='roomUploadField' name='room_img' onChange={handleImageUpload} />
-                <button type="submit" className="submitBtn">Upload RoomType</button>
-            </form>
-            {/* </section> */}
-        </>
+        <form onSubmit={handleSubmit} method="POST">
+            <label hidden htmlFor="room_code">room_code</label>
+            <input type="text" name="room_code" placeholder='Code of Room Type' value={inputs.room_code || ''} onChange={handleChange} required />
+            <label hidden htmlFor="room_name">room_name</label>
+            <input type="text" name="room_name" placeholder='Name of Room Type' value={inputs.room_name || ''} onChange={handleChange} required />
+            <label hidden htmlFor="area">Area</label>
+            <input type="number" name="area" placeholder='Area in m2' value={inputs.area || ''} onChange={handleChange} required />
+            <label hidden htmlFor="height">Height</label>
+            <input type="number" name="height" placeholder='Height in mm' value={inputs.height || ''} onChange={handleChange} required />
+            <input type='file' className='uploadField' name='room_img' onChange={handleImageUpload} />
+            <button type="submit" className="submitBtn">Upload RoomType</button>
+        </form>
     )
 }
