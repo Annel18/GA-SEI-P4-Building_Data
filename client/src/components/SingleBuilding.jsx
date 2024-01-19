@@ -2,7 +2,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { useLoaderData } from 'react-router-dom'
 import { useOutletContext } from 'react-router-dom'
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 //! Components
 import PageRoomTypes from './PageRoomTypes'
@@ -21,6 +21,7 @@ export default function SingleBuilding() {
     const [open, setOpen] = useState(false)
     const handleOpen = () => setOpen(true)
     const handleClose = () => setOpen(false)
+    const [display, setDisplay] = useState(true)
 
     const indBldg = useLoaderData()
     const {
@@ -29,10 +30,19 @@ export default function SingleBuilding() {
         bldg_name,
         bldg_description,
         bldg_img,
-        roomTypes } = indBldg
+        roomTypes,
+        owner } = indBldg
     const [roomTypesToUpdate, setRoomTypesToUpdate] = useState(roomTypes)
     localStorage.setItem('previousPageId', bldg_id)
     localStorage.setItem('previousPageName', bldg_name)
+
+
+    //! Effects
+
+    useEffect(() => {
+        owner === 1 ? setDisplay('none') : setDisplay(true)
+    }, [owner])
+
 
     //! Functions
 
@@ -129,20 +139,20 @@ export default function SingleBuilding() {
             </nav>
             <Container className="ind-Container" fluid>
                 <Row>
-                    {!bldg_img?
-                    
-                    <Col sm={3} className="indImgColumn imagePlaceHolder"></Col>
-                    :
+                    {!bldg_img ?
+
+                        <Col sm={3} className="indImgColumn imagePlaceHolder"></Col>
+                        :
                         <Col sm={3} className="indImgColumn" style={{ backgroundImage: `url(${bldg_img})` }}></Col>
                     }
                     <Col className="indInfoColumn">
                         <Row>
                             <h3 className='page-title'>{bldg_code} || {bldg_name}</h3>
-                            <p className='section-separation'><b>DESCRIPTION:</b><button className='submitBtn'>edit</button></p>
+                            <p className='section-separation'><b>DESCRIPTION:</b><button className='submitBtn' style={{ fontSize: '1rem', display: display }}>edit</button></p>
                             <p>{bldg_description}</p>
                         </Row>
                         <Row><h4 className='section-separation'>Room Schedule
-                            <button className='submitBtn' onClick={handleOpen}> <span style={{ fontSize: 'x-small', alignSelf: 'center' }}>add roomtype </span>✚</button>
+                            <button className='submitBtn' onClick={handleOpen} style={{ display: display }}> <span style={{ fontSize: 'x-small', alignSelf: 'center' }} >add roomtype </span>✚</button>
                         </h4>
                         </Row>
                         <Modal
@@ -161,7 +171,7 @@ export default function SingleBuilding() {
                             </Modal.Body>
                         </Modal>
                         <Container fluid className="container-grid">
-                            <div className='roomType-list'><h5>Code</h5><h5>Name</h5><p>remove</p></div>
+                            <div className='roomType-list'><h5>Code</h5><h5>Name</h5><p style={{ display: display }}>remove</p></div>
                             {roomTypesToUpdate
                                 .sort((a, b) => a.room_code.localeCompare(b.room_code))
                                 .map(roomType => (
@@ -173,7 +183,7 @@ export default function SingleBuilding() {
                                     >
                                         <p>{roomType.room_code}</p>
                                         <p>{roomType.room_name}</p>
-                                        <p onClick={(e) => removeRT(e, roomType.id)}>❌</p>
+                                        <p onClick={(e) => removeRT(e, roomType.id)} style={{ display: display }}>❌</p>
                                     </Col>
                                 )
                                 )}

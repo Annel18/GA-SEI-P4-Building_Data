@@ -45,9 +45,9 @@ export default function IndexBuildings({ id, crossDisplay, setToDelete }) {
                 to={`/buildings/${buildings.id}`}
                 key={buildings.id}
                 xs={12}
-                s={8}
-                md={6}
-                lg={4}
+                s={6}
+                md={4}
+                lg={3}
                 xl={2}
             >
                 <div className="rails">

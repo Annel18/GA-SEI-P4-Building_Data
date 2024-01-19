@@ -45,7 +45,7 @@ export default function IndexRoomTypes({ roomType_id, display, selection, crossD
                 s={6}
                 md={4}
                 lg={3}
-                xl={3}
+                xl={2}
                 to={`/roomTypes/${roomTypes.id}`}
             >
                 <div className="rails">

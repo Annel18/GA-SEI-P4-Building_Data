@@ -102,17 +102,19 @@ export default function PageRoomTypes({ building, display, updateBldg, selection
                                     </RadioGroup>
                                 </FormControl>
                                 <Row className="items-list">
+                                    {roomTypes.filter(building => building.owner === userData.id).length > 0 && (
+                                        <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>My Rooms</h3>
+                                    )}
+                                    {roomTypes
+                                        .filter(building => building.owner === userData.id)
+                                        .map(roomType => (
+                                            <IndexRoomTypes key={roomType.id} roomType_id={roomType.id} display={display} selection={selection} crossDisplay={true} setToDelete={setToDelete} />
+                                        ))}
                                     <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>Template Rooms</h3>
                                     {roomTypes
                                         .filter(building => building.owner === 1)
                                         .map(roomType => (
                                             <IndexRoomTypes key={roomType.id} roomType_id={roomType.id} display={display} selection={selection} crossDisplay={'none'} />
-                                        ))}
-                                    <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>My Rooms</h3>
-                                    {roomTypes
-                                        .filter(building => building.owner === userData.id)
-                                        .map(roomType => (
-                                            <IndexRoomTypes key={roomType.id} roomType_id={roomType.id} display={display} selection={selection} crossDisplay={true} setToDelete={setToDelete} />
                                         ))}
                                 </Row>
                             </Container>
@@ -133,17 +135,17 @@ export default function PageRoomTypes({ building, display, updateBldg, selection
                                     </RadioGroup>
                                 </FormControl>
                                 <Row className="items-list">
-                                    <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>Template Rooms</h3>
-                                    {searchData.roomTypesDataSearch
-                                        .filter(building => building.owner === 1)
-                                        .map(roomType => (
-                                            <IndexRoomTypes key={roomType.id} roomType_id={roomType.id} display={display} selection={selection} crossDisplay={'none'}/>
-                                        ))}
                                     <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>My Rooms</h3>
                                     {searchData.roomTypesDataSearch
                                         .filter(building => building.owner === userData.id)
                                         .map(roomType => (
-                                            <IndexRoomTypes key={roomType.id} roomType_id={roomType.id} display={display} selection={selection} crossDisplay={true} setToDelete={setToDelete}/>
+                                            <IndexRoomTypes key={roomType.id} roomType_id={roomType.id} display={display} selection={selection} crossDisplay={true} setToDelete={setToDelete} />
+                                        ))}
+                                    <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>Template Rooms</h3>
+                                    {searchData.roomTypesDataSearch
+                                        .filter(building => building.owner === 1)
+                                        .map(roomType => (
+                                            <IndexRoomTypes key={roomType.id} roomType_id={roomType.id} display={display} selection={selection} crossDisplay={'none'} />
                                         ))}
                                 </Row>
                             </Container>

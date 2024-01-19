@@ -79,7 +79,7 @@ export default function PageBuildings() {
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body className="modal-container">
-                        <UploadDivBldg setOpen={setOpen}/>
+                        <UploadDivBldg setOpen={setOpen} />
                     </Modal.Body>
                 </Modal>
             </div>
@@ -89,17 +89,21 @@ export default function PageBuildings() {
                         <section className='index-page'>
                             <Container fluid className="container-grid">
                                 <Row className="items-list">
-                                    <h3 className="page-title section-separation" style={{paddingTop:'0'}}>Template Buildings</h3>
+                                    {buildings.filter(building => building.owner === userId).length > 0 && (
+                                        <h3 className="page-title section-separation" style={{ paddingTop: '0'}}>
+                                            My Buildings
+                                        </h3>
+                                    )}
+                                    {buildings
+                                        .filter(building => building.owner === userId)                                  
+                                        .map(building => {
+                                            return <IndexBuildings id={building.id} key={building.id} crossDisplay={true} setToDelete={setToDelete} />
+                                        })}
+                                    <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>Template Buildings</h3>
                                     {buildings
                                         .filter(building => building.owner === 1)
                                         .map(building => (
                                             <IndexBuildings id={building.id} key={building.id} crossDisplay={"none"} setToDelete={setToDelete} />
-                                        ))}
-                                    <h3 className="page-title section-separation" style={{paddingTop:'0'}}>My Buildings</h3>
-                                    {buildings
-                                        .filter(building => building.owner === userId )
-                                        .map(building => (
-                                            <IndexBuildings id={building.id} key={building.id} crossDisplay={true} setToDelete={setToDelete}/>
                                         ))}
                                 </Row>
                             </Container>
