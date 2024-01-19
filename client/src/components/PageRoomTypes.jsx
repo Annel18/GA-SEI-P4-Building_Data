@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import axios from "axios"
+import { useOutletContext } from 'react-router-dom'
 import { useState, useEffect } from "react"
 import IndexRoomTypes from "./IndexRoomTypes"
 import UploadDivRT from "./UploadDivRT"
@@ -17,10 +18,11 @@ export default function PageRoomTypes({ building, display, updateBldg, selection
     //! States
     const [searchData, setSearchData] = useState({ roomTypesDataSearch: [] })
     const [roomTypes, setRoomTypes] = useState([])
+    const [toDelete, setToDelete] = useState(false)
     const [open, setOpen] = useState(false)
     const handleOpen = () => setOpen(true)
     const handleClose = () => setOpen(false)
-
+    const [userData] = useOutletContext()
 
     //! Effects
     useEffect(() => {
@@ -34,7 +36,7 @@ export default function PageRoomTypes({ building, display, updateBldg, selection
             }
         }
         getRoomTypesData()
-    }, [open])
+    }, [open, toDelete])
 
     //! Functions
     async function search(e) {
@@ -66,7 +68,7 @@ export default function PageRoomTypes({ building, display, updateBldg, selection
                         className="search"
                     />
                 </form>
-                <button onClick={handleOpen}>✚</button>
+                <button onClick={handleOpen} style={{ display: display }}>✚</button>
                 <Modal
                     size="lg"
                     show={open}
@@ -100,9 +102,18 @@ export default function PageRoomTypes({ building, display, updateBldg, selection
                                     </RadioGroup>
                                 </FormControl>
                                 <Row className="items-list">
-                                    {roomTypes.map(roomType => (
-                                        <IndexRoomTypes key={roomType.id} roomType_id={roomType.id} display={display} selection={selection} />
-                                    ))}
+                                    <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>Template Rooms</h3>
+                                    {roomTypes
+                                        .filter(building => building.owner === 1)
+                                        .map(roomType => (
+                                            <IndexRoomTypes key={roomType.id} roomType_id={roomType.id} display={display} selection={selection} crossDisplay={'none'} />
+                                        ))}
+                                    <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>My Rooms</h3>
+                                    {roomTypes
+                                        .filter(building => building.owner === userData.id)
+                                        .map(roomType => (
+                                            <IndexRoomTypes key={roomType.id} roomType_id={roomType.id} display={display} selection={selection} crossDisplay={true} setToDelete={setToDelete} />
+                                        ))}
                                 </Row>
                             </Container>
                         </section>
@@ -122,9 +133,18 @@ export default function PageRoomTypes({ building, display, updateBldg, selection
                                     </RadioGroup>
                                 </FormControl>
                                 <Row className="items-list">
-                                    {searchData.roomTypesDataSearch.map(roomType => (
-                                        <IndexRoomTypes key={roomType.id} roomType_id={roomType.id} display={display} selection={selection} />
-                                    ))}
+                                    <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>Template Rooms</h3>
+                                    {searchData.roomTypesDataSearch
+                                        .filter(building => building.owner === 1)
+                                        .map(roomType => (
+                                            <IndexRoomTypes key={roomType.id} roomType_id={roomType.id} display={display} selection={selection} crossDisplay={'none'}/>
+                                        ))}
+                                    <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>My Rooms</h3>
+                                    {searchData.roomTypesDataSearch
+                                        .filter(building => building.owner === userData.id)
+                                        .map(roomType => (
+                                            <IndexRoomTypes key={roomType.id} roomType_id={roomType.id} display={display} selection={selection} crossDisplay={true} setToDelete={setToDelete}/>
+                                        ))}
                                 </Row>
                             </Container>
                         </section>

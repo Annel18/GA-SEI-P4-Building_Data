@@ -1,13 +1,11 @@
 /* eslint-disable react/prop-types */
+import axios from 'axios'
 import { Link, useOutletContext } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-
 import { getIndBuilding } from "../utils/loaders/buildingsLoader"
 
 //! Styling 
-
 import Col from 'react-bootstrap/Col'
-import axios from 'axios'
 
 
 export default function IndexBuildings({ id, crossDisplay, setToDelete }) {
@@ -61,7 +59,7 @@ export default function IndexBuildings({ id, crossDisplay, setToDelete }) {
                             <h3
                                 style={{ display: crossDisplay }}
                                 onClick={deleteBldg}
-                            >❌</h3>
+                            >╳</h3>
                         </div>
                         :
                         <div
@@ -71,7 +69,7 @@ export default function IndexBuildings({ id, crossDisplay, setToDelete }) {
                             <h3
                                 style={{ display: crossDisplay }}
                                 onClick={deleteBldg}
-                            >❌</h3>
+                            >╳</h3>
                         </div>
                     }
                     <div>

@@ -13,10 +13,8 @@ import UploadDivBldg from "./UploadDivBldg"
 
 export default function PageBuildings() {
     //! States
-    const [userData, setUserData] = useOutletContext()
-    const isUserLoggedIn = userData && userData.token
+    const [userData] = useOutletContext()
     const userId = userData.id
-    console.log(userId)
     const [searchData, setSearchData] = useState({ buildingsDataSearch: [] })
     const [buildings, setBuildings] = useState([])
     const [toDelete, setToDelete] = useState(false)
