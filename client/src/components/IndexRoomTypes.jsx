@@ -25,7 +25,7 @@ export default function IndexRoomTypes({ roomType_id, display, selection, crossD
         try {
             const res = await axios.delete(`/api/roomTypes/${roomType_id}/`, {
                 headers: {
-                    Authorization: `Bearer ${userData[0].access}`
+                    Authorization: `Bearer ${userData.access}`
                 }
             })
             setRoomTypes(res.data)
