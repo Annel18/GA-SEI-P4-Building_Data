@@ -48,7 +48,7 @@ export default function PageRoomTypes({ building, display, updateBldg, selection
             const inputValue = e.target.elements.searchField.value
             const pattern = new RegExp(inputValue, 'i')
             // Getting All roomTypes data and filtering it
-            const res = await axios.get('/api/roomTypes')
+            const res = await axios.get('/api/roomTypes/')
             const rawRoomTypesData = res.data.sort((a, b) => a.room_code.localeCompare(b.room_code))
             const filteredRoomTypesData = rawRoomTypesData.filter(item => pattern.test(item.room_name))
             setSearchData({ roomTypesDataSearch: filteredRoomTypesData })
