@@ -12,8 +12,7 @@ import PageFFEs from './components/PageFFEs.jsx'
 import PageSingleBuilding from './components/PageSingleBuilding.jsx'
 import PageSingleRoomType from './components/PageSingleRoomType.jsx'
 import PageProfile from './components/PageProfile.jsx'
-// import IndexRoomTypes from './components/IndexRoomTypes.jsx'
-// import IndexFfes from './components/IndexFfes.jsx'
+import PageAbout from './components/PageAbout.jsx'
 
 //! Loaders
 import { getIndBuilding } from './utils/loaders/buildingsLoader.js'
@@ -59,7 +58,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/about/',
-                // element: <About />,
+                element: <PageAbout />,
             },
             {
                 path: '/resources/',
