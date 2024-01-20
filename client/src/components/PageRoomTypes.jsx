@@ -138,7 +138,9 @@ export default function PageRoomTypes({ building, display, updateBldg, selection
                                             </RadioGroup>
                                         </FormControl>
                                         <Row className="items-list">
-                                            <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>My Rooms</h3>
+                                            {roomTypes.filter(building => building.owner === userData.id).length > 0 && (
+                                                <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>My Rooms</h3>
+                                            )}
                                             {searchData.roomTypesDataSearch
                                                 .filter(building => building.owner === userData.id)
                                                 .map(roomType => (

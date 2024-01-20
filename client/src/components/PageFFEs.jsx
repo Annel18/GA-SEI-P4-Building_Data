@@ -89,10 +89,20 @@ export default function PageFFEs({ roomType_id, display, updateRT }) {
                                 <section className='index-page'>
                                     <Row fluid className="container-grid">
                                         <div className='ffe-list'><h5>Code</h5><h5>Name</h5><h5>GROUP</h5><h5 style={{ display: display }}>add</h5></div>
-                                        {ffes.map(ffe => (
-                                            <IndexFfes ffe_id={ffe.id} key={ffe.id} roomType_id={roomType_id} updateRT={updateRT} display={display} />
-                                        ))}
-
+                                        {ffes.filter(ffe => ffe.owner === userData.id).length > 0 && (
+                                            <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>My FFEs</h3>
+                                        )}
+                                        {ffes
+                                            .filter(roomType => roomType.owner === userData.id)
+                                            .map(ffe => (
+                                                <IndexFfes ffe_id={ffe.id} key={ffe.id} roomType_id={roomType_id} updateRT={updateRT} display={display} />
+                                            ))}
+                                        <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>Template FFEs</h3>
+                                        {ffes
+                                            .filter(ffe => ffe.owner === 1)
+                                            .map(ffe => (
+                                                <IndexFfes ffe_id={ffe.id} key={ffe.id} roomType_id={roomType_id} updateRT={updateRT} display={display} crossDisplay={'none'} />
+                                            ))}
                                     </Row>
                                 </section>
                             )
@@ -100,9 +110,20 @@ export default function PageFFEs({ roomType_id, display, updateRT }) {
                                 <section className='index-page'>
                                     <Row fluid className="container-grid">
                                         <div className='ffe-list'><h5>Code</h5><h5>Name</h5><h5>GROUP</h5><h5 style={{ display: display }}>add</h5></div>
-                                        {searchData.ffesDataSearch.map(ffe => (
-                                            <IndexFfes ffe_id={ffe.id} key={ffe.id} roomType_id={roomType_id} updateRT={updateRT} display={display} />
-                                        ))}
+                                        {ffes.filter(ffe => ffe.owner === userData.id).length > 0 && (
+                                            <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>My FFEs</h3>
+                                        )}
+                                        {searchData.ffesDataSearch
+                                            .filter(roomType => roomType.owner === userData.id)
+                                            .map(ffe => (
+                                                <IndexFfes ffe_id={ffe.id} key={ffe.id} roomType_id={roomType_id} updateRT={updateRT} display={display} />
+                                            ))}
+                                        <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>Template FFEs</h3>
+                                        {searchData.ffesDataSearch
+                                            .filter(ffe => ffe.owner === 1)
+                                            .map(ffe => (
+                                                <IndexFfes ffe_id={ffe.id} key={ffe.id} roomType_id={roomType_id} updateRT={updateRT} display={display} crossDisplay={'none'} />
+                                            ))}
                                     </Row>
                                 </section>
                             )

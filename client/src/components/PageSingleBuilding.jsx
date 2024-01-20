@@ -73,7 +73,7 @@ export default function PageSingleBuilding() {
     async function createRT(createdRoom) {
 
         try {
-            const response = await axios.get(`/api/roomTypes/${createdRoom}`)
+            const response = await axios.get(`/api/roomTypes/${createdRoom}/`)
             const roomToCopy = response.data
 
             const ffeArray = []
