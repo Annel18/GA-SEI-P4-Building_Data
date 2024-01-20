@@ -1,8 +1,7 @@
 from django.urls import path
-from .views import BuildingRegsListCreateView, BuildingRegsDetailView
+from .views import BuildingRegsListCreateView
 
 
 urlpatterns = [
-    path('', BuildingRegsListCreateView.as_view()),
-    path('<int:pk>/', BuildingRegsDetailView.as_view()) 
+    path('', BuildingRegsListCreateView.as_view())
 ]

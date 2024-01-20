@@ -8,6 +8,8 @@ import { Container, Row, Col } from "react-bootstrap"
 export default function PageResources() {
     //!States
     const [regs, setRegs] = useState([])
+    const [hbns, setHbns] = useState([])
+
     //! Effects
     useEffect(() => {
         async function getBuildingRegs() {
@@ -22,12 +24,51 @@ export default function PageResources() {
         getBuildingRegs()
     }, [regs.id])
 
+    useEffect(() => {
+        async function getHbn() {
+            try {
+                const res = await axios.get(`/api/resourcesHBN/`)
+                console.log(res.data)
+                setHbns(res.data)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        getHbn()
+    }, [hbns.id])
+
     //!JSX
     return (
         <section className='index-page'>
             <Container fluid className="container-grid">
                 <Row className="items-list">
-                    <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>Building Regulations</h3>
+                    <h3 className="page-title section-separation" style={{ paddingTop: '1em' }}>HBN Guidances</h3>
+                    {hbns
+                        .map(hbn => (
+                            <Col
+                                className='single-container'
+                                key={`${hbn.id}`}
+                                as={Link}
+                                xs={12}
+                                s={6}
+                                md={4}
+                                lg={3}
+                                xl={2}
+                                to={`${hbn.hbn_link}`}
+                            >
+                                <div className="rails-ref">
+                                    <div
+                                        className="thumbnail"
+                                        style={{ backgroundImage: `url(${hbn.hbn_img})` }}>
+                                    </div>
+                                    <div>
+                                        <h5>{hbn.hbn_code}</h5>
+                                        <p>{hbn.hbn_name}</p>
+                                    </div>
+                                </div>
+                            </Col>
+                        ))}
+                    <h3 className="page-title section-separation" style={{ paddingTop: '1em' }}>Building Regulations</h3>
                     {regs
                         .map(reg => (
                             <Col
@@ -41,22 +82,18 @@ export default function PageResources() {
                                 xl={1}
                                 to={`${reg.reg_link}`}
                             >
-                                <div className="rails">
+                                <div className="rails-ref">
                                     <div
                                         className="thumbnail"
                                         style={{ backgroundImage: `url(${reg.reg_img})` }}>
                                     </div>
                                     <div>
-                                        <h5>{reg.room_code}</h5>
-                                        <p>{reg.room_name}</p>
+                                        <h5>{reg.reg_code}</h5>
+                                        <p>{reg.reg_name}</p>
                                     </div>
                                 </div>
                             </Col>
                         ))}
-                    <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>HBN Guidances</h3>
-                    <Col className='single-container'>
-                        These are the links to the Approved Documents
-                    </Col>
                 </Row>
             </Container>
         </section>

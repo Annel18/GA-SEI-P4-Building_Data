@@ -28,7 +28,7 @@ urlpatterns = [
     path('api/wallFinishes/', include('wallFinishes.urls')),
     path('api/ceilings/', include('ceilings.urls')),
     path('api/resourcesBuildingRegs/', include('resourcesBuildingRegs.urls')),
-    # path('api/resourcesHBN/', include('resourcesHBN.urls')),
+    path('api/resourcesHBN/', include('resourcesHBN.urls')),
     path('api/auth/', include('users.urls')),
     re_path(r'^.*$', index) # <-- have this come last using re path.
 ]

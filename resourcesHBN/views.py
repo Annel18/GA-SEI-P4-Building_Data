@@ -1,12 +1,12 @@
 from rest_framework.generics import ListCreateAPIView, RetrieveAPIView
-from .models import BuildingRegs
-from .serializers.common import BuildingRegsSerializer
+from .models import HBN
+from .serializers.common import HBNSerializer
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 
 # Path: /buildingRegsTypes/
 # Methods: GET, POST
-class BuildingRegsListCreateView(ListCreateAPIView):
-    queryset = BuildingRegs.objects.all()
-    serializer_class = BuildingRegsSerializer
+class HBNListCreateView(ListCreateAPIView):
+    queryset = HBN.objects.all()
+    serializer_class = HBNSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
