@@ -1,0 +1,200 @@
+[
+{
+    "model": "resourcesBuildingRegs.buildingregs",
+    "pk": 1,
+    "fields": {
+        "reg_name": "Structure: Approved Document A",
+        "reg_link": "https://www.gov.uk/government/publications/structure-approved-document-a",
+        "reg_img": "https://assets.publishing.service.gov.uk/media/5a80437840f0b62305b8a22a/thumbnail_BR_PDF_AD_A_2013.pdf.png",
+        "created_at": "2024-01-20T11:38:07.524Z",
+        "updated_at": "2024-01-20T11:38:07.524Z"
+    }
+},
+{
+    "model": "resourcesBuildingRegs.buildingregs",
+    "pk": 2,
+    "fields": {
+        "reg_name": "Fire safety: Approved Document B",
+        "reg_link": "https://www.gov.uk/government/publications/fire-safety-approved-document-b",
+        "reg_img": "https://assets.publishing.service.gov.uk/media/639ae876d3bf7f7f8cebfe64/thumbnail_Approved_Document_B__fire_safety__volume_2_-_Buildings_other_than_dwellings__2019_edition_incorporating_2020_and_2022_amendments.pdf.png",
+        "created_at": "2024-01-20T11:38:38.205Z",
+        "updated_at": "2024-01-20T11:38:38.205Z"
+    }
+},
+{
+    "model": "resourcesBuildingRegs.buildingregs",
+    "pk": 3,
+    "fields": {
+        "reg_name": "Site preparation and resistance to contaminates and moisture: Approved Document C",
+        "reg_link": "https://www.gov.uk/government/publications/site-preparation-and-resistance-to-contaminates-and-moisture-approved-document-c",
+        "reg_img": "https://assets.publishing.service.gov.uk/media/5a81929d40f0b6230269808b/thumbnail_BR_PDF_AD_C_2013.pdf.png",
+        "created_at": "2024-01-20T11:38:59.914Z",
+        "updated_at": "2024-01-20T11:38:59.914Z"
+    }
+},
+{
+    "model": "resourcesBuildingRegs.buildingregs",
+    "pk": 4,
+    "fields": {
+        "reg_name": "Toxic substances: Approved Document D",
+        "reg_link": "https://www.gov.uk/government/publications/toxic-substances-approved-document-d",
+        "reg_img": "https://assets.publishing.service.gov.uk/media/5a80eaa540f0b62305b8ddfb/thumbnail_ADD_LOCKED.pdf.png",
+        "created_at": "2024-01-20T11:39:24.353Z",
+        "updated_at": "2024-01-20T11:39:24.353Z"
+    }
+},
+{
+    "model": "resourcesBuildingRegs.buildingregs",
+    "pk": 5,
+    "fields": {
+        "reg_name": "Resistance to sound: Approved Document E",
+        "reg_link": "https://www.gov.uk/government/publications/resistance-to-sound-approved-document-e",
+        "reg_img": "https://assets.publishing.service.gov.uk/media/5a809c4f40f0b62305b8c276/thumbnail_ADE_LOCKED.pdf.png",
+        "created_at": "2024-01-20T11:39:49.137Z",
+        "updated_at": "2024-01-20T11:39:49.137Z"
+    }
+},
+{
+    "model": "resourcesBuildingRegs.buildingregs",
+    "pk": 6,
+    "fields": {
+        "reg_name": "Ventilation: Approved Document F",
+        "reg_link": "https://www.gov.uk/government/publications/ventilation-approved-document-f",
+        "reg_img": "https://assets.publishing.service.gov.uk/media/62a761ed8fa8f50390d45112/thumbnail_ADF2_revised.pdf.png",
+        "created_at": "2024-01-20T11:40:15.158Z",
+        "updated_at": "2024-01-20T11:40:15.158Z"
+    }
+},
+{
+    "model": "resourcesBuildingRegs.buildingregs",
+    "pk": 7,
+    "fields": {
+        "reg_name": "Sanitation, hot water safety and water efficiency: Approved Document G",
+        "reg_link": "https://www.gov.uk/government/publications/sanitation-hot-water-safety-and-water-efficiency-approved-document-g",
+        "reg_img": "https://assets.publishing.service.gov.uk/media/5a80092740f0b623026911f4/thumbnail_BR_PDF_AD_G_2015_with_2016_amendments.pdf.png",
+        "created_at": "2024-01-20T11:40:46.649Z",
+        "updated_at": "2024-01-20T11:40:46.649Z"
+    }
+},
+{
+    "model": "resourcesBuildingRegs.buildingregs",
+    "pk": 8,
+    "fields": {
+        "reg_name": "Drainage and waste disposal: Approved Document H",
+        "reg_link": "https://www.gov.uk/government/publications/drainage-and-waste-disposal-approved-document-h",
+        "reg_img": "https://assets.publishing.service.gov.uk/media/5a80cf9de5274a2e87dbbf41/thumbnail_BR_PDF_AD_H_2015.pdf.png",
+        "created_at": "2024-01-20T11:41:08.728Z",
+        "updated_at": "2024-01-20T11:41:08.728Z"
+    }
+},
+{
+    "model": "resourcesBuildingRegs.buildingregs",
+    "pk": 9,
+    "fields": {
+        "reg_name": "Combustion appliances and fuel storage systems: Approved Document J",
+        "reg_link": "https://www.gov.uk/government/publications/combustion-appliances-and-fuel-storage-systems-approved-document-j",
+        "reg_img": "https://assets.publishing.service.gov.uk/media/6336e58bd3bf7f34f33596a6/thumbnail_ADJ_2022.pdf.png",
+        "created_at": "2024-01-20T11:41:29.635Z",
+        "updated_at": "2024-01-20T11:41:29.635Z"
+    }
+},
+{
+    "model": "resourcesBuildingRegs.buildingregs",
+    "pk": 10,
+    "fields": {
+        "reg_name": "Protection from falling, collision and impact: Approved Document K",
+        "reg_link": "https://www.gov.uk/government/publications/protection-from-falling-collision-and-impact-approved-document-k",
+        "reg_img": "https://assets.publishing.service.gov.uk/media/60d5bdcdd3bf7f7c39f3a381/thumbnail_Approved_Document_K.pdf.png",
+        "created_at": "2024-01-20T11:41:51.241Z",
+        "updated_at": "2024-01-20T11:41:51.241Z"
+    }
+},
+{
+    "model": "resourcesBuildingRegs.buildingregs",
+    "pk": 11,
+    "fields": {
+        "reg_name": "Conservation of fuel and power: Approved Document L",
+        "reg_link": "https://www.gov.uk/government/publications/conservation-of-fuel-and-power-approved-document-l",
+        "reg_img": "https://assets.publishing.service.gov.uk/media/63d8edbde90e0773d409b713/thumbnail_Approved_Document_L__Conservation_of_fuel_and_power__Volume_2_Buildings_other_than_dwellings__2021_edition_incorporating_2023_amendments.pdf.png",
+        "created_at": "2024-01-20T11:42:18.492Z",
+        "updated_at": "2024-01-20T11:42:18.492Z"
+    }
+},
+{
+    "model": "resourcesBuildingRegs.buildingregs",
+    "pk": 12,
+    "fields": {
+        "reg_name": "Access to and use of buildings: Approved Document M",
+        "reg_link": "https://www.gov.uk/government/publications/access-to-and-use-of-buildings-approved-document-m",
+        "reg_img": "https://assets.publishing.service.gov.uk/media/5a7f8a81ed915d74e33f711e/thumbnail_BR_PDF_AD_M1_2015_with_2016_amendments_V3.pdf.png",
+        "created_at": "2024-01-20T11:42:38.487Z",
+        "updated_at": "2024-01-20T11:42:38.487Z"
+    }
+},
+{
+    "model": "resourcesBuildingRegs.buildingregs",
+    "pk": 13,
+    "fields": {
+        "reg_name": "Overheating: Approved Document O",
+        "reg_link": "https://www.gov.uk/government/publications/overheating-approved-document-o",
+        "reg_img": "https://assets.publishing.service.gov.uk/media/6218c5aa8fa8f54911e22262/thumbnail_ADO.pdf.png",
+        "created_at": "2024-01-20T11:43:01.559Z",
+        "updated_at": "2024-01-20T11:43:01.559Z"
+    }
+},
+{
+    "model": "resourcesBuildingRegs.buildingregs",
+    "pk": 14,
+    "fields": {
+        "reg_name": "Electrical safety: Approved Document P",
+        "reg_link": "https://www.gov.uk/government/publications/electrical-safety-approved-document-p",
+        "reg_img": "https://assets.publishing.service.gov.uk/media/5a802da7ed915d74e33f8e8f/thumbnail_BR_PDF_AD_P_2013.pdf.png",
+        "created_at": "2024-01-20T11:43:27.653Z",
+        "updated_at": "2024-01-20T11:43:27.653Z"
+    }
+},
+{
+    "model": "resourcesBuildingRegs.buildingregs",
+    "pk": 15,
+    "fields": {
+        "reg_name": "Security in dwellings: Approved Document Q",
+        "reg_link": "https://www.gov.uk/government/publications/security-in-dwellings-approved-document-q",
+        "reg_img": "https://assets.publishing.service.gov.uk/media/5a8016a9e5274a2e8ab4e1de/thumbnail_BR_PDF_AD_Q_2015.pdf.png",
+        "created_at": "2024-01-20T11:43:47.323Z",
+        "updated_at": "2024-01-20T11:43:47.323Z"
+    }
+},
+{
+    "model": "resourcesBuildingRegs.buildingregs",
+    "pk": 16,
+    "fields": {
+        "reg_name": "Infrastructure for electronic communications: Approved Document R",
+        "reg_link": "https://www.gov.uk/government/publications/infrastructure-for-electronic-communications-approved-document-r",
+        "reg_img": "https://assets.publishing.service.gov.uk/media/637f357a8fa8f56eb1a0ad3c/thumbnail_ADR2.pdf.png",
+        "created_at": "2024-01-20T11:44:10.739Z",
+        "updated_at": "2024-01-20T11:44:10.739Z"
+    }
+},
+{
+    "model": "resourcesBuildingRegs.buildingregs",
+    "pk": 17,
+    "fields": {
+        "reg_name": "Infrastructure for charging electric vehicles: Approved Document S",
+        "reg_link": "https://www.gov.uk/government/publications/infrastructure-for-charging-electric-vehicles-approved-document-s",
+        "reg_img": "https://assets.publishing.service.gov.uk/media/6218c5d3d3bf7f4f04b2b635/thumbnail_AD_S.pdf.png",
+        "created_at": "2024-01-20T11:44:35.488Z",
+        "updated_at": "2024-01-20T11:44:35.488Z"
+    }
+},
+{
+    "model": "resourcesBuildingRegs.buildingregs",
+    "pk": 18,
+    "fields": {
+        "reg_name": "Material and workmanship: Approved Document 7",
+        "reg_link": "https://www.gov.uk/government/publications/material-and-workmanship-approved-document-7",
+        "reg_img": "https://assets.publishing.service.gov.uk/media/5cf8d74f40f0b66401b51047/thumbnail_AD_Regulation_7.pdf.png",
+        "created_at": "2024-01-20T11:44:56.780Z",
+        "updated_at": "2024-01-20T11:44:56.780Z"
+    }
+}
+]
