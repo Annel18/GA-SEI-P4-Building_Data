@@ -1,8 +1,7 @@
-// Loader for individual roomType page
 import axios from "axios"
 
-export async function getIndRoomType(roomTypeId) {
-      const res = await axios.get(`/api/roomTypes/${roomTypeId}/`)
+export async function getIndRoomType(regsID) {
+      const res = await axios.get(`/api/resourcesBuildingRegs/${regsID}/`)
       //console.log(res.data)
       return res.data
   }
