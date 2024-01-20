@@ -78,7 +78,7 @@ export default function PageSingleRoomType() {
             // Send the patch request
             await axios.patch(`/api/roomTypes/${roomType_id}/`, { ffes: ffesIds }, {
                 headers: {
-                    Authorization: `Bearer ${userData[0].access}`,
+                    Authorization: `Bearer ${userData.access}`,
                 },
             })
         } catch (error) {
@@ -92,7 +92,7 @@ export default function PageSingleRoomType() {
         try {
             await axios.patch(`/api/roomTypes/${roomType_id}/`, { ffes: ffeIDArrayPopulated }, {
                 headers: {
-                    Authorization: `Bearer ${userData[0].access}`
+                    Authorization: `Bearer ${userData.access}`
                 }
             })
             const updatedData = await axios.get(`/api/roomTypes/${roomType_id}/`)
@@ -106,7 +106,7 @@ export default function PageSingleRoomType() {
         try {
             await axios.patch(`/api/roomTypes/${roomType_id}/`, json, {
                 headers: {
-                    Authorization: `Bearer ${userData[0].access}`,
+                    Authorization: `Bearer ${userData.access}`,
                 },
             })
             const updatedData = await axios.get(`/api/roomTypes/${roomType_id}/`)
@@ -122,7 +122,7 @@ export default function PageSingleRoomType() {
         try {
             await axios.patch(`/api/roomTypes/${roomType_id}/`, { floorFinishes: addedItem }, {
                 headers: {
-                    Authorization: `Bearer ${userData[0].access}`
+                    Authorization: `Bearer ${userData.access}`
                 }
             })
             const updatedData = await axios.get(`/api/floorFinishes/${addedItem}/`)

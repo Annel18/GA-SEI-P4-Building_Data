@@ -60,7 +60,7 @@ export default function PageSingleBuilding() {
         try {
             await axios.patch(`/api/buildings/${bldg_id}/`, { roomTypes: roomTypeIds }, {
                 headers: {
-                    Authorization: `Bearer ${userData[0].access}`,
+                    Authorization: `Bearer ${userData.access}`,
                 },
             })
             const updatedData = await axios.get(`/api/buildings/${bldg_id}/`)
@@ -87,7 +87,7 @@ export default function PageSingleBuilding() {
 
             const res = await axios.post('/api/roomTypes/', { ...roomToCopy, room_code: `${roomToCopy.room_code}_copy`, ffes: ffeArray }, {
                 headers: {
-                    Authorization: `Bearer ${userData[0].access}`,
+                    Authorization: `Bearer ${userData.access}`,
                 },
             })
             updateBldg(res.data.id)
@@ -110,6 +110,7 @@ export default function PageSingleBuilding() {
 
     async function updateBldg(createdRoom) {
         const roomTypeIDArray = []
+        
         {
             roomTypesToUpdate &&
                 roomTypesToUpdate.forEach(object => {
@@ -117,11 +118,12 @@ export default function PageSingleBuilding() {
                 })
         }
         const addedRoom = [...roomTypeIDArray, createdRoom]
-        console.log(addedRoom)
+        console.log('ROOM TO BE ADDED', addedRoom)
+        console.log(userData)
         try {
             await axios.patch(`/api/buildings/${indBldg.id}/`, { roomTypes: addedRoom }, {
                 headers: {
-                    Authorization: `Bearer ${userData[0].access}`
+                    Authorization: `Bearer ${userData.access}`
                 }
             })
             indBldg.roomTypes = { ...indBldg.roomTypes, addedRoom }
