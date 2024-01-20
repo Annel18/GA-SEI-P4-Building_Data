@@ -7,10 +7,10 @@ import { getIndRoomType } from "../utils/loaders/roomTypesLoader"
 //! Styling 
 import Col from 'react-bootstrap/Col'
 
-export default function IndexRoomTypes({ roomType_id, display, selection, crossDisplay, setToDelete, key }) {
+export default function IndexRoomTypes({ roomType_id, display, selection, crossDisplay, setToDelete }) {
     //! States
     const [roomTypes, setRoomTypes] = useState([])
-    const userData = useOutletContext()
+    const [userData] = useOutletContext()
 
     useEffect(() => {
         async function roomTypeRetrieve() {
@@ -40,7 +40,6 @@ export default function IndexRoomTypes({ roomType_id, display, selection, crossD
         <>
             <Col
                 className='single-container'
-                key={key}
                 as={Link}
                 xs={12}
                 s={6}
