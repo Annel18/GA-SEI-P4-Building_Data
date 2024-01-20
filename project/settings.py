@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'floorFinishes',
     'wallFinishes',
     'ceilings',
+    'resourcesBuildingRegs',
     'users'
 ]
 

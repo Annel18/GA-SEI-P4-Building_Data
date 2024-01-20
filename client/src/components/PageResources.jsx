@@ -1,11 +1,11 @@
 import { Container, Row, Col } from "react-bootstrap"
 
-export default function PageReferences() {
+export default function PageResources() {
 
     //!JSX
     return (
         <section className='index-page'>
-            <Container className="container-grid">
+            <Container fluid className="container-grid">
                 <Row className="items-list">
                     <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>Building Regulations</h3>
                     <Col className='single-container'>
