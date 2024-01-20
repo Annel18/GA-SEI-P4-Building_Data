@@ -21,6 +21,7 @@ export default function PageBuildings() {
     const [open, setOpen] = useState(false)
     const handleOpen = () => setOpen(true)
     const handleClose = () => setOpen(false)
+    const isUserLoggedIn = userData && userData.access
 
     //! Effects
     useEffect(() => {
@@ -56,73 +57,77 @@ export default function PageBuildings() {
 
     //! JSX
     return (
-        <>
-            <div className="filter-bar">
-                <form onSubmit={search} >
-                    <input
-                        type="text"
-                        name="searchField"
-                        placeholder="Search by name..."
-                        className="search"
-                    />
-                </form>
-                <button onClick={handleOpen}>✚</button>
-                <Modal
-                    size="lg"
-                    show={open}
-                    onHide={handleClose}
-                    aria-labelledby="example-modal-sizes-title-lg"
-                >
-                    <Modal.Header closeButton>
-                        <Modal.Title id="example-modal-sizes-title-lg">
-                            Add new Building
-                        </Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body className="modal-container">
-                        <UploadDivBldg setOpen={setOpen} />
-                    </Modal.Body>
-                </Modal>
-            </div>
-            {
-                searchData.buildingsDataSearch.length === 0
-                    ? (
-                        <section className='index-page'>
-                            <Container fluid className="container-grid">
-                                <Row className="items-list">
-                                    {buildings.filter(building => building.owner === userId).length > 0 && (
-                                        <h3 className="page-title section-separation" style={{ paddingTop: '0'}}>
-                                            My Buildings
-                                        </h3>
-                                    )}
-                                    {buildings
-                                        .filter(building => building.owner === userId)                                  
-                                        .map(building => {
-                                            return <IndexBuildings id={building.id} key={building.id} crossDisplay={true} setToDelete={setToDelete} />
-                                        })}
-                                    <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>Template Buildings</h3>
-                                    {buildings
-                                        .filter(building => building.owner === 1)
-                                        .map(building => (
-                                            <IndexBuildings id={building.id} key={building.id} crossDisplay={"none"} setToDelete={setToDelete} />
-                                        ))}
-                                </Row>
-                            </Container>
-                        </section>
-                    )
-                    : (
-                        <section className='index-page'>
-                            <Container fluid className="container-grid">
-                                <Row className="items-list">
-                                    {searchData.buildingsDataSearch
-                                        .filter(building => (building.owner === userId || building.owner === 1))
-                                        .map(building => (
-                                            <IndexBuildings id={building.id} key={building.id} crossDisplay={true} setToDelete={setToDelete} userId={userId} />
-                                        ))}
-                                </Row>
-                            </Container>
-                        </section>
-                    )
-            }
+        <>{isUserLoggedIn ?
+            <>
+                <div className="filter-bar">
+                    <form onSubmit={search} >
+                        <input
+                            type="text"
+                            name="searchField"
+                            placeholder="Search by name..."
+                            className="search"
+                        />
+                    </form>
+                    <button onClick={handleOpen}>✚</button>
+                    <Modal
+                        size="lg"
+                        show={open}
+                        onHide={handleClose}
+                        aria-labelledby="example-modal-sizes-title-lg"
+                    >
+                        <Modal.Header closeButton>
+                            <Modal.Title id="example-modal-sizes-title-lg">
+                                Add new Building
+                            </Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body className="modal-container">
+                            <UploadDivBldg setOpen={setOpen} />
+                        </Modal.Body>
+                    </Modal>
+                </div>
+                {
+                    searchData.buildingsDataSearch.length === 0
+                        ? (
+                            <section className='index-page'>
+                                <Container fluid className="container-grid">
+                                    <Row className="items-list">
+                                        {buildings.filter(building => building.owner === userId).length > 0 && (
+                                            <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>
+                                                My Buildings
+                                            </h3>
+                                        )}
+                                        {buildings
+                                            .filter(building => building.owner === userId)
+                                            .map(building => {
+                                                return <IndexBuildings id={building.id} key={building.id} crossDisplay={true} setToDelete={setToDelete} />
+                                            })}
+                                        <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>Template Buildings</h3>
+                                        {buildings
+                                            .filter(building => building.owner === 1)
+                                            .map(building => (
+                                                <IndexBuildings id={building.id} key={building.id} crossDisplay={"none"} setToDelete={setToDelete} />
+                                            ))}
+                                    </Row>
+                                </Container>
+                            </section>
+                        )
+                        : (
+                            <section className='index-page'>
+                                <Container fluid className="container-grid">
+                                    <Row className="items-list">
+                                        {searchData.buildingsDataSearch
+                                            .filter(building => (building.owner === userId || building.owner === 1))
+                                            .map(building => (
+                                                <IndexBuildings id={building.id} key={building.id} crossDisplay={true} setToDelete={setToDelete} userId={userId} />
+                                            ))}
+                                    </Row>
+                                </Container>
+                            </section>
+                        )
+                }
+            </>
+            :
+            <h1>404 PAGE NOT FOUND</h1>}
         </>
     )
 }

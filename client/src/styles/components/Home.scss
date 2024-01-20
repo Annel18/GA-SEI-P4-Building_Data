@@ -1,7 +1,10 @@
 .form-container {
-    padding: 1em;
-    // @include flex(column, center, center);
-    // @include boxShadow();
+
+    padding: 1em 3em 0;
+    border: none;
+    width: fit-content;
+    background-color: white;
+
 
     legend {
         text-align: center;

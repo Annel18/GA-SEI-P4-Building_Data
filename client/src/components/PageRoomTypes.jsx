@@ -23,6 +23,7 @@ export default function PageRoomTypes({ building, display, updateBldg, selection
     const handleOpen = () => setOpen(true)
     const handleClose = () => setOpen(false)
     const [userData] = useOutletContext()
+    const isUserLoggedIn = userData && userData.access
 
     //! Effects
     useEffect(() => {
@@ -59,98 +60,104 @@ export default function PageRoomTypes({ building, display, updateBldg, selection
     //! JSX
     return (
         <>
-            <div className="filter-bar">
-                <form onSubmit={search} >
-                    <input
-                        type="text"
-                        name="searchField"
-                        placeholder="Search by name..."
-                        className="search"
-                    />
-                </form>
-                <button onClick={handleOpen} style={{ display: display }}>✚</button>
-                <Modal
-                    size="lg"
-                    show={open}
-                    onHide={handleClose}
-                    aria-labelledby="example-modal-sizes-title-lg"
-                >
-                    <Modal.Header closeButton>
-                        <Modal.Title id="example-modal-sizes-title-lg">
-                            Add new Room Type
-                        </Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body className="modal-container">
-                        <UploadDivRT building={building} updateBldg={updateBldg} selection={selection} createRT={createRT} />
-                    </Modal.Body>
-                </Modal>
-            </div>
-            {
-                searchData.roomTypesDataSearch.length === 0
-                    ? (
-                        <section className='index-page'>
-                            <Container fluid className="container-grid">
-                                <FormControl style={{ marginBottom: '2em', display: display }}>
-                                    <RadioGroup
-                                        row
-                                        aria-labelledby="demo-row-radio-buttons-group-label"
-                                        name="row-radio-buttons-group"
-                                        value={addType}
-                                        onChange={handleChangeRoomUploadType}
-                                    >
-                                        <FormControlLabel value="create" control={<Radio />} label="Add duplicate" />
-                                    </RadioGroup>
-                                </FormControl>
-                                <Row className="items-list">
-                                    {roomTypes.filter(building => building.owner === userData.id).length > 0 && (
-                                        <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>My Rooms</h3>
-                                    )}
-                                    {roomTypes
-                                        .filter(building => building.owner === userData.id)
-                                        .map(roomType => (
-                                            <IndexRoomTypes key={roomType.id} roomType_id={roomType.id} display={display} selection={selection} crossDisplay={true} setToDelete={setToDelete} />
-                                        ))}
-                                    <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>Template Rooms</h3>
-                                    {roomTypes
-                                        .filter(building => building.owner === 1)
-                                        .map(roomType => (
-                                            <IndexRoomTypes key={roomType.id} roomType_id={roomType.id} display={display} selection={selection} crossDisplay={'none'} />
-                                        ))}
-                                </Row>
-                            </Container>
-                        </section>
-                    )
-                    : (
-                        <section className='index-page'>
-                            <Container fluid className="container-grid">
-                                <FormControl style={{ marginBottom: '2em', display: display }}>
-                                    <RadioGroup
-                                        row
-                                        aria-labelledby="demo-row-radio-buttons-group-label"
-                                        name="row-radio-buttons-group"
-                                        value={addType}
-                                        onChange={handleChangeRoomUploadType}
-                                    >
-                                        <FormControlLabel value="create" control={<Radio />} label="Add duplicate" />
-                                    </RadioGroup>
-                                </FormControl>
-                                <Row className="items-list">
-                                    <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>My Rooms</h3>
-                                    {searchData.roomTypesDataSearch
-                                        .filter(building => building.owner === userData.id)
-                                        .map(roomType => (
-                                            <IndexRoomTypes key={roomType.id} roomType_id={roomType.id} display={display} selection={selection} crossDisplay={true} setToDelete={setToDelete} />
-                                        ))}
-                                    <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>Template Rooms</h3>
-                                    {searchData.roomTypesDataSearch
-                                        .filter(building => building.owner === 1)
-                                        .map(roomType => (
-                                            <IndexRoomTypes key={roomType.id} roomType_id={roomType.id} display={display} selection={selection} crossDisplay={'none'} />
-                                        ))}
-                                </Row>
-                            </Container>
-                        </section>
-                    )
+            {isUserLoggedIn ?
+                <>
+                    <div className="filter-bar">
+                        <form onSubmit={search} >
+                            <input
+                                type="text"
+                                name="searchField"
+                                placeholder="Search by name..."
+                                className="search"
+                            />
+                        </form>
+                        <button onClick={handleOpen} style={{ display: display }}>✚</button>
+                        <Modal
+                            size="lg"
+                            show={open}
+                            onHide={handleClose}
+                            aria-labelledby="example-modal-sizes-title-lg"
+                        >
+                            <Modal.Header closeButton>
+                                <Modal.Title id="example-modal-sizes-title-lg">
+                                    Add new Room Type
+                                </Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body className="modal-container">
+                                <UploadDivRT building={building} updateBldg={updateBldg} selection={selection} createRT={createRT} />
+                            </Modal.Body>
+                        </Modal>
+                    </div>
+                    {
+                        searchData.roomTypesDataSearch.length === 0
+                            ? (
+                                <section className='index-page'>
+                                    <Container fluid className="container-grid">
+                                        <FormControl style={{ marginBottom: '2em', display: display }}>
+                                            <RadioGroup
+                                                row
+                                                aria-labelledby="demo-row-radio-buttons-group-label"
+                                                name="row-radio-buttons-group"
+                                                value={addType}
+                                                onChange={handleChangeRoomUploadType}
+                                            >
+                                                <FormControlLabel value="create" control={<Radio />} label="Add duplicate" />
+                                            </RadioGroup>
+                                        </FormControl>
+                                        <Row className="items-list">
+                                            {roomTypes.filter(building => building.owner === userData.id).length > 0 && (
+                                                <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>My Rooms</h3>
+                                            )}
+                                            {roomTypes
+                                                .filter(building => building.owner === userData.id)
+                                                .map(roomType => (
+                                                    <IndexRoomTypes key={roomType.id} roomType_id={roomType.id} display={display} selection={selection} crossDisplay={true} setToDelete={setToDelete} />
+                                                ))}
+                                            <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>Template Rooms</h3>
+                                            {roomTypes
+                                                .filter(building => building.owner === 1)
+                                                .map(roomType => (
+                                                    <IndexRoomTypes key={roomType.id} roomType_id={roomType.id} display={display} selection={selection} crossDisplay={'none'} />
+                                                ))}
+                                        </Row>
+                                    </Container>
+                                </section>
+                            )
+                            : (
+                                <section className='index-page'>
+                                    <Container fluid className="container-grid">
+                                        <FormControl style={{ marginBottom: '2em', display: display }}>
+                                            <RadioGroup
+                                                row
+                                                aria-labelledby="demo-row-radio-buttons-group-label"
+                                                name="row-radio-buttons-group"
+                                                value={addType}
+                                                onChange={handleChangeRoomUploadType}
+                                            >
+                                                <FormControlLabel value="create" control={<Radio />} label="Add duplicate" />
+                                            </RadioGroup>
+                                        </FormControl>
+                                        <Row className="items-list">
+                                            <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>My Rooms</h3>
+                                            {searchData.roomTypesDataSearch
+                                                .filter(building => building.owner === userData.id)
+                                                .map(roomType => (
+                                                    <IndexRoomTypes key={roomType.id} roomType_id={roomType.id} display={display} selection={selection} crossDisplay={true} setToDelete={setToDelete} />
+                                                ))}
+                                            <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>Template Rooms</h3>
+                                            {searchData.roomTypesDataSearch
+                                                .filter(building => building.owner === 1)
+                                                .map(roomType => (
+                                                    <IndexRoomTypes key={roomType.id} roomType_id={roomType.id} display={display} selection={selection} crossDisplay={'none'} />
+                                                ))}
+                                        </Row>
+                                    </Container>
+                                </section>
+                            )
+                    }
+                </>
+                :
+                <h1>404 PAGE NOT FOUND</h1>
             }
         </>
     )

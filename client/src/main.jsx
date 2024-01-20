@@ -9,8 +9,8 @@ import RegisterUser from './components/RegisterUser.jsx'
 import PageBuildings from './components/PageBuildings.jsx'
 import PageRoomTypes from './components/PageRoomTypes.jsx'
 import PageFFEs from './components/PageFFEs.jsx'
-import SingleBuilding from './components/SingleBuilding.jsx'
-import SingleRoomType from './components/SingleRoomType.jsx'
+import PageSingleBuilding from './components/PageSingleBuilding.jsx'
+import PageSingleRoomType from './components/PageSingleRoomType.jsx'
 import PageProfile from './components/PageProfile.jsx'
 // import IndexRoomTypes from './components/IndexRoomTypes.jsx'
 // import IndexFfes from './components/IndexFfes.jsx'
@@ -41,12 +41,12 @@ const router = createBrowserRouter([
             },
             {
                 path: '/buildings/:bldgId',
-                element: <SingleBuilding />,
+                element: <PageSingleBuilding />,
                 loader: async ({ params }) => getIndBuilding(params.bldgId)
             },
             {
                 path: '/roomTypes/:roomTypeId',
-                element: <SingleRoomType />,
+                element: <PageSingleRoomType />,
                 loader: async ({ params }) => getIndRoomType(params.roomTypeId)
             },
             {

@@ -3,7 +3,7 @@ import axios from "axios"
 import { useState, useEffect } from "react"
 import IndexFfes from "./IndexFfes"
 import UploadDivFFE from "./UploadDivFFE"
-
+import { useOutletContext } from "react-router-dom"
 //! Styles
 import Row from "react-bootstrap/esm/Container"
 import Modal from 'react-bootstrap/Modal'
@@ -15,6 +15,9 @@ export default function PageFFEs({ roomType_id, display, updateRT }) {
     const [open, setOpen] = useState(false)
     const handleOpen = () => setOpen(true)
     const handleClose = () => setOpen(false)
+    const [userData] = useOutletContext()
+    const isUserLoggedIn = userData && userData.access
+
 
 
     //! Effects
@@ -52,56 +55,61 @@ export default function PageFFEs({ roomType_id, display, updateRT }) {
     //! JSX
     return (
         <>
-            <div className="filter-bar">
-                <form onSubmit={search}>
-                    <input
-                        type="text"
-                        name="searchField"
-                        placeholder="Search by name..."
-                        className="search"
-                    />
-                </form>
-                <button onClick={handleOpen}>✚</button>
-                <Modal
-                    size="lg"
-                    show={open}
-                    onHide={handleClose}
-                    aria-labelledby="example-modal-sizes-title-lg"
-                >
-                    <Modal.Header closeButton>
-                        <Modal.Title id="example-modal-sizes-title-lg">
-                            Add new FFE
-                        </Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body className="modal-container">
-                        <UploadDivFFE roomType_id={roomType_id} updateRT={updateRT} />
-                    </Modal.Body>
-                </Modal>
-            </div >
-            {
-                searchData.ffesDataSearch.length === 0
-                    ? (
-                        <section className='index-page'>
-                            <Row fluid className="container-grid">
-                                <div className='ffe-list'><h5>Code</h5><h5>Name</h5><h5>GROUP</h5><h5 style={{ display: display }}>add</h5></div>
-                                {ffes.map(ffe => (
-                                    <IndexFfes ffe_id={ffe.id} key={ffe.id} roomType_id={roomType_id} updateRT={updateRT} display={display} />
-                                ))}
+            {isUserLoggedIn ?
+                <>
+                    <div className="filter-bar">
+                        <form onSubmit={search}>
+                            <input
+                                type="text"
+                                name="searchField"
+                                placeholder="Search by name..."
+                                className="search"
+                            />
+                        </form>
+                        <button onClick={handleOpen}>✚</button>
+                        <Modal
+                            size="lg"
+                            show={open}
+                            onHide={handleClose}
+                            aria-labelledby="example-modal-sizes-title-lg"
+                        >
+                            <Modal.Header closeButton>
+                                <Modal.Title id="example-modal-sizes-title-lg">
+                                    Add new FFE
+                                </Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body className="modal-container">
+                                <UploadDivFFE roomType_id={roomType_id} updateRT={updateRT} />
+                            </Modal.Body>
+                        </Modal>
+                    </div >
+                    {
+                        searchData.ffesDataSearch.length === 0
+                            ? (
+                                <section className='index-page'>
+                                    <Row fluid className="container-grid">
+                                        <div className='ffe-list'><h5>Code</h5><h5>Name</h5><h5>GROUP</h5><h5 style={{ display: display }}>add</h5></div>
+                                        {ffes.map(ffe => (
+                                            <IndexFfes ffe_id={ffe.id} key={ffe.id} roomType_id={roomType_id} updateRT={updateRT} display={display} />
+                                        ))}
 
-                            </Row>
-                        </section>
-                    )
-                    : (
-                        <section className='index-page'>
-                            <Row fluid className="container-grid">
-                                <div className='ffe-list'><h5>Code</h5><h5>Name</h5><h5>GROUP</h5><h5 style={{ display: display }}>add</h5></div>
-                                {searchData.ffesDataSearch.map(ffe => (
-                                    <IndexFfes ffe_id={ffe.id} key={ffe.id} roomType_id={roomType_id} updateRT={updateRT} display={display} />
-                                ))}
-                            </Row>
-                        </section>
-                    )
-            }
+                                    </Row>
+                                </section>
+                            )
+                            : (
+                                <section className='index-page'>
+                                    <Row fluid className="container-grid">
+                                        <div className='ffe-list'><h5>Code</h5><h5>Name</h5><h5>GROUP</h5><h5 style={{ display: display }}>add</h5></div>
+                                        {searchData.ffesDataSearch.map(ffe => (
+                                            <IndexFfes ffe_id={ffe.id} key={ffe.id} roomType_id={roomType_id} updateRT={updateRT} display={display} />
+                                        ))}
+                                    </Row>
+                                </section>
+                            )
+                    }
+                </>
+                :
+                <h1>404 PAGE NOT FOUND</h1>}
         </>
     )
 }
