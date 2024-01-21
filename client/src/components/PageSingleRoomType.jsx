@@ -28,7 +28,7 @@ export default function PageSingleRoomType() {
     const handleCloseEdit = () => setOpenEdit(false)
     const [openFloorFinishUpload, setOpenFloorFinishUpload] = useState(false)
     const handleOpenFloorFinishUpload = () => setOpenFloorFinishUpload(true)
-    const handleCloseFloorFinishUPload = () => setOpenFloorFinishUpload(false)
+    const handleCloseFloorFinishUpload = () => setOpenFloorFinishUpload(false)
     const [display, setDisplay] = useState(true)
     const isUserLoggedIn = userData && userData.access
 
@@ -63,6 +63,18 @@ export default function PageSingleRoomType() {
         const updatedSingleRoomCollection = rooms.map(object => object.room_nbr).join(', ')
         setRoomCollection(updatedSingleRoomCollection)
     }, [rooms])
+
+    useEffect(() => {
+        async function retrieveFloorFinishes(){
+            try{
+                const res = await axios.get(`/api/floorFinishes/${floorFinishes}/`)
+                setFloorFinishesToUpdate(res.data)
+            } catch(error){
+                console.log(error)
+            }
+        }
+        retrieveFloorFinishes()
+    }, [floorFinishes])
 
     //! Functions
     async function removeFFE(e, ffeId) {
@@ -127,12 +139,13 @@ export default function PageSingleRoomType() {
             })
             const updatedData = await axios.get(`/api/floorFinishes/${addedItem}/`)
             setFloorFinishesToUpdate(updatedData.data)
-            setOpenFloorFinishUpload(!openFloorFinishUpload)
+            setOpenFloorFinishUpload(false)
         } catch (error) {
             console.log(error)
         }
     }
 
+    //! JSX
     return (
         <>
             {isUserLoggedIn ?
@@ -195,7 +208,7 @@ export default function PageSingleRoomType() {
                                 <Modal
                                     size="lg"
                                     show={openFloorFinishUpload}
-                                    onHide={handleCloseFloorFinishUPload}
+                                    onHide={handleCloseFloorFinishUpload}
                                     aria-labelledby="example-modal-sizes-title-lg"
                                 >
                                     <Modal.Header closeButton>
@@ -205,7 +218,7 @@ export default function PageSingleRoomType() {
                                     </Modal.Header>
                                     <Modal.Body className="modal-container">
                                         <>
-                                            <PageFloorFinishes addItem={true} roomType_id={roomType_id} updateRoomTypeWithFloorFinish={updateRoomTypeWithFloorFinish} />
+                                            <PageFloorFinishes display={true} roomType_id={roomType_id} updateRoomTypeWithFloorFinish={updateRoomTypeWithFloorFinish} />
                                         </>
                                     </Modal.Body>
                                 </Modal>

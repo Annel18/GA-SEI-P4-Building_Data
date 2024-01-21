@@ -7,11 +7,10 @@ import IndexFloorFinishes from "./IndexFloorFinishes"
 import UploadDivFloorFinish from "./UploadDivFloorFinish"
 
 //! Styles
-import Container from "react-bootstrap/esm/Container"
 import Row from "react-bootstrap/esm/Row"
 import Modal from 'react-bootstrap/Modal'
 
-export default function PageFloorFinishes({ roomType_id, addItem, updateRoomTypeWithFloorFinish }) {
+export default function PageFloorFinishes({ roomType_id, display, updateRoomTypeWithFloorFinish }) {
     //! States
     const [searchData, setSearchData] = useState({ dataSearch: [] })
     const [floorFinishes, setFloorFinishes] = useState([])
@@ -25,7 +24,7 @@ export default function PageFloorFinishes({ roomType_id, addItem, updateRoomType
     useEffect(() => {
         async function getFloorFinishesData() {
             try {
-                const res = await axios.get('/api/floorFinishes')
+                const res = await axios.get('/api/floorFinishes/')
                 const sortedData = res.data.sort((a, b) => a.spec_code.localeCompare(b.spec_code))
                 setFloorFinishes(sortedData)
             } catch (error) {
@@ -87,25 +86,24 @@ export default function PageFloorFinishes({ roomType_id, addItem, updateRoomType
                     searchData.dataSearch.length === 0
                         ? (
                             <section className='index-page'>
-                                <Container fluid className="container-grid" style={{ padding: '5em' }}>
-                                    <Row /*className="items-list"*/
-                                    >
-                                        {floorFinishes.map(floorFinish => (
-                                            <IndexFloorFinishes spec_id={floorFinish.id} key={floorFinish.id} addItem={addItem} roomType_id={roomType_id} updateRoomTypeWithFloorFinish={updateRoomTypeWithFloorFinish} />
+                                <Row fluid className="container-grid" style={{ padding: '5em' }}>
+                                    {floorFinishes
+                                        .filter(roomType => roomType.owner === userData.id)
+                                        .map(floorFinish => (
+                                            <IndexFloorFinishes spec_id={floorFinish.id} key={floorFinish.id} display={display} roomType_id={roomType_id} updateRoomTypeWithFloorFinish={updateRoomTypeWithFloorFinish} />
                                         ))}
-                                    </Row>
-                                </Container>
+                                </Row>
                             </section>
                         )
                         : (
                             <section className='index-page'>
-                                <Container fluid className="container-grid" style={{ padding: '5em' }}>
-                                    <Row /*className="items-list"*/>
-                                        {searchData.specsDataSearch.map(floorFinish => {
-                                            <IndexFloorFinishes spec_id={floorFinish.id} key={floorFinish.id} addItem={addItem} roomType_id={roomType_id} updateRoomTypeWithFloorFinish={updateRoomTypeWithFloorFinish} />
+                                <Row fluid className="container-grid" style={{ padding: '5em' }}>
+                                    {searchData.specsDataSearch
+                                        .filter(roomType => roomType.owner === userData.id)
+                                        .map(floorFinish => {
+                                            <IndexFloorFinishes spec_id={floorFinish.id} key={floorFinish.id} display={display} roomType_id={roomType_id} updateRoomTypeWithFloorFinish={updateRoomTypeWithFloorFinish} />
                                         })}
-                                    </Row>
-                                </Container>
+                                </Row>
                             </section>
                         )
                 }

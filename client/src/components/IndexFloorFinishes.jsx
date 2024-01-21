@@ -1,19 +1,13 @@
 /* eslint-disable react/prop-types */
-// import axios from 'axios'
 import { useEffect, useState } from 'react'
-// import { useOutletContext } from 'react-router-dom'
-
 import { getIndFloorFinish } from "../utils/loaders/floorFinishesLoader"
-// import { getIndRoomType } from "../utils/loaders/roomTypesLoader"
 
 //! Styling 
 import Col from 'react-bootstrap/Col'
 
-export default function IndexFloorFinishes({ spec_id, addItem, updateRoomTypeWithFloorFinish}) {
+export default function IndexFloorFinishes({ spec_id, display, updateRoomTypeWithFloorFinish}) {
     //! States
     const [floorFinishes, setfloorFinishes] = useState([])
-    // const [roomTypes, setRoomTypes] = useState([])
-    // const userData = useOutletContext()
 
     useEffect(() => {
         async function floorFinishRetrieve() {
@@ -22,30 +16,6 @@ export default function IndexFloorFinishes({ spec_id, addItem, updateRoomTypeWit
         }
         floorFinishRetrieve()
     }, [spec_id])
-
-    // useEffect(() => {
-    //     async function roomTypeRetrieve() {
-    //         const roomType = await getIndRoomType(roomType_id)
-    //         setRoomTypes(roomType)
-    //     }
-    //     roomTypeRetrieve()
-    // }, [roomType_id])
-
-    // async function updateRT(addedFloorFinish) {
-
-    //     try {
-    //         const res = await axios.patch(`/api/roomTypes/${roomType_id}/`, { floorFinishes: addedFloorFinish }, {
-    //             headers: {
-    //                 Authorization: `Bearer ${userData[0].access}`
-    //             }
-    //         })
-    //         const newData = { ...res.data, access: userData[0].access }
-    //         setRoomTypes(newData)
-    //         // navigate(`/roomTypes/${roomType_id}/`)
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-    // }
 
     //! JSX
     return (
@@ -57,7 +27,7 @@ export default function IndexFloorFinishes({ spec_id, addItem, updateRoomTypeWit
                     <p>{floorFinishes.spec_name}</p>
                     <button
                         className='submitBtn'
-                        style={{ display: addItem }}
+                        style={{ display: display }}
                         onClick={(e) => {
                             e.preventDefault()
                             const addedFloorFinish = spec_id
@@ -65,7 +35,6 @@ export default function IndexFloorFinishes({ spec_id, addItem, updateRoomTypeWit
                         }
                         }
                     >Add</button>
-
             </Col>
         </>
     )

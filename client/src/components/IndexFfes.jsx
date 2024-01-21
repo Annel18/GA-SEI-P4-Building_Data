@@ -39,7 +39,6 @@ export default function IndexFfes({ ffe_id, updateRT, display }) {
                         }
                         }
                     >Add</button>
-
             </Col>
             {/* </div> */}
             {/* </div> */}
