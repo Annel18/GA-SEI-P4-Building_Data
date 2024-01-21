@@ -13,6 +13,7 @@ export default function PageFFEs({ roomType_id, display, updateRT }) {
     //! States
     const [searchData, setSearchData] = useState({ ffesDataSearch: [] })
     const [ffes, setFfes] = useState([])
+    const [toDelete, setToDelete] = useState(false)
     const [open, setOpen] = useState(false)
     const handleOpen = () => setOpen(true)
     const handleClose = () => setOpen(false)
@@ -33,7 +34,7 @@ export default function PageFFEs({ roomType_id, display, updateRT }) {
             }
         }
         getFfesData()
-    }, [open])
+    }, [open, toDelete])
 
     //! Functions
     async function search(e) {
@@ -89,14 +90,14 @@ export default function PageFFEs({ roomType_id, display, updateRT }) {
                             ? (
                                 <section className='index-page'>
                                     <Row fluid className="container-grid">
-                                        <div className='ffe-list'><h5>Code</h5><h5>Name</h5><h5>GROUP</h5><h5 style={{ display: display }}>add</h5></div>
+                                        <div className='ffe-list'><h5>Code</h5><h5>Name</h5><h5>GROUP</h5><h5 style={{ display: display }}>add</h5><h5>delete</h5></div>
                                         {ffes.filter(ffe => ffe.owner === userData.id).length > 0 && (
                                             <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>My FFEs</h3>
                                         )}
                                         {ffes
                                             .filter(roomType => roomType.owner === userData.id)
                                             .map(ffe => (
-                                                <IndexFfes ffe_id={ffe.id} key={ffe.id} roomType_id={roomType_id} updateRT={updateRT} display={display} />
+                                                <IndexFfes ffe_id={ffe.id} key={ffe.id} roomType_id={roomType_id} updateRT={updateRT} display={display} crossDisplay={true} setToDelete={setToDelete}/>
                                             ))}
                                         <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>Template FFEs</h3>
                                         {ffes
@@ -110,14 +111,14 @@ export default function PageFFEs({ roomType_id, display, updateRT }) {
                             : (
                                 <section className='index-page'>
                                     <Row fluid className="container-grid">
-                                        <div className='ffe-list'><h5>Code</h5><h5>Name</h5><h5>GROUP</h5><h5 style={{ display: display }}>add</h5></div>
+                                        <div className='ffe-list'><h5>Code</h5><h5>Name</h5><h5>GROUP</h5><h5 style={{ display: display }}>add</h5><h5>delete</h5></div>
                                         {ffes.filter(ffe => ffe.owner === userData.id).length > 0 && (
                                             <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>My FFEs</h3>
                                         )}
                                         {searchData.ffesDataSearch
                                             .filter(roomType => roomType.owner === userData.id)
                                             .map(ffe => (
-                                                <IndexFfes ffe_id={ffe.id} key={ffe.id} roomType_id={roomType_id} updateRT={updateRT} display={display} />
+                                                <IndexFfes ffe_id={ffe.id} key={ffe.id} roomType_id={roomType_id} updateRT={updateRT} display={display} crossDisplay={true} setToDelete={setToDelete}/>
                                             ))}
                                         <h3 className="page-title section-separation" style={{ paddingTop: '0' }}>Template FFEs</h3>
                                         {searchData.ffesDataSearch

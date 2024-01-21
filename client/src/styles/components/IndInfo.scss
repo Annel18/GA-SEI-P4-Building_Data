@@ -32,18 +32,26 @@
 }
 
 .ffe-list {
+    button{
+        width: fit-content;
+    }
     display: grid;
     gap: 1em;
-    grid-template-columns: 1fr 9fr 1fr 1fr;
+    grid-template-columns: 1fr 9fr 1fr 1fr 1fr;
     border-bottom: 1px dashed black;
     align-items: baseline;
 
     :last-child {
-        text-align: center;
+        justify-self: center;
     }
-
     :nth-last-child(2) {
         text-align: center;
+    }
+    :nth-last-child(3) {
+        text-align: center;
+    }
+    :nth-child(2){
+        text-align: left;
     }
 }
 
