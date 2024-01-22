@@ -78,7 +78,7 @@ export default function PageFloorFinishes({ roomType_id, display, updateRoomType
                             </Modal.Title>
                         </Modal.Header>
                         <Modal.Body className="modal-container">
-                            <UploadDivFloorFinish roomType_id={roomType_id} />
+                            <UploadDivFloorFinish roomType_id={roomType_id} updateRoomTypeWithFloorFinish={updateRoomTypeWithFloorFinish}/>
                         </Modal.Body>
                     </Modal>
                 </div >

@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import axios from 'axios'
 import { useState } from 'react'
 import { useOutletContext } from 'react-router-dom'
 
-export default function UploadDivFloorFinish() {
+export default function UploadDivFloorFinish({ updateRoomTypeWithFloorFinish }) {
     // Get User ID
     const userData = useOutletContext()
     const [inputs, setInputs] = useState({})
@@ -27,8 +28,8 @@ export default function UploadDivFloorFinish() {
                     Authorization: `Bearer ${userData[0].access}`,
                 },
             })
-            const flooringFinishID = res.data._id
-            console.log(flooringFinishID)
+            const flooringFinishID = res.data.id
+            updateRoomTypeWithFloorFinish(flooringFinishID)
         } catch (error) {
             console.log(error)
         }

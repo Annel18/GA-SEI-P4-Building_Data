@@ -8,7 +8,6 @@ import { useOutletContext } from 'react-router-dom'
 export default function UploadDivFFE({ updateRT }) {
     // Get User ID
     const userData = useOutletContext()
-    // const navigate = useNavigate()
     const [inputs, setInputs] = useState({})
 
     const handleChange = (event) => {
