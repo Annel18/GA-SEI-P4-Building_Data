@@ -56,71 +56,71 @@ HTML, CSS, JavaScript, React, Axios, Node.js, Vite, JSON, JWT, npm, Chrome DevTo
 I started by building the bones of the backend:
 - After having installed Django in the local project root, I was ready to enter the virtual environment shell where I could start creating the database, project app and super user (the ultimate admin).
 - I can then start the various applications to follow the ERD above by 
-```
-django-admin startapp buildings
-django-admin startapp roomTypes
-django-admin startapp rooms
-django-admin startapp ffes
-django-admin startapp floorFinishes
-django-admin startapp wallFinishes
-django-admin startapp ceilings 
-django-admin startapp users
-django-admin startapp resourcesHBN
-django-admin startapp resourcesBuildingRegs
-```
+    ```
+    django-admin startapp buildings
+    django-admin startapp roomTypes
+    django-admin startapp rooms
+    django-admin startapp ffes
+    django-admin startapp floorFinishes
+    django-admin startapp wallFinishes
+    django-admin startapp ceilings 
+    django-admin startapp users
+    django-admin startapp resourcesHBN
+    django-admin startapp resourcesBuildingRegs
+    ```
 
 - All these applications have to be added to the INSTALLED_APP list which is in Project>settings.py
 - Each of these application folders has a model.py file where the class for models has to be defined. This is where the fields of the models are declared as well as their relationships if any. For instance, this RoomType model has a many-to-many relationship with the Ffe model and also has a one-to-many relationship with FloorFinishes, WallFinishes, Ceilings and User models.
-```Python
-class RoomType(models.Model):
-   room_code = models.CharField(max_length=255)
-   room_name = models.CharField(max_length=255)
-   area = models.FloatField(blank=True, null=True)
-   height = models.FloatField(blank=True, null=True)
-   room_img = models.CharField(
-       max_length=2000,
-       blank=True,
-       null=True
-   )
-   created_at = models.DateTimeField(auto_now_add=True)
-   updated_at = models.DateTimeField(auto_now=True)
-   ffes = models.ManyToManyField(
-       blank=True,
-       to='ffes.Ffe',
-       related_name='roomTypes'
-   )
-   floorFinishes = models.ForeignKey(
-       blank=True,
-       null=True,
-       on_delete=models.CASCADE,
-       to='floorFinishes.FloorFinish',
-       related_name='rooms'
-   )
-   wallFinishes = models.ForeignKey(
-       blank=True,
-       null=True,
-       on_delete=models.CASCADE,
-       to='wallFinishes.WallFinish',
-       related_name='rooms'
-   )
-   ceilings = models.ForeignKey(
-       blank=True,
-       null=True,
-       on_delete=models.CASCADE,
-       to='ceilings.Ceiling',
-       related_name='rooms'
-   )
-   owner = models.ForeignKey(
-       to='users.User',
-       on_delete=models.CASCADE,
-       related_name='owned_roomTypes',
-       null=True
-   )
+    ```Python
+    class RoomType(models.Model):
+    room_code = models.CharField(max_length=255)
+    room_name = models.CharField(max_length=255)
+    area = models.FloatField(blank=True, null=True)
+    height = models.FloatField(blank=True, null=True)
+    room_img = models.CharField(
+        max_length=2000,
+        blank=True,
+        null=True
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    ffes = models.ManyToManyField(
+        blank=True,
+        to='ffes.Ffe',
+        related_name='roomTypes'
+    )
+    floorFinishes = models.ForeignKey(
+        blank=True,
+        null=True,
+        on_delete=models.CASCADE,
+        to='floorFinishes.FloorFinish',
+        related_name='rooms'
+    )
+    wallFinishes = models.ForeignKey(
+        blank=True,
+        null=True,
+        on_delete=models.CASCADE,
+        to='wallFinishes.WallFinish',
+        related_name='rooms'
+    )
+    ceilings = models.ForeignKey(
+        blank=True,
+        null=True,
+        on_delete=models.CASCADE,
+        to='ceilings.Ceiling',
+        related_name='rooms'
+    )
+    owner = models.ForeignKey(
+        to='users.User',
+        on_delete=models.CASCADE,
+        related_name='owned_roomTypes',
+        null=True
+    )
 
 
-   def __str__(self):
-       return f'{self.room_code} - {self.room_name}'
-```
+    def __str__(self):
+        return f'{self.room_code} - {self.room_name}'
+    ```
 
 - Each time the Models are updated in the backend, changes have to be migrated to the database before re-running the server.
 - I created a series of Google sheets with a list of room types, and FFEs (Furniture, Fittings and Equipment) that I wanted to include on the website, which would form the basic template. I would then use that to populate the JSON files to seed into the applications.
@@ -131,23 +131,23 @@ From day 2, I  was ready to start working on the client side and developing the 
 - I started implementing the register/login page as I wanted the user to be logged in before accessing any data in the application
 - I then also worked on the Navbar components which would allow me to navigate throughout the website
 - The app.jsx remains very simple and it only returns the navbar component and then Outlet (a component from react-router-dom that renders the child route's element, if there is one). The props to pass through this Outlet component have to be declared as context properties.
-```JavaScript
-return (
-       <>
-           <NavTop userData={userData} setUserData={setUserData} />
-           <main>
-               {
-                   navigation.state === 'idle' ?
-                       <Outlet context={[userData, setUserData]} />
-                       :
-                       <section className='spinner'>
-                           <Spinner />
-                       </section>
-               }
-           </main>
-       </>
-)
-```
+    ```JavaScript
+    return (
+        <>
+            <NavTop userData={userData} setUserData={setUserData} />
+            <main>
+                {
+                    navigation.state === 'idle' ?
+                        <Outlet context={[userData, setUserData]} />
+                        :
+                        <section className='spinner'>
+                            <Spinner />
+                        </section>
+                }
+            </main>
+        </>
+    )
+    ```
 
 - I then moved on to creating the indexes that I wanted to implement. (the buildings, the room types and the FFEs)
     - Each of these indexes can be filtered by searching input text
@@ -189,87 +189,88 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 - As the SQL server is hosted online, I had some issues with website slowness when retrieving the data. The issue wasn't only with the latency from the remote server, but the way I was accessing the data through the front-end. 
 For instance:
 The page for a single room type uses the loader to access all the details of this room type which are only accessed on this page where I need this information.
-```JavaScript
-const indRT = useLoaderData()
-const {
-    id: roomType_id,
-    room_code,
-    room_name,
-    room_img,
-    area,
-    height,
-    rooms,
-    floorFinishes,
-    ceilings,
-    wallFinishes,
-    ffes,
-    owner } = indRT
-```
-```JavaScript
-//! Functions
-    async function updateRT(addedItem) {
-    const ffeIDArray = ffesToUpdate.map(object => object.id)
-    const ffeIDArrayPopulated = [...ffeIDArray, addedItem]
-    try {
-        await axios.patch(`/api/roomTypes/${roomType_id}/`, { ffes: ffeIDArrayPopulated }, {
-            headers: {
-                Authorization: `Bearer ${userData.access}`
-            }
-        })
-        const updatedData = await axios.get(`/api/roomTypes/${roomType_id}/`)
-        setFfesToUpdate(updatedData.data.ffes)
-        setOpen(false)
-    } catch (error) {
-        console.log(error)
+
+    ```JS
+    const indRT = useLoaderData()
+    const {
+        id: roomType_id,
+        room_code,
+        room_name,
+        room_img,
+        area,
+        height,
+        rooms,
+        floorFinishes,
+        ceilings,
+        wallFinishes,
+        ffes,
+        owner } = indRT
+    ```
+    ```JavaScript
+    //! Functions
+        async function updateRT(addedItem) {
+        const ffeIDArray = ffesToUpdate.map(object => object.id)
+        const ffeIDArrayPopulated = [...ffeIDArray, addedItem]
+        try {
+            await axios.patch(`/api/roomTypes/${roomType_id}/`, { ffes: ffeIDArrayPopulated }, {
+                headers: {
+                    Authorization: `Bearer ${userData.access}`
+                }
+            })
+            const updatedData = await axios.get(`/api/roomTypes/${roomType_id}/`)
+            setFfesToUpdate(updatedData.data.ffes)
+            setOpen(false)
+        } catch (error) {
+            console.log(error)
+        }
     }
-}
-```
+    ```
 
 - This function can be passed as props in the component:
-```JavaScript
-<PageFFES display={true} roomType_id={roomType_id} updateRT={updateRT}/>
-export default function PageFFEs({ roomType_id, display, updateRT }) {
-```
+    ```JavaScript
+    <PageFFES display={true} roomType_id={roomType_id} updateRT={updateRT}/>
+    export default function PageFFEs({ roomType_id, display, updateRT }) {
+    ```
 
 - If needed, it can be passed again in the components of the component
-```JS
-<UploadDivFFE roomType_id={roomType_id} updateRT={updateRT} />
-```
-```JS
-{ffes
-  .filter(roomType => roomType.owner === userData.id)
-  .map(ffe => (
- <IndexFfes ffe_id={ffe.id} key={ffe.id} roomType_id={roomType_id} updateRT={updateRT} display={display} crossDisplay={true} setToDelete={setToDelete}/>
-))}
-```
-```JS
-export default function IndexFfes({ ffe_id, updateRT, display, crossDisplay, setToDelete }) {
-   return (
-           <Col
-               className='ffe-list'
-               key={ffe_id}
-           >
-               <p>{ffes.ffe_code}</p>
-               <p>{ffes.ffe_name}</p>
-               <p>{ffes.ffe_group}</p>
-               <button
-                   className='submitBtn'
-                   style={{ display: display }}
-                   onClick={(e) => {
-                       e.preventDefault()
-                       const addedFFE = ffe_id
-                       updateRT(addedFFE)
-                   }
-               }
-               >Add</button>
-               <button
-                   className='submitBtn'
-                   style={{ display: crossDisplay }}
-                   onClick={deleteFFE}
-               >╳</button>
-           </Col>
-   )
-```
+    ```JS
+    <UploadDivFFE roomType_id={roomType_id} updateRT={updateRT} />
+    ```
+    ```JS
+    {ffes
+    .filter(roomType => roomType.owner === userData.id)
+    .map(ffe => (
+    <IndexFfes ffe_id={ffe.id} key={ffe.id} roomType_id={roomType_id} updateRT={updateRT} display={display} crossDisplay={true} setToDelete={setToDelete}/>
+    ))}
+    ```
+    ```JS
+    export default function IndexFfes({ ffe_id, updateRT, display, crossDisplay, setToDelete }) {
+    return (
+            <Col
+                className='ffe-list'
+                key={ffe_id}
+            >
+                <p>{ffes.ffe_code}</p>
+                <p>{ffes.ffe_name}</p>
+                <p>{ffes.ffe_group}</p>
+                <button
+                    className='submitBtn'
+                    style={{ display: display }}
+                    onClick={(e) => {
+                        e.preventDefault()
+                        const addedFFE = ffe_id
+                        updateRT(addedFFE)
+                    }
+                }
+                >Add</button>
+                <button
+                    className='submitBtn'
+                    style={{ display: crossDisplay }}
+                    onClick={deleteFFE}
+                >╳</button>
+            </Col>
+    )
+    ```
 You can see in this last indexFfes component, that I don’t need to reload all the room-type details to update the specific room-type, but instead call the function that has been passed down through the props. Otherwise, when rendering the FFE page, it would access the same populated information many times due to the map method on the ‘ffes’ array. (which is what I was originally doing and it was making the website very slow…)
 
 ## Wins
