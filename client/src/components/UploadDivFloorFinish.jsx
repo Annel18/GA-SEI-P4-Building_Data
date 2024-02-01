@@ -5,7 +5,7 @@ import { useOutletContext } from 'react-router-dom'
 
 export default function UploadDivFloorFinish({ updateRoomTypeWithFloorFinish }) {
     // Get User ID
-    const userData = useOutletContext()
+    const [userData] = useOutletContext()
     const [inputs, setInputs] = useState({})
 
     const handleChange = (event) => {
@@ -25,7 +25,7 @@ export default function UploadDivFloorFinish({ updateRoomTypeWithFloorFinish }) 
         try {
             const res = await axios.post('/api/floorFinishes/', json, {
                 headers: {
-                    Authorization: `Bearer ${userData[0].access}`,
+                    Authorization: `Bearer ${userData.access}`,
                 },
             })
             const flooringFinishID = res.data.id

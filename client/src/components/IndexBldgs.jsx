@@ -11,7 +11,7 @@ import Col from 'react-bootstrap/Col'
 export default function IndexBuildings({ id, crossDisplay, setToDelete }) {
     //! States
     const [buildings, setBuildings] = useState([])
-    const userData = useOutletContext()
+    const [userData] = useOutletContext()
 
     useEffect(() => {
         async function buildingsRetrieve() {
@@ -26,7 +26,7 @@ export default function IndexBuildings({ id, crossDisplay, setToDelete }) {
         try {
             const res = await axios.delete(`/api/buildings/${id}/`, {
                 headers: {
-                    Authorization: `Bearer ${userData[0].access}`
+                    Authorization: `Bearer ${userData.access}`
                 }
             })
             setBuildings(res.data)

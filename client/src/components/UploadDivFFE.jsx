@@ -7,7 +7,7 @@ import { useOutletContext } from 'react-router-dom'
 
 export default function UploadDivFFE({ updateRT }) {
     // Get User ID
-    const userData = useOutletContext()
+    const [userData] = useOutletContext()
     const [inputs, setInputs] = useState({})
 
     const handleChange = (event) => {
@@ -27,7 +27,7 @@ export default function UploadDivFFE({ updateRT }) {
         try {
             const res = await axios.post('/api/ffes/', json, {
                 headers: {
-                    Authorization: `Bearer ${userData[0].access}`,
+                    Authorization: `Bearer ${userData.access}`,
                 },
             })
             const updatedData = res.data.id

@@ -6,7 +6,7 @@ import { useOutletContext } from 'react-router-dom'
 
 export default function UploadDivBldg({ setOpen }) {
     // Get User ID
-    const userData = useOutletContext()
+    const [userData] = useOutletContext()
     // const navigate = useNavigate()
     const [uploadImg, setUploadImg] = useState('')
     const [inputs, setInputs] = useState({})
@@ -29,7 +29,7 @@ export default function UploadDivBldg({ setOpen }) {
         try {
             await axios.post('/api/buildings/', json, {
                 headers: {
-                    Authorization: `Bearer ${userData[0].access}`,
+                    Authorization: `Bearer ${userData.access}`,
                 },
             })
             setOpen(false)

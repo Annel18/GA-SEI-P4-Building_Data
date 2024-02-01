@@ -70,6 +70,17 @@ export default function PageSingleBuilding() {
         }
     }
 
+    async function selection(createdRoom) {
+        console.log(createdRoom)
+        if (addType === "create") {
+            createRT(createdRoom)
+        }
+        else {
+            updateBldg(createdRoom)
+            setOpen(!open)
+        }
+    }
+
     async function createRT(createdRoom) {
 
         try {
@@ -78,12 +89,6 @@ export default function PageSingleBuilding() {
 
             const ffeArray = []
             roomToCopy.ffes.forEach(object => ffeArray.push(object.id))
-            // const floorFinishesArray = []
-            // roomToCopy.floorFinishes.forEach(object => floorFinishesArray.push(object.id))
-            // const wallFinishesArray = []
-            // roomToCopy.wallFinishes.forEach(object => wallFinishesArray.push(object.id))
-            // const ceilingsArray = []
-            // roomToCopy.ceilings.forEach(object => ceilingsArray.push(object.id))
 
             const res = await axios.post('/api/roomTypes/', { ...roomToCopy, room_code: `${roomToCopy.room_code}_copy`, ffes: ffeArray }, {
                 headers: {
@@ -94,17 +99,6 @@ export default function PageSingleBuilding() {
             setOpen(!open)
         } catch (error) {
             console.log(error)
-        }
-    }
-
-    async function selection(createdRoom) {
-        console.log(createdRoom)
-        if (addType === "create") {
-            createRT(createdRoom)
-        }
-        else {
-            updateBldg(createdRoom)
-            setOpen(!open)
         }
     }
 

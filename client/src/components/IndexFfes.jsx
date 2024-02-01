@@ -61,8 +61,6 @@ export default function IndexFfes({ ffe_id, updateRT, display, crossDisplay, set
                     onClick={deleteFFE}
                 >╳</button>
             </Col>
-            {/* </div> */}
-            {/* </div> */}
         </>
     )
 }
