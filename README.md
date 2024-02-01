@@ -1,4 +1,5 @@
 # Project 4 - BUILDING.DATA
+![Project4](./client/src/images/Project4.png)
 
 ## Description
 This fourth project was a full-stack solo project. I decided to create an application that would allow architects to develop their building briefs and compile the ‘Room Data Sheets’ into one place. Indeed, in the construction public sector, when you design a building such as a hospital or a school, many rooms in the building are identical. The room types have some characteristics such as floor, wall and ceiling finishes as well as several furniture and equipment specific to that room type. This application would help the architect define these characteristics and compile the information in project-specific templates. It could also then help the quantity surveyor access the scheduled information and start the cost evaluation in parallel to the creative design development that the architect will then pursue. 
