@@ -8,11 +8,11 @@ This fourth project was a full-stack solo project. I decided to create an applic
 https://building-data-f6ca9aff8146.herokuapp.com/
 
 ## Packages to install
-- Front-end:
+- **Front-end:**\
 node, vite, React, React-router-dom, axios, bootstrap, react bootstrap, sass, MUI, localforage, match-sorter, sort-by
-- Back-end:
+- **Back-end:**\
 python, pipenv, django, psycopg2-binary, pylint, djangorestframework, django-environ, djangorestframework-simplejwt, pillow
-- For deployment on Heroku:
+- **For deployment on Heroku:**\
 django-on-heroku
 
 ## Timeframe
@@ -125,6 +125,7 @@ I started by building the bones of the backend:
 
 - Each time the Models are updated in the backend, changes have to be migrated to the database before re-running the server.
 - I created a series of Google sheets with a list of room types, and FFEs (Furniture, Fittings and Equipment) that I wanted to include on the website, which would form the basic template. I would then use that to populate the JSON files to seed into the applications.
+    ![template](./client/src/images/template.png)
 - For each application, the urls.py, the views.py, and the admin.py have to be set up as well as serializers/common.py and serialzers/populated.py if needed.
 - The urls.py in the main project folder should also be updated to ensure that the routes of each application are linked
 
@@ -152,41 +153,95 @@ From day 2, I  was ready to start working on the client side and developing the 
 
 - I then moved on to creating the indexes that I wanted to implement. (the buildings, the room types and the FFEs)
     - Each of these indexes can be filtered by searching input text
+
+        ![roomTypesIndex](./client/src/images/roomTypesIndex.png)
+
 - To add items to these indexes there is an add button at the top that will open a modal. This modal will either be 
-    - A form inviting you to entire the data to submit to populate the index
+    - A form inviting you to entire the data to submit to populate the index 
+
+        ![form](./client/src/images/form.png)
+
     - Or another index, from which you can add, add duplicates. This index in the modal can also be filtered by name to avoid having to scroll through the entire database. 
+
+        ![roomTypesIndexModal](./client/src/images/roomTypesIndexModal.png)
+
 - I decided to implement all the update functionalities through modals. When:
     - Editing information such as floor finishes, wall finishes, ceilings, code and name of room types, open a form where you enter the updated data
     - Adding room types into a building or adding FFE into a room type, updates the related field building or room type 
-    - These are the component files in React: 
+- RoomTypes can also be removed (filtered out) from a building, as FFE can be removed from a roomType
 
-        ![reactComponents](./client/src/images/reactComponents.png)
+    ![removeItem](./client/src/images/removeItem.png)
+
+    ```js
+    async function removeRT(e, roomId) {
+        e.preventDefault()
+        // Filter out the room with the specified ID
+        const filteredRT = roomTypesToUpdate.filter(value => value.id !== roomId)
+        // Extract the IDs from the filtered array
+        const roomTypeIds = filteredRT.map(roomType => roomType.id)
+        try {
+            await axios.patch(`/api/buildings/${bldg_id}/`, { roomTypes: roomTypeIds }, {
+                headers: {
+                    Authorization: `Bearer ${userData.access}`,
+                },
+            })
+            const updatedData = await axios.get(`/api/buildings/${bldg_id}/`)
+            setRoomTypesToUpdate(updatedData.data.roomTypes)
+        } catch (error) {
+            console.error("Error removing room type:", error)
+        }
+    }
+    ```
+- If the user is the owner of the created element (building, roomType, FFE), they have the right to delete that specific element from the data base
+
+     ![deleteItem](./client/src/images/deleteItem.png)
+
+     ```JS
+       async function deleteBldg(e) {
+        e.preventDefault()
+        try {
+            const res = await axios.delete(`/api/buildings/${id}/`, {
+                headers: {
+                    Authorization: `Bearer ${userData.access}`
+                }
+            })
+            setBuildings(res.data)
+            setToDelete(true)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+     ```
+- These are the component files in React: 
+    
+    ![reactComponents](./client/src/images/reactComponents.png)
+
 - In parallel to the above, I have been doing some styling and making the pages and indexes layout cohesive. I used Sass which allowed me to use relationships between the various SCSS files and I could for instance set up the colour scheme into my variables.scss and use these variables in each component to style.
-
+    
     ![styleComponents](./client/src/images/styleComponents.png)
 
 - On the profile page, I wanted to show more information than just the username. I also wanted the initials of the user to be displayed in the navbar at the top. This was a challenge (see first point of challenges section).
 
 ## Challenges
-Accessing the User model fields from the front end:
+- Accessing the User model fields from the front end:
 To access this extra information I had to create a specific serializer that would extend the default TokenObtainPairSerializer from rest_framework_simplejwt.serializers. It will then overwrite the default validate function and return more than the default data attributes. I can now access all the fields defined in the User Model.
-```Python
-class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
-  def validate(self, attrs):
-    attrs = super().validate(attrs)
-    return {
-      **attrs,
-      "id":self.user.id,
-      "username": self.user.username,
-      "email": self.user.email,
-      "first_name": self.user.first_name,
-      "last_name": self.user.last_name,
-      "img":self.user.img,
-      "bio":self.user.bio,
-      "permissions": self.user.user_permissions.values_list("codename", flat=True),
-      "groups": self.user.groups.values_list("name", flat=True),
-    }
-```
+    ```Python
+    class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+    def validate(self, attrs):
+        attrs = super().validate(attrs)
+        return {
+        **attrs,
+        "id":self.user.id,
+        "username": self.user.username,
+        "email": self.user.email,
+        "first_name": self.user.first_name,
+        "last_name": self.user.last_name,
+        "img":self.user.img,
+        "bio":self.user.bio,
+        "permissions": self.user.user_permissions.values_list("codename", flat=True),
+        "groups": self.user.groups.values_list("name", flat=True),
+        }
+    ```
 - As the SQL server is hosted online, I had some issues with website slowness when retrieving the data. The issue wasn't only with the latency from the remote server, but the way I was accessing the data through the front-end. 
 For instance:
 The page for a single room type uses the loader to access all the details of this room type which are only accessed on this page where I need this information.
@@ -300,7 +355,7 @@ async function createRT(createdRoom) {
 The importance of writing tests became so apparent in this project, as I broke the application so many times when adding new functionalities. 
 
 ## Bugs
-I had so many bugs throughout development, that it was driving me insane. I tested the website a more than dozen times before the presentation to make sure to resolve these bugs. 
+I had so many bugs throughout development, that it was driving me insane. I tested the website more than dozen times before the presentation to make sure to resolve these bugs. 
 - Authorization Bearer access - I had to update the path as I had amended the backend to return more information than the default TokenObtainPairSerializer from rest_framework_simplejwt.serializers (see challenges point 1)
 - I had forgotten to write the ‘/’ at the end of the URLs when executing axios.get, which somehow worked during development but not when deployed and no information was being rendered on the page.
 
